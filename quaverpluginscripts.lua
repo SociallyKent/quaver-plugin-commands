@@ -114,9 +114,9 @@ math.rad(x) -- return angle of value in radians; output is in degrees
 math.huge -- represents a higher or equal number, no matter what it is
 math.pi -- represents π
 math.modf(x) -- returns whole value aswell as the fractional value
--- example: if x = 2.56, it returns 2 and 0.56. if x = 7, it returns 7 and 0, because 7 has no number in a decimal point(fractional value).
+-- example: if x = 2.56, it returns 2 and 0.56. if x = 7, it returns 7 and 0, because 7 has no number in a decimal point.
 math.fmod(x, y) -- x = dividend, y = divisor/modulus 
--- example: if x = 4 and y = 2, it returns 0, because 4 is a multiple of two; if x = 4 and y = y, it returns 1, because 4 is not a multiple of 3
+-- example: if x = 4 and y = 2, it returns 0, because 4 is a multiple of two; if x = 4 and y = 3, it returns 1, because 4 is not a multiple of 3
 math.frexp(x)
 math.ldexp(m, e) -- returns m2^e
 math.log(x, base) -- logarithm -- if no base is given; defaults to e
