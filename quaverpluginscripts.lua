@@ -2,6 +2,9 @@ utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.)
 utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
 
 print()
+goto name | ::name::
+
+--Custom Commands
 state.SelectedHitObjects[]
 state.SetValue()
 state.SelectedScrollGroupId
@@ -12,6 +15,8 @@ map.ScrollVelocities[]
 map.ScrollSpeedFactors[]
 map.TimingPoints[]
 map.TimingGroups[]
+
+.StartTime
 --Tables
 t = {} --(item, ...)
 table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
@@ -21,32 +26,33 @@ table.pack() | table.unpack()
 table.sort()
 
 --imgui--
+imgui.ShowStyleEditor()
+imgui.ShowDemoWindow()
+--Button
 imgui.Button(text) | imgui.SmallButton(text)--(text, size)--|--(text, size)--
 --
 imgui.CheckBox()
---
+--Text
 imgui.Text(text)
 imgui.TextWrapped(text)
 imgui.TextColored(color, text)
 imgui.TextDisabled(text)
-imgui.SeparatorText(text)
-imgui.TextLinkOpenURL(text)
+imgui.SeparatorText()
+imgui.TextLinkOpenURL()
 
-imgui.InputText()
-imgui.InputTextMultiline()
-
-imgui.Dummy
-state.SelectedScrollGroupId
-globalVars.scrollGroupIndex
+imgui.InputText(text, value)
+imgui.InputTextMultiline(text, value, length, {x, y})
+--Spacers
+imgui.Separator()
+imgui.Dummy()
+imgui.SameLine()--(numeric, numeric)--
+imgui.PlotLines()
 ---begin/end
 imgui.Begin(text)	   | imgui.End()
 imgui.BeginChild(text) | imgui.EndChild()
 
 imgui.BeginTooltip() | imgui.EndTooltip()
 imgui.BeginTabItem(text) | imgui.EndTabItem()
-
-imgui.SameLine()--(numeric, numeric)--
-imgui.PlotLines()
 --set/get
 imgui.SetCursorPos({x, y}) | imgui.GetCursorPos()
 imgui.SetCursorPosX(x) | imgui.GetCursorPosX()
@@ -75,7 +81,10 @@ imgui_style_var.WindowPadding()
 imgui_window_flags.Resize
 ---imgui.GetWindowDrawList()---
 ---shapes
-AddCircleFilled({x, y}, radios, color)    AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)    AddNgonFilled({x, y}, radios, color)    AddQuadFilled()
+AddCircleFilled({x, y}, radius, color)
+AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
+AddNgonFilled({x, y}, radius, color)
+AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
 
 AddLine({x, y}, {x2, y2}, color, thickness)
 AddText({x, y}, color, text)
