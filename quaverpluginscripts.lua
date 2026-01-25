@@ -1,100 +1,116 @@
-utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
-utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
-
+\n --newline
+# --put before table to get the length
 print()
+ipairs()
+pairs()
 goto name | ::name::
 
---Custom Commands
-state.SelectedHitObjects[]
-state.SetValue()
-state.SelectedScrollGroupId
+nil
+true
+false
 
-map.HitObjects[]
-map.Bookmarks[]
-map.ScrollVelocities[]
-map.ScrollSpeedFactors[]
-map.TimingPoints[]
-map.TimingGroups[]
-
-.StartTime
---Tables
-t = {} --(item, ...)
-table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
-table.insert(table, position, value) -- if no posiion is given; defaults to last
-table.remove(table, position) -- if no posiion is given; defaults to last
-table.pack() | table.unpack()
-table.sort()
-
---imgui--
-imgui.ShowStyleEditor()
-imgui.ShowDemoWindow()
---Button
-imgui.Button(text) | imgui.SmallButton(text)--(text, size)--|--(text, size)--
---
-imgui.CheckBox()
---Text
-imgui.Text(text)
-imgui.TextWrapped(text)
-imgui.TextColored(color, text)
-imgui.TextDisabled(text)
-imgui.SeparatorText()
-imgui.TextLinkOpenURL()
-
-imgui.InputText(text, value)
-imgui.InputTextMultiline(text, value, length, {x, y})
---Spacers
-imgui.Separator()
-imgui.Dummy()
-imgui.SameLine()--(numeric, numeric)--
-imgui.PlotLines()
+string
+table
+detect action
+----key actions
+	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
+	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
+----mouse actions
+	---0 = true, 1 = false
+	imgui.IsMouseClicked(0 or 1)
+	imgui.IsMouseReleased(0 or 1)
+	imgui.IsMouseDown(0 or 1)
+table
+	t = {} --(item, ...)
+----table.
+	table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
+	table.insert(table, position, value) -- if no posiion is given; defaults to last
+	table.remove(table, position) -- if no posiion is given; defaults to last
+	table.pack() | table.unpack()
+	table.sort()
+imgui.
+	imgui.ShowStyleEditor()
+	imgui.ShowDemoWindow()
+----Tree
+	imgui.TreeNode(text) | imgui.TreePop()
+----Button
+	imgui.Button(text) | imgui.SmallButton(text)--(text, size{x, y})|(text, size{x, y})--
+----Checkbox
+	imgui.CheckBox()
+----Text
+	---these can be all lowercase
+	imgui.Text(text)
+	imgui.TextWrapped(text)
+	imgui.TextColored(color, text)
+	imgui.TextDisabled(text)
+	imgui.SeparatorText(text)--"" for no text
+	imgui.TextLinkOpenURL()
+	
+	imgui.InputText(text, value)--(text, value, length, imgui_)
+	imgui.InputInt(text, value)
+	imgui.InputTextMultiline(text, value)--(text, value, length, imgui_, size{x, y})
+----Spacers
+	imgui.Columns(numeric) | imgui.NextColumn()
+	imgui.Separator()
+	imgui.Dummy()
+	imgui.SameLine()--(numeric, numeric)--(size of left, space between)
+	imgui.PlotLines()
 ---begin/end
-imgui.Begin(text)	   | imgui.End()
-imgui.BeginChild(text) | imgui.EndChild()
-
-imgui.BeginTooltip() | imgui.EndTooltip()
-imgui.BeginTabItem(text) | imgui.EndTabItem()
---set/get
-imgui.SetCursorPos({x, y}) | imgui.GetCursorPos()
-imgui.SetCursorPosX(x) | imgui.GetCursorPosX()
-imgui.SetCursorPosY(y) | imgui.GetCursorPosY()
-
-imgui.SetFontSize() | imgui.GetFontSize()
-
-imgui.SetClipboardText(value) | imgui.GetClipboardText()
-
-imgui.GetOverlayDrawList()
-imgui.GetWindowDrawList()
-imgui.GetWindowPos()
-imgui.GetWindowSize()
-imgui.SetNextWindowSizeConstraints({x, y}, {x2, y2})
-
-
-imgui.IsItemHovered
---push/pop
----push overrides current style      | pop restores previous style
-imgui.PushStyleCol(imgui_style_col.) | imgui.PopStyleCol(imgui_style_col.)
-imgui.PushStyleVar(imgui_style_var.) | imgui.PopStyleVar(imgui_style_var.)
-
-imgui.PushTextWrapPos() | imgui.PopTextWrapPos()
-
-imgui_style_var.WindowPadding()
-imgui_window_flags.Resize
----imgui.GetWindowDrawList()---
----shapes
-AddCircleFilled({x, y}, radius, color)
-AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
-AddNgonFilled({x, y}, radius, color)
-AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
-
-AddLine({x, y}, {x2, y2}, color, thickness)
-AddText({x, y}, color, text)
-
-PathBezierCubicCurveTo({x, y}, {x2, y2}, {x3, y3}, {x4, y4})
-
-PathStroke(color, thickness)
-PathFillConcave(color) | PathFillConvex(color)
-
---Mathematics--
+	imgui.Begin(text)	   | imgui.End()
+	imgui.BeginChild(text) | imgui.EndChild()
+	
+	imgui.BeginTooltip() | imgui.EndTooltip()
+	
+	imgui.BeginTabItem(text) | imgui.EndTabItem()
+----set/get
+	imgui.SetCursorPos({x, y}) | imgui.GetCursorPos()
+	imgui.SetCursorPosX(x) | imgui.GetCursorPosX()
+	imgui.SetCursorPosY(y) | imgui.GetCursorPosY()
+	
+	imgui.SetFontSize() | imgui.GetFontSize()
+	
+	imgui.SetClipboardText(value) | imgui.GetClipboardText()
+	
+	imgui.GetOverlayDrawList()
+	imgui.GetWindowDrawList()
+	
+	imgui.GetWindowPos()
+	imgui.GetWindowSize()
+	
+	imgui.GetMouseDragDelta()
+	imgui.ResetMouseDragDelta()
+	
+	imgui.IsItemHovered()
+----imgui_
+	imgui_input_text_flags.AutoSelectAll-- works with InputTextMultiline too
+	imgui_style_var.WindowPadding()
+	
+	imgui_window_flags.Resize
+	imgui_window_flags.AlwaysAutoResize
+	imgui_input_text_flags.Resize
+	imgui_input_text_flags.AlwaysAutoResize
+----push/pop
+	;--push overrides current style      | pop restores previous style
+	imgui.PushStyleCol(imgui_style_col.) | imgui.PopStyleCol(imgui_style_col.)
+	imgui.PushStyleVar(imgui_style_var.) | imgui.PopStyleVar(imgui_style_var.)
+	
+	imgui.PushTextWrapPos() | imgui.PopTextWrapPos()
+	imgui.PushItemWidth(numeric) | imgui.PopItemWidth()
+----imgui.GetWindowDrawList()
+	---shapes
+	AddCircleFilled({x, y}, radius, color)
+	AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
+	AddNgonFilled({x, y}, radius, color)
+	AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
+	
+	AddLine({x, y}, {x2, y2}, color, thickness)
+	AddText({x, y}, color, text)
+	
+	PathBezierCubicCurveTo({x, y}, {x2, y2}, {x3, y3}, {x4, y4})
+	
+	PathStroke(color, thickness)
+	PathFillConcave(color) | PathFillConvex(color)
+Mathematics:
 + --- Addition
 - --- Subtraction/Subtract
 / --- Division/Dividing
@@ -133,52 +149,75 @@ math.random(x, y) -- returns a random number between x and y. -- if no value is 
 math.randomseed(x)
 math.sqrt(x) -- square root
 
-\n --newline
-# --sets value to the length when placed before a table
- --Quaver:
- 
---actions.--
-actions.Perform(utils.CreateEditorAction(action_type.))
-actions.PerformBatch(utils.CreateEditorAction(action_type.))
+Quaver:
+Custom Commands:
+state.
+	state.SelectedHitObjects[]
+	state.SelectedScrollGroupId()
+	state.SetValue(varable, value) | state.GetValue(varable)
+map.
+	map.HitObjects[]
+	map.Bookmarks[]
+	map.ScrollVelocities[]
+	map.ScrollSpeedFactors[]
+	map.TimingPoints[]
+	map.TimingGroups[]
+	map.EditorLayers[]
+userdata--place at the end of userdata to get only that type of value
+	.StartTime
+	.BPM
+	.Signature
 
----hitobjects
-actions.PlaceHitObject()	  | actions.RemoveHitObject()
-actions.PlaceHitObjectBatch() | actions.RemoveHitObjectBatch()
-actions.ResnapNotes()	actions.ResizeLongNote()
----scrollvelocity
-actions.PlaceScrollVelocity		   | actions.RemoveScrollVelocity
-actions.PlaceScrollVelocityBatch() | actions.RemoveScrollVelocityBatch()
-actions.ChangeScrollVelocityOffsetBatch() actions.ChangeScrollVelocityMultiplierBatch()
----timingpoints
-actions.PlaceTimingPoint()		| actions.RemoveTimingPoint()
-actions.PlaceTimingPointBatch() | actions.RemoveTimingPointBatch()
-actions.ChangeTimingPointOffset() actions.ChangeTimingPointBpm() actions.ChangeTimingPointSignature() actions.ChangeTimingPointHidden() actions.ChangeTimingPointBpmBatch() actions.ChangeTimingPointSignatureBatch() actions.ChangeTimingPointOffsetBatch() actions.ResetTimingPoint()
----layer
-actions.CreateLayer() | actions.RemoveLayer()
-actions.RenameLayer() actions.ChangeLayerColor()
-actions.MoveHitObjectsToLayer()	actions.ToggleLayerVisibility()
----misc
-actions.GoToObjects()
-actions.SetHitObjectSelection()
-actions.Undo() | actions.Redo()
-actions.DetectBpm()    actions.SetPreviewTime()    actions.TriggerEvent()
+actions.
+----perform & createeditoraction
+	actions.Perform()---(utils.CreateEditorAction(action_type.))
+	actions.PerformBatch({})---{(utils.CreateEditorAction(action_type.)), ...}
 
+action_type.
+----book-mark
+	action_type.AddBookmark	| action_type.RemoveBookmark
+	action_type.AddBookmarkBatch | action_type.RemoveBookmarkbatch
+----hit-object
+	action_type.AddHitObject | action_type.RemoveHitObject
+	action_type.AddHitObjectBatch | action_type.RemoveHitObjectbatch
+----scroll-speed-factor (ssf)
+	action_type.AddScrollSpeedFactor | action_type.RemoveScrollSpeedFactor
+	action_type.AddScrollSpeedFactorBatch | action_type.RemoveScrollSpeedFactorBatch
+----layers
+	action_type.AddLayer | action_type.RemoveLayer
+	action_type.MoveToLayer
+actions.
+----hit-object
+	actions.PlaceHitObject() | actions.RemoveHitObject()
+	actions.PlaceHitObjectBatch() | actions.RemoveHitObjectBatch()
+----scroll-velocity
+	actions.PlaceScrollVelocity	| actions.RemoveScrollVelocity
+	actions.PlaceScrollVelocityBatch() | actions.RemoveScrollVelocityBatch()
+	actions.ChangeScrollVelocityOffsetBatch() actions.ChangeScrollVelocityMultiplierBatch()
+----timing-point
+	actions.PlaceTimingPoint() | actions.RemoveTimingPoint()
+	actions.PlaceTimingPointBatch() | actions.RemoveTimingPointBatch()
+	actions.ChangeTimingPointOffset() | actions.ChangeTimingPointOffsetBatch() ; actions.ChangeTimingPointBpm() | actions.ChangeTimingPointBpmBatch() ; actions.ChangeTimingPointSignature() | actions.ChangeTimingPointSignatureBatch() ; actions.ChangeTimingPointHidden() ; actions.ResetTimingPoint()
+----layers
+	actions.CreateLayer() | actions.RemoveLayer()
+	actions.RenameLayer() ; actions.ChangeLayerColor()
+	actions.MoveHitObjectsToLayer()	; actions.ToggleLayerVisibility()
+----misc
+	actions.Undo() | actions.Redo()
+	actions.ResnapNotes()
+	actions.ResizeLongNote()
+	actions.GoToObjects()
+	actions.SetHitObjectSelection()
+	actions.DetectBpm() ;; actions.SetPreviewTime() ;; actions.TriggerEvent()
 
---action_type.--
----bookmarks
-action_type.AddBookmark		 | action_type.RemoveBookmark
-action_type.AddBookmarkBatch | action_type.RemoveBookmarkbatch
----hitobjects
-action_type.AddHitObject	  | action_type.RemoveHitObject
-action_type.AddHitObjectBatch | action_type.RemoveHitObjectbatch
-
-actions.Perform(utils.CreateEditorAction(action_type.AddBookmarkBatch, object))
-PlaceHitObject
-
---utils.--
----hitobjects
-utils.CreateHitObject(starttime, lane)
----bookmarks
-utils.CreateBookmark(starttime, text)
----scrollvelocity
-utils.CreateScrollVelocity(starttime, value)
+utils.
+----book-mark
+	utils.CreateBookmark(starttime, text)
+----hit-object
+	utils.CreateHitObject(starttime, lane)
+----scroll-velocity
+	utils.CreateScrollVelocity(starttime, value)
+----scroll-velocity-factor (ssf)
+	utils.CreateScrollSpeedFactor(starttime, value)
+----timing-point
+	utils.CreateTimingPoint(starttime, value, signature)
