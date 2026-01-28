@@ -40,10 +40,21 @@ and
 nil -- no value
 true
 false
-boolean -- two value: true, false
+
+
+boolean -- two value: true, false'
+number
 string
 table
 
+tostring()
+tonumber()
+
+setmetatable()
+getmetatable()
+
+__index 
+error
 luaL_checknumber
 luaL_len
 
@@ -64,30 +75,46 @@ table
 	table.remove(table, position) -- if no posiion is given; defaults to last
 	table.pack() | table.unpack()
 	table.sort()
-imgui_
+flags. --you can add multiple by putting '+' between them
+----Tree_Node
+	imgui_tree_node_flags.AllowItemOverlap--alt:4
+	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
+	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
+	imgui_tree_node_flags.DefaultOpen--alt:32
+	imgui_tree_node_flags.OpenOnDoubleClick--alt:64
+	imgui_tree_node_flags.OpenOnArrow--alt:128
+	imgui_tree_node_flags.Leaf--alt:256
+	imgui_tree_node_flags.Bullet--alt:512 -- replace arrow with bullet point
+	imgui_tree_node_flags.FramePadding--alt:1024
+	imgui_tree_node_flags.SpanAvailWidth--alt:2048
+	imgui_tree_node_flags.SpanFullWidth--alt:4096
+	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
+----Button
+----Checkbox
 ----input_text_flags (works with all input text)
-	---you can mix and match using '+' between them
- ;--example: _, _ = imgui.InputText(_, _, _, imgui_input_text_flags.ReadOnly + imgui_input_text_flags.AutoSelectAll)
+	imgui_input_text_flags.CharsDecimal--alt:1 -- 0123456789.+-*/
+	imgui_input_text_flags.CharsHexadecimal--alt:2 -- 0123456789ABCDEFabcdef
+	imgui_input_text_flags.CharsUppercase--alt:8
+	imgui_input_text_flags.CharsNoBlank--alt:16 -- filter spacer
+	imgui_input_text_flags.EnterReturnsTrue--alt:64
+	imgui_input_text_flags.ReadOnly--alt:512 -- display only
+	imgui_input_text_flags.Password--alt:1024 -- display all characters as '*' --alt:512
 	imgui_input_text_flags.AutoSelectAll--alt:4096
-	imgui_input_text_flags.ReadOnly -- display only
-	imgui_input_text_flags.Password -- display all characters as '*' --alt:512
-	imgui_input_text_flags.Resize
-	imgui_input_text_flags.AlwaysAutoResize
-	imgui_input_text_flags.EnterReturnsTrue
-	imgui_input_text_flags.CharsDecimal -- 0123456789.+-*/
-	imgui_input_text_flags.CharsHexadecimal -- 0123456789ABCDEFabcdef
-	imgui_input_text_flags.CharsUppercase
-	imgui_input_text_flags.CharsNoBlank -- filter spacers
+	imgui_input_text_flags.Resize--alt:nil
+	imgui_input_text_flags.AlwaysAutoResize--alt:nil
 ----window_flags
 	imgui_window_flags.Resize
 	imgui_window_flags.AlwaysAutoResize
+	
 ----style_var
 	imgui_style_var.WindowPadding()
-imgui.
+	
 	imgui.ShowStyleEditor()
 	imgui.ShowDemoWindow()
 ----Tree
-	imgui.TreeNode(text) | imgui.TreePop()
+	imgui.TreeNode(text) 
+	imgui.TreeNodeEx(text, flags)
+	imgui.TreePop()
 ----Button
 	imgui.Button(text) | imgui.SmallButton(text)--(text, size{x, y})|(text, size{x, y})--
 ----Checkbox
@@ -101,9 +128,9 @@ imgui.
 	imgui.SeparatorText(text)--"" for no text
 	imgui.TextLinkOpenURL()
 	
-	imgui.InputText(text, value)--(text, value, length, imgui_)
+	imgui.InputText(text, value)--(text, value, length, flags)
 	imgui.InputInt(text, value)
-	imgui.InputTextMultiline(text, value)--(text, value, length, imgui_, size{x, y})
+	imgui.InputTextMultiline(text, value)--(text, value, length, flags, size{x, y})
 ----Spacers
 	imgui.Columns(numeric) | imgui.NextColumn()
 	imgui.Separator()
