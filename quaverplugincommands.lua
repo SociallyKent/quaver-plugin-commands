@@ -1,4 +1,7 @@
 function end
+function name()
+	script
+end
 
 if then (else/elseif) end
 if boolean then
@@ -58,25 +61,32 @@ error
 luaL_checknumber
 luaL_len
 
+isSelected
+
 detect action
-----key actions
+	'IsKey' --left/Right: Shift, Control, Alt
 	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
 	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
-----mouse actions
+	'IsMouse'
 	;--0 = true, 1 = false
 	imgui.IsMouseClicked(0 or 1)
 	imgui.IsMouseReleased(0 or 1)
 	imgui.IsMouseDown(0 or 1)
+	'IsWindowHovered'/'IsItemHovered'
+	imgui.IsWindowHovered()
+	imgui.IsItemHovered()
 table
 	t = {} --(item, ...)
-----table.
+	'table.'
 	table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
 	table.insert(table, position, value) -- if no posiion is given; defaults to last
 	table.remove(table, position) -- if no posiion is given; defaults to last
 	table.pack() | table.unpack()
 	table.sort()
-flags. --you can add multiple by putting '+' between them
-----Tree_Node
+----
+imgui.
+|"flags./imgui_"[ --you can add multiple by putting '+' between them
+	'Tree_Node_flags'
 	imgui_tree_node_flags.AllowItemOverlap--alt:4
 	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
 	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
@@ -89,9 +99,9 @@ flags. --you can add multiple by putting '+' between them
 	imgui_tree_node_flags.SpanAvailWidth--alt:2048
 	imgui_tree_node_flags.SpanFullWidth--alt:4096
 	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
-----Button
-----Checkbox
-----input_text_flags (works with all input text)
+	--Button
+	--Checkbox
+	'input_text_flags' --works with every kind of input text
 	imgui_input_text_flags.CharsDecimal--alt:1 -- 0123456789.+-*/
 	imgui_input_text_flags.CharsHexadecimal--alt:2 -- 0123456789ABCDEFabcdef
 	imgui_input_text_flags.CharsUppercase--alt:8
@@ -100,26 +110,45 @@ flags. --you can add multiple by putting '+' between them
 	imgui_input_text_flags.ReadOnly--alt:512 -- display only
 	imgui_input_text_flags.Password--alt:1024 -- display all characters as '*' --alt:512
 	imgui_input_text_flags.AutoSelectAll--alt:4096
-	imgui_input_text_flags.Resize--alt:nil
-	imgui_input_text_flags.AlwaysAutoResize--alt:nil
-----window_flags
-	imgui_window_flags.Resize
-	imgui_window_flags.AlwaysAutoResize
-	
-----style_var
-	imgui_style_var.WindowPadding()
-	
+	imgui_input_text_flags.Resize
+	imgui_input_text_flags.AlwaysAutoResize
+	'window_flags'
+	imgui_window_flags.None--Alt:0
+	imgui_window_flags.NoTitleBar--Alt:1
+	imgui_window_flags.NoResize--Alt:2
+	imgui_window_flags.NoMove--Alt:4
+	imgui_window_flags.NoScrollbar--Alt:8
+	imgui_window_flags.NoScrollWithMouse--Alt:16
+	imgui_window_flags.NoCollapse--Alt:32
+	imgui_window_flags.NoDecoration--Alt:43
+	imgui_window_flags.AlwaysAutoResize--Alt:64
+	imgui_window_flags.NoBackground--Alt:128
+	imgui_window_flags.NoSavedSettings--Alt:256
+	imgui_window_flags.NoMouseInputs--Alt:512
+	imgui_window_flags.MenuBar--Alt:1024
+	imgui_window_flags.HorizontalScrollbar--Alt:2048
+	imgui_window_flags.NoFocusOnAppearing--Alt:4096
+	imgui_window_flags.NoBringToFrontOnFocus--Alt:8192
+	imgui_window_flags.NoNavInputs--Alt:65536
+	imgui_window_flags.NoNavFocus--Alt:131072
+	imgui_window_flags.NoNav--Alt:196608
+	imgui_window_flags.NoInputs--Alt:197120
+	imgui_window_flags.UnsavedDocument--Alt:262144
+	imgui_window_flags.ChildMenu--Alt:26843546
+|"Show"
 	imgui.ShowStyleEditor()
 	imgui.ShowDemoWindow()
-----Tree
+|""
+	'Tree'
 	imgui.TreeNode(text) 
 	imgui.TreeNodeEx(text, flags)
 	imgui.TreePop()
-----Button
-	imgui.Button(text) | imgui.SmallButton(text)--(text, size{x, y})|(text, size{x, y})--
-----Checkbox
+	'Button'
+	imgui.Button(text)--(text, size{x, y})
+	imgui.SmallButton(text)--(text, size{x, y})
+	'Checkbox'
 	imgui.CheckBox()
-----Text
+	'Text'
 	---these can be all lowercase
 	imgui.Text(text)
 	imgui.TextWrapped(text)
@@ -127,59 +156,67 @@ flags. --you can add multiple by putting '+' between them
 	imgui.TextDisabled(text)
 	imgui.SeparatorText(text)--"" for no text
 	imgui.TextLinkOpenURL()
-	
-	imgui.InputText(text, value)--(text, value, length, flags)
-	imgui.InputInt(text, value)
-	imgui.InputTextMultiline(text, value)--(text, value, length, flags, size{x, y})
-----Spacers
+		'input text'
+		imgui.InputText(text, value)--(text, value, length, flags)
+		imgui.InputInt(text, value)
+		imgui.InputTextMultiline(text, value)--(text, value, length, flags, size{x, y})
+	'Spacers'
 	imgui.Columns(numeric) | imgui.NextColumn()
 	imgui.Separator()
 	imgui.Dummy()
-	imgui.SameLine()--(numeric, numeric)--(size of left, space between)
+	imgui.SameLine()--(space left both, space left single)
 	imgui.PlotLines()
----begin/end
+
+|"begin"|"end"
 	imgui.Begin(text)	   | imgui.End()
+	'Child'
 	imgui.BeginChild(text) | imgui.EndChild()
-	
+	'Tooltip'
 	imgui.BeginTooltip() | imgui.EndTooltip()
-	
+	'TabItem'
 	imgui.BeginTabItem(text) | imgui.EndTabItem()
-----set/get
+	--to find:
+	BeginPopup
+	BeginPopupModal
+|"set"|"get"
+	'CursorPos'/'WindowPos'
 	imgui.SetCursorPos({x, y}) | imgui.GetCursorPos()
 	imgui.SetCursorPosX(x) | imgui.GetCursorPosX()
 	imgui.SetCursorPosY(y) | imgui.GetCursorPosY()
-	
+	imgui.GetWindowPos()
+	'FontSize'/'WindowSize'
 	imgui.SetFontSize() | imgui.GetFontSize()
-	
+	imgui.GetWindowSize()
+	'ClipboardText'
 	imgui.SetClipboardText(value) | imgui.GetClipboardText()
-	
+	'DrawList'
 	imgui.GetOverlayDrawList()
 	imgui.GetWindowDrawList()
-	
-	imgui.GetWindowPos()
-	imgui.GetWindowSize()
-	
+	'MouseDragDelta'
 	imgui.GetMouseDragDelta()
 	imgui.ResetMouseDragDelta()
 	
-	imgui.IsItemHovered()
-----push/pop
+	--to find:
+	SetNextWindowContentSize
+|"push"|"pop"
 	;--push overrides current style      | pop restores previous style
+	'StyleCol'/'StyleVar'
 	imgui.PushStyleCol(imgui_style_col.) | imgui.PopStyleCol(imgui_style_col.)
 	imgui.PushStyleVar(imgui_style_var.) | imgui.PopStyleVar(imgui_style_var.)
-	
+	'TextWrapPos'
 	imgui.PushTextWrapPos() | imgui.PopTextWrapPos()
+	'ItemWidth'
 	imgui.PushItemWidth(numeric) | imgui.PopItemWidth()
-----imgui.GetWindowDrawList()
-	---shapes
+|"imgui.GetWindowDrawList()."/"imgui.GetOverlayDrawList()."
+	'Shape Filled'
 	AddCircleFilled({x, y}, radius, color)
 	AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
 	AddNgonFilled({x, y}, radius, color)
 	AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
-	
+	'Line'/'Text'
 	AddLine({x, y}, {x2, y2}, color, thickness)
 	AddText({x, y}, color, text)
-	
+	'path'
 	PathBezierCubicCurveTo({x, y}, {x2, y2}, {x3, y3}, {x4, y4})
 	
 	PathStroke(color, thickness)
@@ -228,6 +265,7 @@ Custom Commands:
 state.
 	state.SelectedHitObjects[]
 	state.SelectedScrollGroupId()
+	
 	state.SetValue(varable, value) | state.GetValue(varable)
 map.
 	map.HitObjects[]
@@ -242,6 +280,9 @@ userdata--place after userdata to get only that data value
 	.StartTime
 	.BPM
 	.Signature
+----bookmark
+	.StartTime
+	.Note
 
 actions.
 ----perform & createeditoraction
