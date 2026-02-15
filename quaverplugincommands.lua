@@ -67,7 +67,9 @@ luaL_len
 isSelected
 
 detect action
-	'IsKey' --left/Right: Shift, Control, Alt
+	'IsKey' 
+	--Shift, Control, Alt - place Left or Right before
+	--Arrows - Left, Up, Down, Right
 	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
 	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
 	'IsMouse'
@@ -75,6 +77,9 @@ detect action
 	imgui.IsMouseClicked(0 or 1)
 	imgui.IsMouseReleased(0 or 1)
 	imgui.IsMouseDown(0 or 1)
+	'IsWindowHovered'/'IsItemHovered'	
+	imgui.IsWindowHovered()
+	imgui.IsItemHovered()
 table
 	t = {} --(item, ...)
 	'table.'
@@ -86,155 +91,114 @@ table
 ----
 imgui.
 |"Show"
-	ShowAboutWindow
 	imgui.ShowStyleEditor()
 	imgui.ShowDemoWindow()
 	imgui.ShowMetricsWindow()
-	imgui.ShowStyleSelector()
-	imgui.ShowFontSelector()
+	imgui.ShowStyleSelector()--crashes
+	imgui.ShowFontSelector()--crashes
 	imgui.ShowUserGuide()
-|"flags./imgui_"[ --you can add multiple by putting '+' between them
-	'tree_node_flags'
-	imgui_tree_node_flags.AllowItemOverlap--alt:4
-	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
-	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
-	imgui_tree_node_flags.DefaultOpen--alt:32
-	imgui_tree_node_flags.OpenOnDoubleClick--alt:64
-	imgui_tree_node_flags.OpenOnArrow--alt:128
-	imgui_tree_node_flags.Leaf--alt:256
-	imgui_tree_node_flags.Bullet--alt:512 -- replace arrow with bullet point
-	imgui_tree_node_flags.FramePadding--alt:1024
-	imgui_tree_node_flags.SpanAvailWidth--alt:2048
-	imgui_tree_node_flags.SpanFullWidth--alt:4096
-	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
-	--Button
-	--Checkbox
-	'input_text_flags' --works with every kind of input text
-	imgui_input_text_flags.CharsDecimal--alt:1 -- 0123456789.+-*/
-	imgui_input_text_flags.CharsHexadecimal--alt:2 -- 0123456789ABCDEFabcdef
-	imgui_input_text_flags.CharsUppercase--alt:8
-	imgui_input_text_flags.CharsNoBlank--alt:16 -- filter spacer
-	imgui_input_text_flags.EnterReturnsTrue--alt:64
-	imgui_input_text_flags.ReadOnly--alt:512 -- display only
-	imgui_input_text_flags.Password--alt:1024 -- display all characters as '*' --alt:512
-	imgui_input_text_flags.AutoSelectAll--alt:4096
-	imgui_input_text_flags.Resize
-	imgui_input_text_flags.AlwaysAutoResize
-	'window_flags'
-	imgui_window_flags.NoTitleBar--Alt:1
-	imgui_window_flags.NoResize--Alt:2
-	imgui_window_flags.NoMove--Alt:4
-	imgui_window_flags.NoScrollbar--Alt:8
-	14 -- Always show vertical scrollbar
-	15 -- Show second resize option (has new function)
-	imgui_window_flags.NoScrollWithMouse--Alt:16
-	imgui_window_flags.NoCollapse--Alt:32
-	imgui_window_flags.NoDecoration--Alt:43
-	imgui_window_flags.AlwaysAutoResize--Alt:64
-	imgui_window_flags.NoBackground--Alt:128
-	imgui_window_flags.NoSavedSettings--Alt:256
-	imgui_window_flags.NoMouseInputs--Alt:512
-	imgui_window_flags.MenuBar--Alt:1024
-	imgui_window_flags.HorizontalScrollbar--Alt:2048
-	imgui_window_flags.NoFocusOnAppearing--Alt:4096
-	imgui_window_flags.NoBringToFrontOnFocus--Alt:8192
-	imgui_window_flags.NoNavInputs--Alt:65536
-	imgui_window_flags.NoNavFocus--Alt:131072
-	imgui_window_flags.NoNav--Alt:196608
-	imgui_window_flags.NoInputs--Alt:197120
-	imgui_window_flags.UnsavedDocument--Alt:262144
-	imgui_window_flags.ChildMenu--Alt:26843546
-	'hovered_flags'
-	imgui_hovered_flags.ChildWindows -- IsWindowHovered() only
-	imgui_hovered_flags.RootWindow -- IsWindowHovered() only
-	imgui_hovered_flags.AnyWindow -- IsWindowHovered() only
-	imgui_hovered_flags.AllowWhenBlockedByPopup
-	imgui_hovered_flags.AllowWhenBlockedByModal
-	imgui_hovered_flags.AllowWhenBlockedByActiveItem
-	imgui_hovered_flags.AllowWhenOverlapped
-	imgui_hovered_flags.AllowWhenDisabled
-	imgui_hovered_flags.RectOnly -- undefined
+	--tofind
+	ShowAboutWindow
 |""
-	'Tree'/'CollapsingHeader'
-	imgui.TreeNode(text)-- -- imgui.TreeNodeV(string)
-	imgui.TreeNodeEx(text)--(text, flags) -- imgui.TreeNodeExV(string)
-	imgui.TreePush(string) | imgui.TreePop()
-	imgui.CollapsingHeader(text)--(text, flags)/(text, state, flags)
-		'misc'
-		imgui.GetTreeNodeToLabelSpacing()
-		imgui.SetNextItemOpen()--(state)
 	'Button'
-	imgui.Button(text)--(text, size{x, y})
-	imgui.SmallButton(text)--(text, size{x, y})
-	imgui.InvisibleButton()
-	imgui.ArrowButton()
+		imgui.Button(text)--(text, size{x, y})
+		imgui.SmallButton(text)--(text, size{x, y})
+		imgui.InvisibleButton()
+		imgui.ArrowButton()
 	'Checkbox'
-	imgui.CheckBox()
-		imgui.CheckboxFlags()
-	'Text'
-	---these can be all lowercase
-	imgui.TextUnformatted(text)
-	imgui.Text(text)
-	imgui.TextWrapped(text)
-	imgui.TextColored(color, text)
-	imgui.TextDisabled(text)
-	imgui.LabelText(text, text)
-	BulletText
-	imgui.SeparatorText(text)
-	imgui.TextLinkOpenURL()
-	'Spacers'
-	imgui.Columns(numeric) | imgui.NextColumn()
-	imgui.Separator()
-	imgui.Spacing()
-	imgui.Dummy()
-	imgui.SameLine()--(space left both, space left single)
-	imgui.NewLine()
-	imgui.PlotLines()
-	imgui.PlotHistogram()
-	'Selectable'
-	imgui.Selectable(text)--(text, state, flags)
-	'misc'
-	imgui.ProgressBar()
-	'IsWindowHovered'/'IsItemHovered'	
-	imgui.IsWindowHovered()
-	imgui.IsItemHovered()
-	'Drag'/'Slider'/'InputText'
-	all have:
-		imgui.[]Float(text, value)--slider:(text, value, min, max)-drag:(text, value, speed, min, max)inputtext:(text, value, step, step fast, ¿format?, flags)
-		imgui.[]Int(text, value)--same as Float
-		imgui.[]Scaler(text)
-	exclusives:
-		'Slider'
-		imgui.SliderAngle(text)--(text, radius, degree min, degree max)
-		'InputText'
-		imgui.InputTextMultiline(text, value)--(text, value, length, size{x, y}, flags)
-		imgui.InputTextWithHint(text, hint, value)--(text, hint, value, length, flags)
+		imgui.CheckBox()
+		imgui.CheckBoxFlags()
+	'CollapsingHeader'
+		imgui.CollapsingHeader(text)--(text, flags)/(text, state, flags)
+	'Columns'
+		imgui.Columns(numeric)
+		imgui.GetColumnCount()
+		imgui.GetColumnIndex()
+		imgui.NextColumn()
+		imgui.SetColumnOffset() | imgui.GetColumnOffset()
+		imgui.SetColumnWidth() | imgui.GetColumnWidth()
+	'Drag'
+		imgui.DragFloat(text, value)--(text, value, speed, min, max)
+		imgui.DragInt(text, value)--same as Float
+		imgui.DragScaler(text)
+	'InputText'
 		imgui.InputDouble()
+		imgui.InputText(text, value)--(text, value, flags)
+		imgui.InputTextFloat(text, value)--(text, value, step, step fast, format, flags)
+		imgui.InputTextInt(text, value)--same as float
+		imgui.InputTextMultiline(text, value)--(text, value, length, size{x, y}, flags)
+		imgui.InputTextScaler(text)
+		imgui.InputTextWithHint(text, hint, value)--(text, hint, value, length, flags)
+	'ListBox'
+		imgui.BeginListBox(text)| imgui.EndListBox() -- can use too imgui.ListBoxHeader(text) | imgui.ListBoxFooter()
+		imgui.ListBox(text)
+	'ProgressBar'
+		imgui.ProgressBar()
+	'Selectable'
+		imgui.Selectable(text)--(text, state, flags)
+	'Slider'
+		imgui.SliderAngle(text)--(text, radius, degree min, degree max)
+		imgui.SliderFloat(text, value)--(text, value, min, max)
+		imgui.SliderInt(text, value)--same as Float
+		imgui.SliderScaler(text)
+	'Spacers'
+		imgui.Dummy()
+		imgui.NewLine()
+		imgui.PlotHistogram()
+		imgui.PlotLines()
+		imgui.SameLine()--(both space, single space)
+		imgui.Separator()
+		imgui.Spacing()
+	'Text'
+		imgui.BulletText(text)
+		imgui.LabelText(text, text)
+		imgui.SeparatorText(text)
+		imgui.Text(text)
+		imgui.TextColored(color, text)
+		imgui.TextDisabled(text)
+		imgui.TextLinkOpenURL()
+		imgui.TextUnformatted(text)
+		imgui.TextWrapped(text)
+	'Tree'
+		imgui.GetTreeNodeToLabelSpacing()
+		imgui.TreeNode(text)-- -- imgui.TreeNodeV(string)
+		imgui.TreeNodeEx(text)--(text, flags) -- imgui.TreeNodeExV(string)
+		imgui.TreePush(string) | imgui.TreePop()
 	--to find:
-	AlignTextToFramePadding()
-	ListBox()
-	ListBoxHeader()/BeginListBox() | ListBoxFooter()/EndListBox()
+	imgui.AlignTextToFramePadding()
+	imgui.AlignTextToFramePadding()
+	imgui.SetNextItemOpen()--(state)
 |"begin"|"end"
 	imgui.Begin(text, flags) | imgui.End()
 	'Child'
 	imgui.BeginChild(text) | imgui.EndChild()
+	'Combo'
+	imgui.BeginCombo() | imgui.EndCombo()
+	'DragDrop'
+	imgui.BeginDragDropSource() | imgui.SetDragDropPayload() |imgui.EndDragDropSource()
+	imgui.BeginDragDropTarget() | imgui.EndDragDropTarget()
+		--
+		imgui.AcceptDragDropPayload()
+		imgui.GetDragDropPayload("MY_PAYLOAD", 1, 1)
+	'Group'
+	imgui.BeginGroup() | imgui.EndGroup()
 	'Menu'/'MenuBar'/'MainMenuBar'
 	imgui.BeginMenu(text) | imgui.EndMenu()
 	imgui.BeginMenuBar() | imgui.EndMenuBar()
 	imgui.BeginMainMenuBar() | imgui.EndMainMenuBar()
-	imgui.MenuItem(text)
-	'Tooltip'
-	imgui.BeginTooltip() | imgui.EndTooltip()
-	imgui.SetTooltip() | imgui.SetTooltipV()
+		--
+		imgui.MenuItem(text)
 	'TabBar'/'TabItem'
 	imgui.BeginTabBar(string, flags) | imgui.EndTabBar
 	imgui.BeginTabItem(text) | imgui.EndTabItem()
-	'DragDrop'
-	imgui.BeginDragDropSource() | imgui.SetDragDropPayload() |imgui.EndDragDropSource()
-	imgui.BeginDragDropTarget() | imgui.EndDragDropTarget()
-	imgui.AcceptDragDropPayload()
-	'Group'
-	imgui.BeginGroup() | imgui.EndGroup()
+	'Table'
+	imgui.BeginTable(text, count, flags) | imgui.EndTable()
+		--
+		imgui.TableNextColumn()
+	'Tooltip'
+	imgui.BeginTooltip() | imgui.EndTooltip()
+		--
+		imgui.SetTooltip() | imgui.SetTooltipV()
 	--to find:
 	BeginPopup
 	BeginPopupModal
@@ -270,8 +234,10 @@ imgui.
 	'GetContentRegion'/'GetWindowContentRegion'
 		all have:
 		imgui.[]Max()
-		imgui.[]Min()
 		imgui.[]Avail()
+		exclusive:
+		--GetWindowContentRegion
+		imgui.[]Min()
 	--to find:
 	CalcItemWidth()
 	SetNextWindowContentSize
@@ -377,9 +343,16 @@ Quaver:
 Custom Commands:
 state.
 	state.SelectedHitObjects[]
-	state.SelectedScrollGroupId()
-	
+	state.SelectedScrollGroupId
+	state.CurrentTimingPoint
+	state.CurrentBookmark
+	state.CurrentScrollVelocity
+	state.CurrentScrollFactor
+	state.CurrentLayer
+	state.CurrentSnap 
 	state.SetValue(varable, value) | state.GetValue(varable)
+	
+	state.DeltaTime
 map.
 |""
 	map.HitObjects[]
@@ -387,33 +360,57 @@ map.
 	map.ScrollVelocities[]
 	map.ScrollSpeedFactors[]
 	map.TimingPoints[]
-	map.TimingGroups[]
+	map.TimingGroups
+	map.DefaultScrollGroup
+	map.GlobalScrollGroup
 	map.EditorLayers[]
-	
+	map.LastSelectedScrollGroupId
 	map.GetCommonBpm()
-		map.GetNearestSnapTimeFromTime()
+	map.GetNearestSnapTimeFromTime()
 	
+	map.GetBookmarkAt()
+	map.GetHitObjectAt()
+	map.GetTimingPointAt
+	map.GetScrollVelocityAt
+	map.GetScrollSpeedFactorAt
 |"Song Data"
-Editor.GetBeatSnapDivisors()
+	Editor.GetBeatSnapDivisors()
 	map.ToString()
 	map.TrackLength
 	map.GetKeyCount()
+|""
+	map.GetTimingGroup
+	map.GetTimingGroupIds()[]
+	map.GetTimingGroupObjects
 userdata--place after userdata to get that select data value
 ----bookmarks
 	.StartTime
 	.Note
 ----editorlayers
-	.StartTime
-	.Bpm
-	.Signiture
-	.Hidden
-	.IsEditableInLuaScript
-	.MillisecondsPerBeat
 ----hitobjects
+	.StartTime
+	.Lane
+	.EndTime
+	.HitSound
+	.Type
+	.KeySounds
+	.EditorLayer
+	.TimingGroup
+	.IsLongNote
+	.JudgementCount
 ----scrollspeedfactors
 ----scrollvelocities
 ----timinggroups
+	.ColorRgb
+	.Hidden
 ----timingpoints
+	.StartTime
+	.Bpm
+	.Signature
+	.Hidden
+	.IsEditableInLuaScript
+	.MillisecondsPerBeat
+events
 
 actions.
 ----perform & createeditoraction
@@ -424,22 +421,45 @@ action_type.
 ----book-mark
 	action_type.AddBookmark	| action_type.RemoveBookmark
 	action_type.AddBookmarkBatch | action_type.RemoveBookmarkbatch
+	EditBookmark
+	ChangeBookmarkOffsetBatch
 ----hit-object
 	action_type.AddHitObject | action_type.RemoveHitObject
 	action_type.AddHitObjectBatch | action_type.RemoveHitObjectbatch
+	ResnapHitObjects
+	FlipHitObjects
+	SwapLanes
+	MoveHitObjects
+	ReverseHitObjects
 ----scroll-speed-factor (ssf)
 	action_type.AddScrollSpeedFactor | action_type.RemoveScrollSpeedFactor
 	action_type.AddScrollSpeedFactorBatch | action_type.RemoveScrollSpeedFactorBatch
 ----timing-point
 	action_type.AddTimingPoint | action_type.RemoveTimingPoint
 	action_type.AddTimingPointBatch | action_type.RemoveTimingPointBatch
+	ChangeTimingPointBpm
+	ChangeTimingPointOffset
+	ResetTimingPoint
+	ChangeTimingPointSignature
+	ChangeTimingPointHidden
 ----layers
 	action_type.AddLayer | action_type.RemoveLayer
 	action_type.MoveToLayer
+----timing-group
+	action_type.CreateTimingGroup
+	RemoveTimingGroup
+	action_type.MoveObjectsToTimingGroup
+	RenameTimingGroup
+	ChangeTimingGroupColor
+----misc
+	ChangePreviewTime
+	ApplyOffset
 actions.
 ----hit-object
 	actions.PlaceHitObject() | actions.RemoveHitObject()
 	actions.PlaceHitObjectBatch({}) | actions.RemoveHitObjectBatch({})
+	actions.MoveHitObject()
+	actions.MoveHitObjectBatch({})
 ----scroll-velocity
 	actions.PlaceScrollVelocity	| actions.RemoveScrollVelocity
 	actions.PlaceScrollVelocityBatch({}) | actions.RemoveScrollVelocityBatch({})
@@ -458,6 +478,7 @@ actions.
 	actions.ResizeLongNote()
 	actions.GoToObjects()
 	actions.SetHitObjectSelection()
+	action.ChangeTimingGroupColor
 	actions.DetectBpm() ;; actions.SetPreviewTime() ;; actions.TriggerEvent()
 
 utils.
@@ -471,6 +492,10 @@ utils.
 	utils.CreateScrollSpeedFactor(starttime, value)
 ----timing-point
 	utils.CreateTimingPoint(starttime, value, signature)
+----timing-group / scroll-group
+	utils.CreateScrollGroup(svs, initialSV, colorRgb)
+	utils.GenerateTimingGroupId()
+	utils.GenerateTimingGroupIds()
 	
 everything gets ran 1 time.
 	
