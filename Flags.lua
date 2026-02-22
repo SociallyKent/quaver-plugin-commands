@@ -18,11 +18,21 @@
 	imgui_input_text_flags.AlwaysAutoResize
 	-- 'ListBox'
 	-- 'ProgressBar'
-	-- 'Selectable'
+	'Selectable'
+	imgui_selectable_flags.None	
+	imgui_selectable_flags.NoAutoClosePopups--Clicking this doesn't close parent popup window (overrides ImGuiItemFlags_AutoClosePopups)
+	imgui_selectable_flags.SpanAllColumns	--Frame will span all columns of its container table (text will still fit in current column)
+	imgui_selectable_flags.AllowDoubleClick	--Generate press events on double clicks too
+	imgui_selectable_flags.Disabled			--Cannot be selected, display grayed out text
+	imgui_selectable_flags.AllowOverlap		--(WIP) Hit testing to allow subsequent widgets to overlap this one
+	imgui_selectable_flags.Highlight		--Make the item be displayed as if it is hovered
+	imgui_selectable_flags.SelectOnNav		--Auto-select when moved into, unless Ctrl is held. Automatic when in a BeginMultiSelect() block.
 	-- 'Slider'
 	-- 'Spacers'
 	-- 'Text'
 	'tree_node_flags'
+	imgui_tree_node_flags.Selected--alt:1
+	imgui_tree_node_flags.Framed--alt:2
 	imgui_tree_node_flags.AllowItemOverlap--alt:4
 	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
 	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
@@ -34,7 +44,22 @@
 	imgui_tree_node_flags.FramePadding--alt:1024
 	imgui_tree_node_flags.SpanAvailWidth--alt:2048
 	imgui_tree_node_flags.SpanFullWidth--alt:4096
-	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768	
+	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
+	imgui_tree_node_flags.NoScrollOnOpen
+|"begin"|"end"
+	'Child'
+	'Combo'
+	'DragDrop'
+	'Group'
+	'Menu'/'MenuBar'/'MainMenuBar'
+	'TabBar'/'TabItem'
+	'Table'
+	'Tooltip'
+
+
+
+
+
 |"window_flags"
 	imgui_window_flags.NoTitleBar--Alt:1
 	imgui_window_flags.NoResize--Alt:2
@@ -93,5 +118,3 @@
 	imgui_color_edit_flags.PickerHueWheel -- [Picker] ColorPicker: wheel for Hue, triangle for Sat/Value.
 	imgui_color_edit_flags.InputRGB -- [Input]  ColorEdit, ColorPicker: input and output data in RGB format.
 	imgui_color_edit_flags.InputHSV -- [Input]  ColorEdit, ColorPicker: input and output data in HSV format.
-	
-	
