@@ -63,23 +63,6 @@ __index
 error
 luaL_checknumber
 luaL_len
-
-isSelected
-
-detect action
-	'IsKey' 
-	--Shift, Control, Alt - place Left or Right before
-	--Arrows - Left, Up, Down, Right
-	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
-	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
-	'IsMouse'
-	;--0 = true, 1 = false
-	imgui.IsMouseClicked(0 or 1)
-	imgui.IsMouseReleased(0 or 1)
-	imgui.IsMouseDown(0 or 1)
-	'IsWindowHovered'/'IsItemHovered'	
-	imgui.IsWindowHovered()
-	imgui.IsItemHovered()
 table
 	t = {} --(item, ...)
 	'table.'
@@ -89,6 +72,30 @@ table
 	table.pack() | table.unpack()
 	table.sort()
 ----
+isSelected
+
+|Detect Input
+	'IsKey' 
+	--Shift, Control, Alt - place Left or Right before
+	--Arrows - Left, Up, Down, Right
+	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
+	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
+	'IsMouse'
+	;--0 = true, 1 = false
+	--or you can do
+	;--"Left", "Right"
+	imgui.IsMouseClicked()
+	imgui.IsMouseReleased()
+	imgui.IsMouseDown()
+	'IsWindowHovered'/'IsItemHovered'	
+	imgui.IsWindowHovered()
+	imgui.IsItemHovered()
+|Detect
+	imgui.GetMousePos()
+	imgui.IsMousePosValid()
+	imgui.IsMouseDragging() -- Detect dragging a window
+	imgui.GetScrollY()
+	imgui.GetScrollX()
 imgui.
 |"Show"
 	imgui.ShowStyleEditor()
@@ -100,11 +107,14 @@ imgui.
 	--tofind
 	ShowAboutWindow
 |""
+	---- "##text" = invisable
+	--ex 	imgui.button("##can't see me") imgui.button("can see me")
+	---Does not work with imgui.Text
 	'Button'
 		imgui.Button(text)--(text, size{x, y})
 		imgui.SmallButton(text)--(text, size{x, y})
-		imgui.InvisibleButton()
-		imgui.ArrowButton()
+		imgui.InvisibleButton(text, size{x, y})
+		imgui.ArrowButton(text, dirrection) -- dirrection = 0, 1, 2, or 3
 	'Checkbox'
 		imgui.CheckBox()
 		imgui.CheckBoxFlags()
@@ -124,8 +134,8 @@ imgui.
 	'InputText'
 		imgui.InputDouble()
 		imgui.InputText(text, value)--(text, value, flags)
-		imgui.InputTextFloat(text, value)--(text, value, step, step fast, format, flags)
-		imgui.InputTextInt(text, value)--same as float
+		imgui.InputFloat(text, value)--(text, value, step, step fast, format, flags)
+		imgui.InputInt(text, value)--same as float
 		imgui.InputTextMultiline(text, value)--(text, value, length, size{x, y}, flags)
 		imgui.InputTextScaler(text)
 		imgui.InputTextWithHint(text, hint, value)--(text, hint, value, length, flags)
@@ -192,9 +202,64 @@ imgui.
 	imgui.BeginTabBar(string, flags) | imgui.EndTabBar
 	imgui.BeginTabItem(text) | imgui.EndTabItem()
 	'Table'
+	BeginTableEx
+	TableFindByID
 	imgui.BeginTable(text, count, flags) | imgui.EndTable()
 		--
+		imgui.TableSetColumnIndex() | imgui.TableGetColumnIndex()
+	BeginTable()--user begin into a table
+		BeginChild()--(if ScrollX/ScrollY is set)
+		imgui.TableBeginInitMemory()--first time table is used
+		imgui.TableResetSettings()--on settings reset
+		imgui.TableLoadSettings()--on settings load
+		imgui.TableBeginApplyRequests()--apply queued resizing/reordering/hiding requests
+			imgui.TableSetColumnWidth()--apply resizing width(for mouse resize, often requested by previous frame)
+				imgui.TableUpdateColumnsWeightFromWidth()--recompute columns weights(of stretch columns) from the irrespective width
+	imgui.TableSetupColumn()--user submit columns details(optional)
+	imgui.TableSetupScrollFreeze()--user submit scroll freeze information(optional)
+	--
+	imgui.TableUpdateLayout()--follow up to Begin imgui.Table():setup everything:widths, columns positions, clipping rectangles.Automatically called by the FIRST call to imgui.TableNextRow() or imgui.TableHeadersRow().
+		imgui.TableSetupDrawChannels()--setup ImDrawList channels
+		imgui.TableUpdateBorders()--detect hovering columns for resize, a head of contents submission
+		imgui.TableBeginContextMenuPopup()
+			imgui.TableDrawDefaultContextMenu()--draw right-click context menu contents
+	--
+	imgui.TableHeadersRow() or imgui.TableHeader()--user submit a headers row (optional)
+		imgui.TableSortSpecsClickColumn()--when left-clicked: alter sort order and sort direction
+		imgui.TableOpenContextMenu()--when right-clicked: trigger opening of the default context menu
+	imgui.TableGetSortSpecs()--user queries updated sort specs(optional,generally after submitting headers)
+	imgui.TableNextRow()--user begin into a new row(also automatically called by imgui.TableHeadersRow())
+		imgui.TableEndRow()--finish existing row
+		imgui.TableBeginRow()--add a new row
+	imgui.TableSetColumnIndex()/imgui.TableNextColumn()--user begin into a cell
+		imgui.TableEndCell()--close existing column/cell
+		imgui.TableBeginCell()--enter into current column/cell
+	--[...]									--user emit contents
+	--
+	EndTable()	--user ends the table
+		TableDrawBorders()--draw outer borders, inner vertical borders
+		TableMergeDrawChannels()--merge draw channels if clipping isn't required
+		EndChild()--(if Scroll X/Scroll Y is set)
+		TableSetColumnIndex() / TableNextColumn()
+			TableBeginCell() | TableEndCell()
 		imgui.TableNextColumn()
+		imgui.TableGetSortSpecs
+		imgui.TableSetupScrollFreeze()
+		imgui.TableSetupColumn()
+		imgui.TableHeadersRow()
+		imgui.TableUpdateLayout
+		imgui.TableSetupDrawChannels
+		imgui.TableUpdateBorders
+		imgui.TableSetColumnWidth
+		imgui.TableNextRow
+		imgui.PushID() | imgui.PopID()
+		TableResized
+		TableResizedColumnNextWidth
+		AutoFitSingleColumn
+		InstanceCurrent
+		ReorderColumn
+		ReorderColumnDir
+		HeldHeaderColumn
 	'Tooltip'
 	imgui.BeginTooltip() | imgui.EndTooltip()
 		--
@@ -202,6 +267,9 @@ imgui.
 	--to find:
 	BeginPopup
 	BeginPopupModal
+|"get"
+	imgui.GetMainViewport()
+	imgui.GetWindowViewport()
 |"set"|"get"
 	'CursorPos'/'WindowPos'
 	imgui.SetCursorPos({x, y}) | imgui.GetCursorPos()
@@ -210,16 +278,15 @@ imgui.
 	imgui.SetCursorStartPos() | imgui.GetCursorStartPos()
 	imgui.SetCursorScreenPos() | imgui.GetCursorScreenPos() 
 	imgui.SetWindowPos() | imgui.GetWindowPos()
-	'CursorScreenPos'/'Window'
 	'FontSize'/'WindowSize'
 	imgui.SetFontSize() | imgui.GetFontSize()
 	imgui.SetWindowFontScale() | imgui.GetWindowFontScale()
 	imgui.SetWindowSize() | imgui.GetWindowSize()
-	imgui.SetNextWindowSizeConstraints()
 	'ClipboardText'
 	imgui.SetClipboardText(value) | imgui.GetClipboardText()
 	'DrawList'
 	imgui.GetOverlayDrawList()
+	imgui.GetForegroundDrawList()
 	imgui.GetWindowDrawList()
 	'MouseDragDelta'
 	imgui.GetMouseDragDelta()
@@ -231,6 +298,8 @@ imgui.
 			imgui.[]WithSpacing()
 	'NextItemWidth'
 	imgui.SetNextItemWidth
+	'NextWindowSize'
+	imgui.SetNextWindowSizeConstraints({x_min, y_min}, {x_max, y_max})
 	'GetContentRegion'/'GetWindowContentRegion'
 		all have:
 		imgui.[]Max()
@@ -240,7 +309,6 @@ imgui.
 		imgui.[]Min()
 	--to find:
 	CalcItemWidth()
-	SetNextWindowContentSize
 |"push"|"pop"
 	;--push overrides current style      | pop restores previous style
 	'StyleCol'/'StyleVar'
@@ -256,50 +324,6 @@ imgui.
 	imgui.PushButtonRepeat() | imgui.PopButtonRepeat()
 	'Font'
 	imgui.PushFont() | imgui.PopFont()
-|"StyleColors" -- built in styles
-	imgui.StyleColorsDark() 
-	imgui.StyleColorsClassic() 
-	imgui.StyleColorsLight() 
-|"imgui_"
-	'style_var'
-	imgui_style_var.Alpha
-	imgui_style_var.WindowPadding--{x, y}
-	imgui_style_var.WindowRounding--x
-	imgui_style_var.WindowBorderSize--x
-	imgui_style_var.WindowMinSize--{x, y}
-	imgui_style_var.WindowTitleAlign--{x, y}
-	imgui_style_var.ChildRounding--x
-	imgui_style_var.ChildBorderSize--x
-	imgui_style_var.PopupRounding--x
-	imgui_style_var.PopupBorderSize--x
-	imgui_style_var.FramePadding--{x, y}
-	imgui_style_var.FrameRounding--x
-	imgui_style_var.FrameBorderSize--x
-	imgui_style_var.ItemSpacing--{x, y}
-	imgui_style_var.ItemInnerSpacing--{x, y}
-	imgui_style_var.IndentSpacing--x
-	imgui_style_var.ScrollbarSize--x
-	imgui_style_var.ScrollbarRounding--x
-	imgui_style_var.GrabMinSize--x
-	imgui_style_var.GrabRounding--x
-	imgui_style_var.TabRounding--x
-	imgui_style_var.ButtonTextAlign--{x, y}
-	imgui_style_var.SelectableTextAlign--{x, y}
-	'style_col.'
-|"imgui.GetWindowDrawList()."/"imgui.GetOverlayDrawList()."
-	'Shape Filled'
-	AddCircleFilled({x, y}, radius, color)
-	AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
-	AddNgonFilled({x, y}, radius, color)
-	AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
-	'Line'/'Text'
-	AddLine({x, y}, {x2, y2}, color, thickness)
-	AddText({x, y}, color, text)
-	'path'
-	PathBezierCubicCurveTo({x, y}, {x2, y2}, {x3, y3}, {x4, y4})
-	
-	PathStroke(color, thickness)
-	PathFillConcave(color) | PathFillConvex(color)
 Mathematics:
 + --- Addition
 - --- Subtraction/Subtract
@@ -360,6 +384,7 @@ map.
 	map.ScrollVelocities[]
 	map.ScrollSpeedFactors[]
 	map.TimingPoints[]
+	map.MineCount
 	map.TimingGroups
 	map.DefaultScrollGroup
 	map.GlobalScrollGroup
@@ -367,6 +392,8 @@ map.
 	map.LastSelectedScrollGroupId
 	map.GetCommonBpm()
 	map.GetNearestSnapTimeFromTime()
+	
+	map.InitialScrollSpeedFactor
 	
 	map.GetBookmarkAt()
 	map.GetHitObjectAt()
@@ -387,6 +414,9 @@ userdata--place after userdata to get that select data value
 	.StartTime
 	.Note
 ----editorlayers
+	.Name
+	.Hidden
+	.ColorRgb
 ----hitobjects
 	.StartTime
 	.Lane
@@ -399,7 +429,13 @@ userdata--place after userdata to get that select data value
 	.IsLongNote
 	.JudgementCount
 ----scrollspeedfactors
+	.StartTime
+	.Multiplier
+	.IsEditableInLuaScript
 ----scrollvelocities
+	.StartTime
+	.Multiplier
+	.IsEditableInLuaScript
 ----timinggroups
 	.ColorRgb
 	.Hidden
@@ -424,13 +460,13 @@ action_type.
 	EditBookmark
 	ChangeBookmarkOffsetBatch
 ----hit-object
-	action_type.AddHitObject | action_type.RemoveHitObject
-	action_type.AddHitObjectBatch | action_type.RemoveHitObjectbatch
-	ResnapHitObjects
-	FlipHitObjects
-	SwapLanes
-	MoveHitObjects
-	ReverseHitObjects
+	action_type.PlaceHitObject | action_type.RemoveHitObject
+	action_type.PlaceHitObjectBatch | action_type.RemoveHitObjectbatch
+	action_type.ResnapHitObjects
+	action_type.FlipHitObjects
+	action_type.SwapLanes
+	action_type.MoveHitObjects
+	action_type.ReverseHitObjects
 ----scroll-speed-factor (ssf)
 	action_type.AddScrollSpeedFactor | action_type.RemoveScrollSpeedFactor
 	action_type.AddScrollSpeedFactorBatch | action_type.RemoveScrollSpeedFactorBatch
@@ -478,9 +514,8 @@ actions.
 	actions.ResizeLongNote()
 	actions.GoToObjects()
 	actions.SetHitObjectSelection()
-	action.ChangeTimingGroupColor
+	actions.ChangeTimingGroupColor
 	actions.DetectBpm() ;; actions.SetPreviewTime() ;; actions.TriggerEvent()
-
 utils.
 ----book-mark
 	utils.CreateBookmark(starttime, text)
@@ -496,9 +531,8 @@ utils.
 	utils.CreateScrollGroup(svs, initialSV, colorRgb)
 	utils.GenerateTimingGroupId()
 	utils.GenerateTimingGroupIds()
-	
-everything gets ran 1 time.
-	
+	utils.MillisecondsToTime()
+
 os.
 	os.clock()
 	os.date()
