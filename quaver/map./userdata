@@ -1,0 +1,37 @@
+Bookmarks
+	.StartTime
+	.Note
+HitObjects
+	.StartTime
+	.Lane
+	.EndTime
+	.HitSound
+	.Type
+	.KeySounds
+	.EditorLayer
+	.TimingGroup
+	.IsLongNote
+	.JudgementCount
+ScrollSpeedFactors
+	.StartTime
+	.Multiplier
+	.IsEditableInLuaScript
+ScrollVelocities
+	.StartTime
+	.Multiplier
+	.IsEditableInLuaScript
+TimingPoints
+	.StartTime
+	.Bpm
+	.Signature
+	.Hidden
+	.IsEditableInLuaScript
+	.MillisecondsPerBeat
+TimingGroups
+	.ScrollVelocities
+	.ColorRgb
+	.Hidden
+EditorLayers
+	.Name
+	.Hidden
+	.ColorRgb
