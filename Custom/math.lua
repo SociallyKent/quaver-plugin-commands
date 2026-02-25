@@ -36,7 +36,7 @@ function table.match(TABLE, VALUE)
 	end
 	return false
 end
---- Reverse a table
+--- Reverse a TABLE
 --TABLE table
 function table.reverse(TABLE)
 	local Table = {}
@@ -59,4 +59,5 @@ end
 function math.wrap(NUMBER1, NUMBER2)
 	local a, b = math.modf(NUMBER1/NUMBER2)
 	return NUMBER2 * b, a
+
 end
