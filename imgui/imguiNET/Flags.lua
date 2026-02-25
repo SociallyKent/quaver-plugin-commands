@@ -1,4 +1,6 @@
- --you can add multiple flags by putting '+' between them
+"Can also find these flags in their respective places."
+
+--you can add multiple flags by putting '+' between them
 |""
 	-- 'Button'
 	-- 'Checkbox'
