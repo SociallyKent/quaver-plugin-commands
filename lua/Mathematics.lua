@@ -4,7 +4,7 @@
 * --- Multiply/Timesing
 ^ --- Exponentiation/Power
 ^0.5 --- Square Root
-% --- []
+% ---
 math.abs(x) -- absolute
 math.acos(x) -- arc cosine
 math.cos(x) -- cosine
