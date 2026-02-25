@@ -1,4 +1,10 @@
 imgui.
+|"Show"
+	imgui.ShowStyleEditor()
+|"StyleColors" -- built in styles
+	imgui.StyleColorsDark() 
+	imgui.StyleColorsClassic() 
+	imgui.StyleColorsLight()
 |"StyleColor"
 	imgui.PushStyleColor()
 	imgui.PopStyleColor()
@@ -86,7 +92,7 @@ imgui.
 	imgui_style_var.PopupRounding()
 	imgui_style_var.ScrollbarRounding()
 	imgui_style_var.ScrollbarSize()
-	imgui_style_var.SelectableTextAlign({})
+	imgui_style_var.SelectableTextAlign({0-1, 0-1})
 	imgui_style_var.SeparatorTextAlign()
 	imgui_style_var.SeparatorTextBorderSize({})
 	imgui_style_var.SeparatorTextPadding()
@@ -121,3 +127,22 @@ imgui.
 	imgui_color_edit_flags.PickerHueWheel -- [Picker] ColorPicker: wheel for Hue, triangle for Sat/Value.
 	imgui_color_edit_flags.InputRGB -- [Input]  ColorEdit, ColorPicker: input and output data in RGB format.
 	imgui_color_edit_flags.InputHSV -- [Input]  ColorEdit, ColorPicker: input and output data in HSV format.
+	
+	ImVec4 ColorConvertU32ToFloat4(ImU32 in)
+	ImU32 ColorConvertFloat4ToU32(const ImVec4& in)
+	void ColorConvertRGBtoHSV(float r, float g, float b, float& out_h, float& out_s, float& out_v)
+	void ColorConvertHSVtoRGB(float h, float s, float v, float& out_r, float& out_g, float& out_b)
+|"imgui.GetWindowDrawList()."/"imgui.GetOverlayDrawList()."
+	'Shape Filled'
+	AddCircleFilled({x, y}, radius, color)
+	AddTriangleFilled({x, y}, {x2, y2}, {x3, y3}, color)
+	AddNgonFilled({x, y}, radius, color)
+	AddQuadFilled({x, y}, {x2, y2}, {x3, y3}, {x4, y4}, color)
+	'Line'/'Text'
+	AddLine({x, y}, {x2, y2}, color, thickness)
+	AddText({x, y}, color, text)
+	'path'
+	PathBezierCubicCurveTo({x, y}, {x2, y2}, {x3, y3}, {x4, y4})
+	
+	PathStroke(color, thickness)
+	PathFillConcave(color) | PathFillConvex(color)
