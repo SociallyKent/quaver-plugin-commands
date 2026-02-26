@@ -32,7 +32,7 @@ end
 --VALUE varable
 function table.match(TABLE, VALUE)
 	for i = 1, #TABLE do
-		if TABLE[i] == VALUE then return true end
+		if TABLE[i] == VALUE then return i end
 	end
 	return false
 end
