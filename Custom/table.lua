@@ -3,7 +3,7 @@
 	m, n, o, p, q, r,
 	s, t, u, v, w, x,
 	y, z
---- Duplicate a TABLE
+ -- Duplicate a TABLE
 --TABLE table
  function table.duplicate(TABLE)
 	if not TABLE then return {} end
@@ -14,7 +14,7 @@
 	end
     return Table
 end
---- Remove any duplicate values from TABLE
+ -- Remove any duplicate values from a TABLE
 --TABLE table
 function table.duplicate_Remove(TABLE)
 	local Holder, Table = {}, {}
@@ -27,7 +27,7 @@ function table.duplicate_Remove(TABLE)
 	end
 	return Table
 end
---- Find any matches of VALUE inside TABLE
+ -- Find any match of a VALUE in a TABLE
 --TABLE table
 --VALUE varable
 function table.match(TABLE, VALUE)
@@ -36,12 +36,24 @@ function table.match(TABLE, VALUE)
 	end
 	return false
 end
---- Reverse a TABLE
+ -- Get all matches of ITEM in a TABLE
+--TABLE table
+--ITEM varable)
+function table.matches(TABLE, ITEM)
+	local Table = {}
+	for i, v in pairs(TABLE) do
+		if v == ITEM then
+			Table[Table+1] = v
+		end
+	end
+	return Table
+end
+ -- Reverse a TABLE
 --TABLE table
 function table.reverse(TABLE)
 	local Table = {}
-	for i = 1, #TABLE do
-		Table[#Table + 1] = TABLE[#TABLE + 1 - i]
+	for i = #TABLE, 1, -1 do
+		Table[#Table + 1] = TABLE[i]
 	end
 	return Table
 end
