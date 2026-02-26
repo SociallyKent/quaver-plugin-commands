@@ -3,7 +3,7 @@
 	m, n, o, p, q, r,
 	s, t, u, v, w, x,
 	y, z
---- Round NUMBER to decimal point DECIMAL
+ -- Round NUMBER to decimal point DECIMAL
 --NUMBER numeric
 --DECIMAL numeric
 function math.round(NUMBER, DECIMAL)
@@ -11,11 +11,12 @@ function math.round(NUMBER, DECIMAL)
 	local Notation = 10^DECIMAL
 	return math.floor(Notation * NUMBER+0.5)/ Notation--+0.5; for not round downwards
 end
---- Wrap NUMBER1 until it fits into NUMBER2
+ -- Wrap NUMBER1 until it fits within NUMBER2
 --NUMBER1 numeric
 --NUMBER2 numeric
 function math.wrap(NUMBER1, NUMBER2)
 	local a, b = math.modf(NUMBER1/NUMBER2)
 	return NUMBER2 * b, a
 end
+
 
