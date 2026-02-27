@@ -1,3 +1,4 @@
+	imgui_window_flags.None--Alt:0
 	imgui_window_flags.NoTitleBar--Alt:1
 	imgui_window_flags.NoResize--Alt:2
 	imgui_window_flags.NoMove--Alt:4
