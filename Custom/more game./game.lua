@@ -1,4 +1,4 @@
-These all have fast performance and low performance costs, though they require more to start operation.
+These all have fast performance and low performance costs, though they require more labour to get setup operation.
 
 Required:
 table.remove_Valueless()
@@ -116,4 +116,5 @@ function game.Velocities.Between(START, END)
 		end
 	end
 	return table.remove_Valueless(Table, EndIndex)
+
 end
