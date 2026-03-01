@@ -1,4 +1,4 @@
-These all have high perform, though they require more to start operation.
+These all have fast performance and low performance costs, though they require more to start operation.
 
 Required:
 table.remove_Valueless()
