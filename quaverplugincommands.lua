@@ -69,34 +69,39 @@ table
 	table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
 	table.insert(table, position, value) -- if no posiion is given; defaults to last
 	table.remove(table, position) -- if no posiion is given; defaults to last
-	table.pack() | table.unpack()
-	table.sort()
+	table.pack() | table.unpack(table)
+	table.sort(table)
 ----
 isSelected
 
-|Detect Input
-	'IsKey' 
-	--Shift, Control, Alt - place Left or Right before
-	--Arrows - Left, Up, Down, Right
-	utils.IsKeyPressed(keys.) | utils.IsKeyReleased(keys.) 
-	utils.IsKeyDown(keys.)	  | utils.IsKeyUp(keys.)
-	'IsMouse'
-	;--0 = true, 1 = false
-	--or you can do
-	;--"Left", "Right"
-	imgui.IsMouseClicked()
-	imgui.IsMouseReleased()
-	imgui.IsMouseDown()
-	'IsWindowHovered'/'IsItemHovered'	
-	imgui.IsWindowHovered()
-	imgui.IsItemHovered()
-|Detect
-	imgui.GetMousePos()
-	imgui.IsMousePosValid()
-	imgui.IsMouseDragging() -- Detect dragging a window
-	imgui.GetScrollY()
-	imgui.GetScrollX()
+imgui.CalcListClipping
+imgui.GetFrameCount
+imgui.GetTime()
+
+
 imgui.
+|Detect
+	--Alt, Shift, Control:
+	imgui_key.Left[[Key]] imgui_key.Right[[Key]]
+	--(Arrow keys) Up, Down, Left, Right:
+	imgui_key.[[Dirrection]]Arrow
+	--Letters
+	imgui_key.[[Key]]
+	
+	--(imgui_key)
+	imgui.GetKeyIndex(key)
+	
+	--(imgui_key)
+	imgui.IsKeyDown(key)
+	--(imgui_key, boolean)
+	imgui.IsKeyPressed(key, ¿repeat)
+	--(imgui_key)
+	imgui.IsKeyReleased(key)
+	
+	--(?, numric, numeric)
+	imgui.GetKeyPressedAmount(index, ¿?repeat_delay, ¿?rate)
+	--(boolean)
+	imgui.CaptureKeyboardFromApp(?)
 |"Show"
 	imgui.ShowStyleEditor()
 	imgui.ShowDemoWindow()
@@ -111,10 +116,12 @@ imgui.
 	--ex 	imgui.button("##can't see me") imgui.button("can see me")
 	---Does not work with imgui.Text
 	'Button'
-		imgui.Button(text)--(text, size{x, y})
-		imgui.SmallButton(text)--(text, size{x, y})
-		imgui.InvisibleButton(text, size{x, y})
-		imgui.ArrowButton(text, dirrection) -- dirrection = 0, 1, 2, or 3
+		--(string, {x, y})
+		imgui.Button(name, size)
+		imgui.ColorButton(name, col, ¿flags, ¿size)
+		imgui.SmallButton(name)--(text, size{x, y})
+		imgui.InvisibleButton(name, size{x, y})
+		imgui.ArrowButton(name, dirrection) -- dirrection = 0, 1, 2, or 3
 	'Checkbox'
 		imgui.CheckBox()
 		imgui.CheckBoxFlags()
@@ -132,20 +139,29 @@ imgui.
 		imgui.DragInt(text, value)--same as Float
 		imgui.DragScaler(text)
 	'InputText'
-		imgui.InputDouble()
-		imgui.InputText(text, value)--(text, value, flags)
-		imgui.InputFloat(text, value)--(text, value, step, step fast, format, flags)
-		imgui.InputInt(text, value)--same as float
-		imgui.InputTextMultiline(text, value)--(text, value, length, size{x, y}, flags)
-		imgui.InputTextScaler(text)
-		imgui.InputTextWithHint(text, hint, value)--(text, hint, value, length, flags)
+		--(string, varable, varable, varable, string_format, imgui_flags)
+		imgui.InputDouble(name, value, step, step_fast, ¿format, ¿flags)
+		--(string, varable, varable, varable, string_format, imgui_flags)
+		imgui.InputFloat(name, value, step, faststep, ¿format, ¿flags)
+		--(string, varable, varable, varable, string_format, imgui_flags)
+		imgui.InputInt(name, value, step, faststep, ¿format, ¿flags)
+		--(string, varable, numeric, imgui_flags)
+		imgui.InputText(name, value, length, ¿flags)
+		--(string, varable, numberic, {x, y}, imgui_flags)
+		imgui.InputTextMultiline(name, value, length, size, ¿flags)
+		--(string, imgui_data, ¿numeric, ¿numeric, string_format, imgui_flags)
+		imgui.InputTextScaler(name, data_type, ¿?step, ¿?step_fast, ¿format, ¿flags)
+		--(varable, varable, numeric, numeric, imgui_flags)
+		imgui.InputTextWithHint(name, hint, value, length, ¿flags)
 	'ListBox'
-		imgui.BeginListBox(text)| imgui.EndListBox() -- can use too imgui.ListBoxHeader(text) | imgui.ListBoxFooter()
-		imgui.ListBox(text)
+		imgui.BeginListBox(name, ¿size)
+		imgui.EndListBox()
+		imgui.ListBox(name, item, items, item count, height_in_items)
 	'ProgressBar'
 		imgui.ProgressBar()
 	'Selectable'
-		imgui.Selectable(text)--(text, state, flags)
+		--(string, boolean, imgui_flags, {x, y})
+		imgui.Selectable((text, ¿state, ¿flags, ¿size))
 	'Slider'
 		imgui.SliderAngle(text)--(text, radius, degree min, degree max)
 		imgui.SliderFloat(text, value)--(text, value, min, max)
@@ -156,7 +172,7 @@ imgui.
 		imgui.NewLine()
 		imgui.PlotHistogram()
 		imgui.PlotLines()
-		imgui.SameLine()--(both space, single space)
+		imgui.SameLine(¿offset, ¿space)
 		imgui.Separator()
 		imgui.Spacing()
 	'Text'
@@ -174,37 +190,52 @@ imgui.
 		imgui.TreeNode(text)-- -- imgui.TreeNodeV(string)
 		imgui.TreeNodeEx(text)--(text, flags) -- imgui.TreeNodeExV(string)
 		imgui.TreePush(string) | imgui.TreePop()
+	'Value'
+	imgui.Value("ab", 0)
 	--to find:
 	imgui.AlignTextToFramePadding()
 	imgui.AlignTextToFramePadding()
 	imgui.SetNextItemOpen()--(state)
 |"begin"|"end"
-	imgui.Begin(text, flags) | imgui.End()
+	imgui.Begin(Text, ¿p_open, ¿flags)
+	imgui.End()
 	'Child'
-	imgui.BeginChild(text) | imgui.EndChild()
+	--(string, table, imgui_ID)
+	imgui.BeginChild(Text, ¿Size, ¿child_flags, ¿window_flags)
+	imgui.EndChild()
 	'Combo'
-	imgui.BeginCombo() | imgui.EndCombo()
+	imgui.BeginCombo(Text, preview_value, flags)
+	imgui.EndCombo()
 	'DragDrop'
 	imgui.BeginDragDropSource() | imgui.SetDragDropPayload() |imgui.EndDragDropSource()
 	imgui.BeginDragDropTarget() | imgui.EndDragDropTarget()
 		--
 		imgui.AcceptDragDropPayload()
 		imgui.GetDragDropPayload("MY_PAYLOAD", 1, 1)
+	'Disabled'
+	imgui.BeginDisabled() | imgui.EndDisabled()
 	'Group'
 	imgui.BeginGroup() | imgui.EndGroup()
 	'Menu'/'MenuBar'/'MainMenuBar'
-	imgui.BeginMenu(text) | imgui.EndMenu()
-	imgui.BeginMenuBar() | imgui.EndMenuBar()
-	imgui.BeginMainMenuBar() | imgui.EndMainMenuBar()
-		--
-		imgui.MenuItem(text)
+	-- imgui.BeginMenuBar()
+	-- imgui.EndMenuBar()
+	-- imgui.BeginMainMenuBar()
+	-- imgui.EndMainMenuBar()
+	--(string, boolean)
+	imgui.BeginMenu(Name, ¿?Enable)
+	imgui.EndMenu()
+	--(string, ?, boolean, boolean)
+	imgui.MenuItem(Name, ¿?Shortcut, ¿?Selected, ¿?Enable)
+	'MulitiSelect'
+	imgui.BeginMultiSelect(flags, selection_size, items_count)
 	'TabBar'/'TabItem'
 	imgui.BeginTabBar(string, flags) | imgui.EndTabBar
 	imgui.BeginTabItem(text) | imgui.EndTabItem()
 	'Table'
 	BeginTableEx
 	TableFindByID
-	imgui.BeginTable(text, count, flags) | imgui.EndTable()
+	imgui.BeginTable(string, columns, flags, outer_size, inner_width)
+	imgui.EndTable()
 		--
 		imgui.TableSetColumnIndex() | imgui.TableGetColumnIndex()
 	BeginTable()--user begin into a table
@@ -218,7 +249,7 @@ imgui.
 	imgui.TableSetupColumn()--user submit columns details(optional)
 	imgui.TableSetupScrollFreeze()--user submit scroll freeze information(optional)
 	--
-	imgui.TableUpdateLayout()--follow up to Begin imgui.Table():setup everything:widths, columns positions, clipping rectangles.Automatically called by the FIRST call to imgui.TableNextRow() or imgui.TableHeadersRow().
+	--internal only--imgui.TableUpdateLayout()--follow up to Begin imgui.Table():setup everything:widths, columns positions, clipping rectangles.Automatically called by the FIRST call to imgui.TableNextRow() or imgui.TableHeadersRow().
 		imgui.TableSetupDrawChannels()--setup ImDrawList channels
 		imgui.TableUpdateBorders()--detect hovering columns for resize, a head of contents submission
 		imgui.TableBeginContextMenuPopup()
@@ -324,6 +355,13 @@ imgui.
 	imgui.PushButtonRepeat() | imgui.PopButtonRepeat()
 	'Font'
 	imgui.PushFont() | imgui.PopFont()
+	imgui.PushClipRect(min{x, y}, max{x, y}, boolean) | imgui.PopClipRect
+|Utils
+	imgui.GetKeyName
+	imgui.GetTime()
+	imgui.GetFrameCount()
+	imgui.CalcTextSize(Text)
+	imgui.GetFrameHeight()
 Mathematics:
 + --- Addition
 - --- Subtraction/Subtract
@@ -331,17 +369,18 @@ Mathematics:
 * --- Multiply/Timesing
 ^ --- Exponentiation/Power
 ^0.5 --- Square Root
+% ---
 math.abs(x) -- absolute
 math.acos(x) -- arc cosine
 math.cos(x) -- cosine
 math.cosh(x) -- hyperbolic cosine
+math.asin(x) -- arc sine
 math.sin(x) -- sine
 math.sinh(x) -- hyperbolic sine
-math.asin(x) -- arc sine
+math.atan(x) -- arc tangent
+math.atan2(y, x) ---
 math.tan(x) -- tangent
 math.tanh(x) -- hyperbolic tangent
-math.atan(x) -- arc tangent
-math.atan2(y, x)
 math.ceil(x)--(x, ...)-- returns the first value
 math.floor(x)--(x, ...)-- returns the last value
 math.max(x)--(x, ...)-- returns the highest value
@@ -355,7 +394,7 @@ math.pi -- represents π
 math.modf(x) -- returns whole value aswell as the fractional value
   --example: if x = 2.56, it returns 2 and 0.56. if x = 7, it returns 7 and 0, because 7 has no number in a decimal point.
 math.fmod(x, y) -- x = dividend, y = divisor/modulus 
-  --example: if x = 4 and y = 2, it returns 0, because 4 is a multiple of two; if x = 4 and y = 3, it returns 1, because 4 is not a multiple of 3
+  --example: if x = 499, y = 360, it returns 139 because 499 cannot fit into 360 so it wrapped it around until it could. (does not return amount of wraps needed)
 math.frexp(x)
 math.ldexp(m, e) -- returns m2^e
 math.log(x, base) -- logarithm -- if no base is given; defaults to e
@@ -368,43 +407,57 @@ Custom Commands:
 state.
 	state.SelectedHitObjects[]
 	state.SelectedScrollGroupId
-	state.CurrentTimingPoint
+	
 	state.CurrentBookmark
-	state.CurrentScrollVelocity
-	state.CurrentScrollFactor
 	state.CurrentLayer
+	state.CurrentScrollFactor
+	state.CurrentScrollVelocity
 	state.CurrentSnap 
+	state.CurrentTimingPoint
 	state.SetValue(varable, value) | state.GetValue(varable)
 	
+	state.SongTime
 	state.DeltaTime
+	
+	state.WindowSize -- Size of Game Window
 map.
 |""
-	map.HitObjects[]
 	map.Bookmarks[]
-	map.ScrollVelocities[]
-	map.ScrollSpeedFactors[]
-	map.TimingPoints[]
-	map.MineCount
-	map.TimingGroups
-	map.DefaultScrollGroup
-	map.GlobalScrollGroup
+	map.HitObjects[]
 	map.EditorLayers[]
-	map.LastSelectedScrollGroupId
+	map.ScrollSpeedFactors[]
+	map.ScrollVelocities[]
+	map.TimingGroups[]
+	map.TimingPoints[]
+	map.DefaultScrollGroup
+	map.DefaultLayer
+	
 	map.GetCommonBpm()
-	map.GetNearestSnapTimeFromTime()
+	map.GetNearestSnapTimeFromTime(DirrectUpwards, Snap, Time)
+	map.GetTimingGroup(TimingGroupID)
+	map.GetTimingGroupIds()
+	map.GetTimingGroupObjects(TimingGroupID)
+	map.GetTimingPointLength(TimingPoint)
+	map.GlobalScrollGroup
+	
+	map.LastSelectedScrollGroupId
+	map.MineCount
 	
 	map.InitialScrollSpeedFactor
 	
-	map.GetBookmarkAt()
-	map.GetHitObjectAt()
-	map.GetTimingPointAt
-	map.GetScrollVelocityAt
-	map.GetScrollSpeedFactorAt
+	map.getBookmarkAt(Time, )
+	map.getHitObjectAt(Time, )
+	map.getScrollSpeedFactorAt(Time, ¿TimingGroupID)
+	map.getScrollVelocityAt(Time, ¿TimingGroupID)
+	map.getTimingPointAt(Time, )
 |"Song Data"
-	Editor.GetBeatSnapDivisors()
+	map.Mode
+	map.Normalized
+	map.LegacyLNRendering
+	state.CurrentSnap
+	map.GetKeyCount()
 	map.ToString()
 	map.TrackLength
-	map.GetKeyCount()
 |""
 	map.GetTimingGroup
 	map.GetTimingGroupIds()[]
@@ -437,6 +490,7 @@ userdata--place after userdata to get that select data value
 	.Multiplier
 	.IsEditableInLuaScript
 ----timinggroups
+	.ScrollVelocities
 	.ColorRgb
 	.Hidden
 ----timingpoints
@@ -456,20 +510,27 @@ actions.
 action_type.
 ----book-mark
 	action_type.AddBookmark	| action_type.RemoveBookmark
-	action_type.AddBookmarkBatch | action_type.RemoveBookmarkbatch
-	EditBookmark
+	action_type.AddBookmarkBatch--alt:40
+	action_type.RemoveBookmarkbatch--alt:43
+	action_type.EditBookmarkBatch
 	ChangeBookmarkOffsetBatch
 ----hit-object
-	action_type.PlaceHitObject | action_type.RemoveHitObject
-	action_type.PlaceHitObjectBatch | action_type.RemoveHitObjectbatch
-	action_type.ResnapHitObjects
-	action_type.FlipHitObjects
-	action_type.SwapLanes
-	action_type.MoveHitObjects
-	action_type.ReverseHitObjects
+	action_type.PlaceHitObject--alt:0
+	action_type.RemoveHitObject--alt:1
+	action_type.RemoveHitObjectbatch--alt:3
+	action_type.PlaceHitObjectBatch--alt:4
+	action_type.FlipHitObjects--alt:5
+	action_type.ResnapHitObjects--alt:6
+	action_type.SwapLanes--alt:6
+	action_type.MoveHitObjects--alt:7
+	action_type.ReverseHitObjects--alt:38
+----scroll-velocity (sv)
+	ation_type.AddScrollVelocityBatch
 ----scroll-speed-factor (ssf)
-	action_type.AddScrollSpeedFactor | action_type.RemoveScrollSpeedFactor
-	action_type.AddScrollSpeedFactorBatch | action_type.RemoveScrollSpeedFactorBatch
+	action_type.AddScrollSpeedFactor--alt:52
+	action_type.RemoveScrollSpeedFactor--alt:57
+	action_type.AddScrollSpeedFactorBatch--alt:53
+	action_type.RemoveScrollSpeedFactorBatch--alt:58
 ----timing-point
 	action_type.AddTimingPoint | action_type.RemoveTimingPoint
 	action_type.AddTimingPointBatch | action_type.RemoveTimingPointBatch
@@ -487,15 +548,22 @@ action_type.
 	action_type.MoveObjectsToTimingGroup
 	RenameTimingGroup
 	ChangeTimingGroupColor
+	MoveToTimingGroup?
 ----misc
 	ChangePreviewTime
 	ApplyOffset
 actions.
+	
 ----hit-object
 	actions.PlaceHitObject() | actions.RemoveHitObject()
 	actions.PlaceHitObjectBatch({}) | actions.RemoveHitObjectBatch({})
 	actions.MoveHitObject()
 	actions.MoveHitObjectBatch({})
+----scroll-speed-factor
+	actions.PlaceScrollSpeedFactor	| actions.RemoveScrollSpeedFactor
+	actions.PlaceScrollSpeedFactorBatch({})
+	actions.RemoveScrollSpeedFactorBatch({})
+	actions.ChangeScrollSpeedFactorOffsetBatch() actions.ChangeScrollSpeedFactorMultiplierBatch()
 ----scroll-velocity
 	actions.PlaceScrollVelocity	| actions.RemoveScrollVelocity
 	actions.PlaceScrollVelocityBatch({}) | actions.RemoveScrollVelocityBatch({})
@@ -517,23 +585,29 @@ actions.
 	actions.ChangeTimingGroupColor
 	actions.DetectBpm() ;; actions.SetPreviewTime() ;; actions.TriggerEvent()
 utils.
-----book-mark
-	utils.CreateBookmark(starttime, text)
-----hit-object
-	utils.CreateHitObject(starttime, lane)
-----scroll-velocity
-	utils.CreateScrollVelocity(starttime, value)
-----scroll-velocity-factor (ssf)
-	utils.CreateScrollSpeedFactor(starttime, value)
-----timing-point
-	utils.CreateTimingPoint(starttime, value, signature)
-----timing-group / scroll-group
-	utils.CreateScrollGroup(svs, initialSV, colorRgb)
-	utils.GenerateTimingGroupId()
-	utils.GenerateTimingGroupIds()
+	--(numeric, string)
+	utils.CreateBookmark(StartTime, Note)
+	--(numeric, numeric, numeric, ?, ?, ?)
+	utils.CreateHitObject(StartTime, Lane, ¿EndTime, ¿HitSound, ¿EditorLayer, ¿Type)
+	--(numeric, numeric, boolean)
+	utils.CreateScrollVelocity(StartTime, Multiplier, ¿IsEditableInLuaScript)
+	--(numeric, numeric, boolean)
+	utils.CreateScrollSpeedFactor(StartTime, Multiplier, ¿IsEditableInLuaScript)
+	--(numeric, numeric, numeric|string, boolean)
+	utils.CreateTimingPoint(StartTime, Bpm, Signature, ¿Hidden)
+	--(table?|userdata, numeric, vector(R,G,B))
+	utils.CreateScrollGroup(ScrollVelocities, InitialScrollVelocity, ColorRgb)
+	--(string)
+	utils.GenerateTimingGroupId(¿?Prefix)
+	--(numeric, string)
+	utils.GenerateTimingGroupIds(Count, ¿?Prefix)
+----editor-layer
+	--(string, boolean, vector(R,G,B))
+	utils.CreateEditorLayer(Name, ¿?Hidden, ¿?ColorRgb)
+	
 	utils.MillisecondsToTime()
-
-os.
-	os.clock()
-	os.date()
-	os.time()
+	
+	utils.IsKeyPressed
+	utils.IsKeyDown
+	utils.IsKeyReleased
+	utils.IsKeyUp
