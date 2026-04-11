@@ -1,41 +1,8 @@
-function end
-function name()
-	script
-end
-
-if then (else/elseif) end
-if boolean then
-	script
-	(else script/elseif boolean then script)--can repeat after elseif
-end
-
-for i=0, (in )0(, 0) do end
-for do
-	(break)--stop script loop
-end
-
-repeat until
-repeat
-	script
-until boolean
-
-while do (break) end
-while boolean do 
-	script
-	(break)--stop script loop
-end
-\n --newline
-# --put before table to get the length
+# --put before table/string to get the length
 print()
 ipairs()
 pairs()
 goto name | ::name::
-sub
-min
-max
-rad
-time
-lines
 local
 return
 
