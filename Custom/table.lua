@@ -8,9 +8,14 @@
  function table.duplicate(TABLE)
 	if not TABLE then return {} end
 	local Table = {}
-	for i = 1, #TABLE do
-		local Value = TABLE[i]
-		Table[#Table + 1] = type(Value) == "table" and table.duplicate(Value) or Value
+	if TABLE[1] then
+		for i = 1, #TABLE do
+			local Value = TABLE[i]
+			Table[i] = type(Value) == "table" and table.duplicate(Value) or Value end
+	else--if table is userdata, clone that too
+		for _, v in ipairs(table.create_User(TABLE)) do
+			local Value = TABLE[v]
+			Table[v] = type(Value) == "table" and table.duplicate(Value) or Value end
 	end
     return Table
 end
