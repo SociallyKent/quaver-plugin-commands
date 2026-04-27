@@ -2,13 +2,29 @@ imgui.PushItemFlag(flags, enabled)
 imgui.PopItemFlag()
  --you can add multiple flags by putting '+' between them
 |""
-	'Button'
+	'button_flags'
 	imgui_button_flags.None--alt:0
 	imgui_button_flags.MouseButtonLeft--alt:1
 	imgui_button_flags.MouseButtonRight--alt:2
 	imgui_button_flags.MouseButtonMiddle--alt:4
 	imgui_button_flags.MouseButtonMask--alt:7
-	'input_text_flags' --works with most kinds of input text
+	'selectable_flags'
+	imgui_selectable_flags.None--alt:0
+	imgui_selectable_flags.NoAutoClosePopups--alt:1
+	imgui_selectable_flags.SpanAllColumns--alt:2
+	imgui_selectable_flags.AllowDoubleClick--alt:4
+	imgui_selectable_flags.Disabled--alt:8
+	imgui_selectable_flags.AllowOverlap--alt:16
+	imgui_selectable_flags.Highlight--alt:32
+	'slider_flags'
+	imgui_slider_flags.None--alt:0
+	imgui_slider_flags.AlwaysClamp--alt:16
+	imgui_slider_flags.Logarithmic--alt:32
+	imgui_slider_flags.NoRoundToFormat--alt:64
+	imgui_slider_flags.NoInput--alt:128
+	imgui_slider_flags.WrapAround--alt:256
+	imgui_slider_flags.InvalidMask--alt:1879048207
+	'input_text_flags'--Works with most kinds of input text
 	imgui_input_text_flags.None--alt:0
 	imgui_input_text_flags.CharsDecimal--alt:1 -- 0123456789.+-*/
 	imgui_input_text_flags.CharsHexadecimal--alt:2 -- 0123456789ABCDEFabcdef
@@ -27,39 +43,14 @@ imgui.PopItemFlag()
 	imgui_input_text_flags.DisplayEmptyRefVal--alt:16384
 	imgui_input_text_flags.NoHorizontalScroll--alt:32768
 	imgui_input_text_flags.NoUndoRedo--alt:65536
+	
 	imgui_input_text_flags.CallbackCompletion--alt:131072
 	imgui_input_text_flags.CallbackHistory--alt:262144
 	imgui_input_text_flags.CallbackAlways--alt:524288
 	imgui_input_text_flags.CallbackCharFilter--alt:1048576
 	imgui_input_text_flags.CallbackResize--alt:2097152
 	imgui_input_text_flags.CallbackEdit--alt:4194304
-	'Selectable'
-	imgui_selectable_flags.None--alt:0
-	imgui_selectable_flags.NoAutoClosePopups--alt:1
-	imgui_selectable_flags.SpanAllColumns--alt:2
-	imgui_selectable_flags.AllowDoubleClick--alt:4
-	imgui_selectable_flags.Disabled--alt:8
-	imgui_selectable_flags.AllowOverlap--alt:16
-	imgui_selectable_flags.Highlight--alt:32
-	'tree_node_flags'
-	imgui_tree_node_flags.None--alt:0
-	imgui_tree_node_flags.Selected--alt:1
-	imgui_tree_node_flags.Framed--alt:2
-	imgui_tree_node_flags.AllowOverlap--alt:4
-	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
-	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
-	imgui_tree_node_flags.CollapsingHeader--alt:26
-	imgui_tree_node_flags.DefaultOpen--alt:32
-	imgui_tree_node_flags.OpenOnDoubleClick--alt:64
-	imgui_tree_node_flags.OpenOnArrow--alt:128
-	imgui_tree_node_flags.Leaf--alt:256
-	imgui_tree_node_flags.Bullet--alt:512 -- replace arrow with bullet point
-	imgui_tree_node_flags.FramePadding--alt:1024
-	imgui_tree_node_flags.SpanAvailWidth--alt:2048
-	imgui_tree_node_flags.SpanFullWidth--alt:4096
-	imgui_tree_node_flags.SpanTextWidth--alt:8192
-	imgui_tree_node_flags.SpanAllColumns--alt:16384
-	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
+	--[[toget ImGuiInputTextCallback]]
 |"begin"|"end"
 	'Child'
 	imgui_child_flags.None--alt:0
@@ -97,8 +88,17 @@ imgui.PopItemFlag()
 	imgui_drag_drop_flags.AcceptNoDrawDefaultRect--alt:2048
 	imgui_drag_drop_flags.AcceptPeekOnly--alt:3072
 	imgui_drag_drop_flags.AcceptNoPreviewTooltip--alt:4096
-	'TabBar'/'TabItem'
-	--crashes
+	'TabBar'/'TabItem'--'TabBar' crashes
+	imgui_tab_item_flags.None--alt:0
+	imgui_tab_item_flags.UnsavedDocument--alt:1
+	imgui_tab_item_flags.SetSelected--alt:2
+	imgui_tab_item_flags.NoCloseWithMiddleMouseButton--alt:4
+	imgui_tab_item_flags.NoPushId--alt:8
+	imgui_tab_item_flags.NoTooltip--alt:16
+	imgui_tab_item_flags.NoReorder--alt:32
+	imgui_tab_item_flags.Leading--alt:64
+	imgui_tab_item_flags.Trailing--alt:128
+	imgui_tab_item_flags.NoAssumedClosure--alt:256
 	'Table'
 	imgui_table_flags.None--alt:0
 	imgui_table_flags.Resizable--alt:1
@@ -229,7 +229,8 @@ imgui.PopItemFlag()
 	imgui_color_edit_flags.DefaultOptions--alt:177209344
 	imgui_color_edit_flags.InputHSV--alt:268435456
 	imgui_color_edit_flags.InputMask--alt:402653184
-	Disctions:
+
+	--[[old, replace once transfering discriptions]]
 	imgui_color_edit_flags.NoAlpha --  ColorEdit, ColorPicker, ColorButton: ignore Alpha component (will only read 3 components from the input pointer).
 	imgui_color_edit_flags.NoPicker --  ColorEdit: disable picker when clicking on colored square.
 	imgui_color_edit_flags.NoOptions --  ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.
@@ -253,3 +254,90 @@ imgui.PopItemFlag()
 	imgui_color_edit_flags.PickerHueWheel -- [Picker] ColorPicker: wheel for Hue, triangle for Sat/Value.
 	imgui_color_edit_flags.InputRGB -- [Input]  ColorEdit, ColorPicker: input and output data in RGB format.
 	imgui_color_edit_flags.InputHSV -- [Input]  ColorEdit, ColorPicker: input and output data in HSV format.
+|"cond"
+	imgui_cond.None--alt:0
+	imgui_cond.Always--alt:1
+	imgui_cond.Once--alt:2
+	imgui_cond.FirstUseEver--alt:4
+	imgui_cond.Appearing--alt:8
+imgui_mouse_button
+	imgui_mouse_button.Left--alt:0
+	imgui_mouse_button.Right--alt:1
+	imgui_mouse_button.Middle--alt:2
+	imgui_mouse_button.COUNT--alt:5
+imgui_mouse_cursor
+	imgui_mouse_cursor.None--alt:-1
+	imgui_mouse_cursor.Arrow--alt:0
+	imgui_mouse_cursor.TextInput--alt:1
+	imgui_mouse_cursor.ResizeAll--alt:2
+	imgui_mouse_cursor.ResizeNS--alt:3
+	imgui_mouse_cursor.ResizeEW--alt:4
+	imgui_mouse_cursor.ResizeNESW--alt:5
+	imgui_mouse_cursor.ResizeNWSE--alt:6
+	imgui_mouse_cursor.Hand--alt:7
+	imgui_mouse_cursor.NotAllowed--alt:8
+	imgui_mouse_cursor.COUNT--alt:9
+imgui_backend_flags
+	imgui_backend_flags.None--alt:0
+	imgui_backend_flags.HasGamepad--alt:1
+	imgui_backend_flags.HasMouseCursors--alt:2
+	imgui_backend_flags.HasSetMousePos--alt:4
+	imgui_backend_flags.RendererHasVtxOffset--alt:8
+	imgui_backend_flags.PlatformHasViewports--alt:1024
+	imgui_backend_flags.HasMouseHoveredViewport--alt:2048
+	imgui_backend_flags.RendererHasViewports--alt:4096
+imgui_config_flags
+	imgui_config_flags.None--alt:0
+	imgui_config_flags.NavEnableKeyboard--alt:1
+	imgui_config_flags.NavEnableGamepad--alt:2
+	imgui_config_flags.NavEnableSetMousePos--alt:4
+	imgui_config_flags.NavNoCaptureKeyboard--alt:8
+	imgui_config_flags.NoMouse--alt:16
+	imgui_config_flags.NoMouseCursorChange--alt:32
+	imgui_config_flags.NoKeyboard--alt:64
+	imgui_config_flags.DockingEnable--alt:128
+	imgui_config_flags.ViewportsEnable--alt:1024
+	imgui_config_flags.DpiEnableScaleViewports--alt:16384
+	imgui_config_flags.DpiEnableScaleFonts--alt:32768
+	imgui_config_flags.IsSRGB--alt:1048576
+	imgui_config_flags.IsTouchScreen--alt:2097152
+imgui_dir
+	imgui_dir.None--alt:-1
+	imgui_dir.Left--alt:0
+	imgui_dir.Right--alt:1
+	imgui_dir.Up--alt:2
+	imgui_dir.Down--alt:3
+	imgui_dir.COUNT--alt:4
+imgui_data_type
+	imgui_data_type.S8--alt:0
+	imgui_data_type.U8--alt:1
+	imgui_data_type.S16--alt:2
+	imgui_data_type.U16--alt:3
+	imgui_data_type.S32--alt:4
+	imgui_data_type.U32--alt:5
+	imgui_data_type.S64--alt:6
+	imgui_data_type.U64--alt:7
+	imgui_data_type.Float--alt:8
+	imgui_data_type.Double--alt:9
+	imgui_data_type.Bool--alt:10
+	imgui_data_type.COUNT--alt:11
+imgui_multi_select_flags
+	imgui_multi_select_flags.None--alt:0
+	imgui_multi_select_flags.SingleSelect--alt:1
+	imgui_multi_select_flags.NoSelectAll--alt:2
+	imgui_multi_select_flags.NoRangeSelect--alt:4
+	imgui_multi_select_flags.NoAutoSelect--alt:8
+	imgui_multi_select_flags.NoAutoClear--alt:16
+	imgui_multi_select_flags.NoAutoClearOnReselect--alt:32
+	imgui_multi_select_flags.BoxSelect1d--alt:64
+	imgui_multi_select_flags.BoxSelect2d--alt:128
+	imgui_multi_select_flags.BoxSelectNoScroll--alt:256
+	imgui_multi_select_flags.ClearOnEscape--alt:512
+	imgui_multi_select_flags.ClearOnClickVoid--alt:1024
+	imgui_multi_select_flags.ScopeWindow--alt:2048
+	imgui_multi_select_flags.ScopeRect--alt:4096
+	imgui_multi_select_flags.SelectOnClick--alt:8192
+	imgui_multi_select_flags.SelectOnClickRelease--alt:16384
+	imgui_multi_select_flags.NavWrapX--alt:65536
+	
+imgui_viewpoint_flags
