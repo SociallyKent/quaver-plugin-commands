@@ -1,2 +1,0 @@
---(numeric)
-utils.MillisecondsToTime(Time)
