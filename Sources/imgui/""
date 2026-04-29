@@ -1,0 +1,737 @@
+[[A]]
+	  ArrowButton(ReadOnlySpan<char> str_id, ImGuiDir dir) : bool
+	  ArrowButton(string str_id, ImGuiDir dir) : bool
+[[B]]
+	  BeginCombo(ReadOnlySpan<char> label, ReadOnlySpan<char> preview_value) : bool
+	  BeginCombo(ReadOnlySpan<char> label, ReadOnlySpan<char> preview_value, ImGuiComboFlags flags) : bool
+	  BeginCombo(string label, string preview_value) : bool
+	  BeginCombo(string label, string preview_value, ImGuiComboFlags flags) : bool
+
+      BeginItemTooltip() : bool
+
+      BeginListBox(ReadOnlySpan<char> label) : bool
+      BeginListBox(ReadOnlySpan<char> label, Vector2 size) : bool
+      BeginListBox(string label) : bool
+      BeginListBox(string label, Vector2 size) : bool
+
+      BeginMainMenuBar() : bool
+      BeginMenu(ReadOnlySpan<char> label) : bool
+      BeginMenu(ReadOnlySpan<char> label, bool enabled) : bool
+      BeginMenu(string label) : bool
+      BeginMenu(string label, bool enabled) : bool
+      BeginMenuBar() : bool
+	  
+      BeginMultiSelect(ImGuiMultiSelectFlags flags) : ImGuiMultiSelectIOPtr
+      BeginMultiSelect(ImGuiMultiSelectFlags flags, int selection_size) : ImGuiMultiSelectIOPtr
+      BeginMultiSelect(ImGuiMultiSelectFlags flags, int selection_size, int items_count) : ImGuiMultiSelectIOPtr
+
+      BeginTabBar(ReadOnlySpan<char> str_id) : bool
+      BeginTabBar(ReadOnlySpan<char> str_id, ImGuiTabBarFlags flags) : bool
+      BeginTabBar(string str_id) : bool
+      BeginTabBar(string str_id, ImGuiTabBarFlags flags) : bool
+      BeginTabItem(ReadOnlySpan<char> label) : bool
+      BeginTabItem(ReadOnlySpan<char> label, ref bool p_open) : bool
+      BeginTabItem(ReadOnlySpan<char> label, ref bool p_open, ImGuiTabItemFlags flags) : bool
+      BeginTabItem(string label) : bool
+      BeginTabItem(string label, ref bool p_open) : bool
+      BeginTabItem(string label, ref bool p_open, ImGuiTabItemFlags flags) : bool
+
+      BeginTable(ReadOnlySpan<char> str_id, int columns) : bool
+      BeginTable(ReadOnlySpan<char> str_id, int columns, ImGuiTableFlags flags) : bool
+      BeginTable(ReadOnlySpan<char> str_id, int columns, ImGuiTableFlags flags, Vector2 outer_size) : bool
+      BeginTable(ReadOnlySpan<char> str_id, int columns, ImGuiTableFlags flags, Vector2 outer_size, float inner_width) : bool
+      BeginTable(string str_id, int columns) : bool
+      BeginTable(string str_id, int columns, ImGuiTableFlags flags) : bool
+      BeginTable(string str_id, int columns, ImGuiTableFlags flags, Vector2 outer_size) : bool
+      BeginTable(string str_id, int columns, ImGuiTableFlags flags, Vector2 outer_size, float inner_width) : bool
+
+	  Bullet() : void
+	  BulletText(ReadOnlySpan<char> fmt) : void
+	  BulletText(string fmt) : void
+
+	  Button(ReadOnlySpan<char> label) : bool
+	  Button(ReadOnlySpan<char> label, Vector2 size) : bool
+	  Button(string label) : bool
+	  Button(string label, Vector2 size) : bool
+[[C]]
+	  Checkbox(ReadOnlySpan<char> label, ref bool v) : bool
+	  Checkbox(string label, ref bool v) : bool
+	  CheckboxFlags(ReadOnlySpan<char> label, ref int flags, int flags_value) : bool
+	  CheckboxFlags(ReadOnlySpan<char> label, ref uint flags, uint flags_value) : bool
+	  CheckboxFlags(string label, ref int flags, int flags_value) : bool
+	  CheckboxFlags(string label, ref uint flags, uint flags_value) : bool
+
+	  CollapsingHeader(ReadOnlySpan<char> label) : bool
+	  CollapsingHeader(ReadOnlySpan<char> label, ImGuiTreeNodeFlags flags) : bool
+	  CollapsingHeader(ReadOnlySpan<char> label, ref bool p_visible) : bool
+	  CollapsingHeader(ReadOnlySpan<char> label, ref bool p_visible, ImGuiTreeNodeFlags flags) : bool
+	  CollapsingHeader(string label) : bool
+	  CollapsingHeader(string label, ImGuiTreeNodeFlags flags) : bool
+	  CollapsingHeader(string label, ref bool p_visible) : bool
+	  CollapsingHeader(string label, ref bool p_visible, ImGuiTreeNodeFlags flags) : bool
+
+	  Columns() : void
+	  Columns(int count) : void
+	  Columns(int count, ReadOnlySpan<char> id) : void
+	  Columns(int count, ReadOnlySpan<char> id, bool border) : void
+	  Columns(int count, string id) : void
+	  Columns(int count, string id, bool border) : void
+
+	  Combo(ReadOnlySpan<char> label, ref int current_item, ReadOnlySpan<char> items_separated_by_zeros) : bool
+	  Combo(ReadOnlySpan<char> label, ref int current_item, ReadOnlySpan<char> items_separated_by_zeros, int popup_max_height_in_items) : bool
+	  Combo(ReadOnlySpan<char> label, ref int current_item, string[] items, int items_count) : bool
+	  Combo(ReadOnlySpan<char> label, ref int current_item, string[] items, int items_count, int popup_max_height_in_items) : bool
+	  Combo(string label, ref int current_item, string items_separated_by_zeros) : bool
+	  Combo(string label, ref int current_item, string items_separated_by_zeros, int popup_max_height_in_items) : bool
+	  Combo(string label, ref int current_item, string[] items, int items_count) : bool
+	  Combo(string label, ref int current_item, string[] items, int items_count, int popup_max_height_in_items) : bool
+[[D]]
+	  DragFloat(ReadOnlySpan<char> label, ref float v) : bool
+	  DragFloat(ReadOnlySpan<char> label, ref float v, float v_speed) : bool
+	  DragFloat(ReadOnlySpan<char> label, ref float v, float v_speed, float v_min) : bool
+	  DragFloat(ReadOnlySpan<char> label, ref float v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat(ReadOnlySpan<char> label, ref float v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+	  DragFloat(ReadOnlySpan<char> label, ref float v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragFloat(string label, ref float v) : bool
+	  DragFloat(string label, ref float v, float v_speed) : bool
+	  DragFloat(string label, ref float v, float v_speed, float v_min) : bool
+	  DragFloat(string label, ref float v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat(string label, ref float v, float v_speed, float v_min, float v_max, string format) : bool
+	  DragFloat(string label, ref float v, float v_speed, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_speed) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_speed, float v_min) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+	  DragFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragFloat2(string label, ref Vector2 v) : bool
+	  DragFloat2(string label, ref Vector2 v, float v_speed) : bool
+	  DragFloat2(string label, ref Vector2 v, float v_speed, float v_min) : bool
+	  DragFloat2(string label, ref Vector2 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat2(string label, ref Vector2 v, float v_speed, float v_min, float v_max, string format) : bool
+	  DragFloat2(string label, ref Vector2 v, float v_speed, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_speed) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_speed, float v_min) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+	  DragFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragFloat3(string label, ref Vector3 v) : bool
+	  DragFloat3(string label, ref Vector3 v, float v_speed) : bool
+	  DragFloat3(string label, ref Vector3 v, float v_speed, float v_min) : bool
+	  DragFloat3(string label, ref Vector3 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat3(string label, ref Vector3 v, float v_speed, float v_min, float v_max, string format) : bool
+	  DragFloat3(string label, ref Vector3 v, float v_speed, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_speed) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_speed, float v_min) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+	  DragFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragFloat4(string label, ref Vector4 v) : bool
+	  DragFloat4(string label, ref Vector4 v, float v_speed) : bool
+	  DragFloat4(string label, ref Vector4 v, float v_speed, float v_min) : bool
+	  DragFloat4(string label, ref Vector4 v, float v_speed, float v_min, float v_max) : bool
+	  DragFloat4(string label, ref Vector4 v, float v_speed, float v_min, float v_max, string format) : bool
+	  DragFloat4(string label, ref Vector4 v, float v_speed, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ReadOnlySpan<char> format_max) : bool
+	  DragFloatRange2(ReadOnlySpan<char> label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, ReadOnlySpan<char> format, ReadOnlySpan<char> format_max, ImGuiSliderFlags flags) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, string format) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, string format, string format_max) : bool
+	  DragFloatRange2(string label, ref float v_current_min, ref float v_current_max, float v_speed, float v_min, float v_max, string format, string format_max, ImGuiSliderFlags flags) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v, float v_speed) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+	  DragInt(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragInt(string label, ref int v) : bool
+	  DragInt(string label, ref int v, float v_speed) : bool
+	  DragInt(string label, ref int v, float v_speed, int v_min) : bool
+	  DragInt(string label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt(string label, ref int v, float v_speed, int v_min, int v_max, string format) : bool
+	  DragInt(string label, ref int v, float v_speed, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v, float v_speed) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+	  DragInt2(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragInt2(string label, ref int v) : bool
+	  DragInt2(string label, ref int v, float v_speed) : bool
+	  DragInt2(string label, ref int v, float v_speed, int v_min) : bool
+	  DragInt2(string label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt2(string label, ref int v, float v_speed, int v_min, int v_max, string format) : bool
+	  DragInt2(string label, ref int v, float v_speed, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v, float v_speed) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+	  DragInt3(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragInt3(string label, ref int v) : bool
+	  DragInt3(string label, ref int v, float v_speed) : bool
+	  DragInt3(string label, ref int v, float v_speed, int v_min) : bool
+	  DragInt3(string label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt3(string label, ref int v, float v_speed, int v_min, int v_max, string format) : bool
+	  DragInt3(string label, ref int v, float v_speed, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v, float v_speed) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+	  DragInt4(ReadOnlySpan<char> label, ref int v, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragInt4(string label, ref int v) : bool
+	  DragInt4(string label, ref int v, float v_speed) : bool
+	  DragInt4(string label, ref int v, float v_speed, int v_min) : bool
+	  DragInt4(string label, ref int v, float v_speed, int v_min, int v_max) : bool
+	  DragInt4(string label, ref int v, float v_speed, int v_min, int v_max, string format) : bool
+	  DragInt4(string label, ref int v, float v_speed, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ReadOnlySpan<char> format_max) : bool
+	  DragIntRange2(ReadOnlySpan<char> label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, ReadOnlySpan<char> format, ReadOnlySpan<char> format_max, ImGuiSliderFlags flags) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, string format) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, string format, string format_max) : bool
+	  DragIntRange2(string label, ref int v_current_min, ref int v_current_max, float v_speed, int v_min, int v_max, string format, string format_max, ImGuiSliderFlags flags) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, float v_speed) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format) : bool
+	  DragScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max, string format) : bool
+	  DragScalar(string label, ImGuiDataType data_type, IntPtr p_data, float v_speed, IntPtr p_min, IntPtr p_max, string format, ImGuiSliderFlags flags) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format) : bool
+	  DragScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max, string format) : bool
+	  DragScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, float v_speed, IntPtr p_min, IntPtr p_max, string format, ImGuiSliderFlags flags) : bool
+
+	  Dummy(Vector2 size) : void
+[[E]]
+      EndCombo() : void
+	  
+      EndListBox() : void
+	  
+      EndMainMenuBar() : void
+      EndMenu() : void
+      EndMenuBar() : void
+	  
+      EndMultiSelect() : ImGuiMultiSelectIOPtr
+
+      EndTabBar() : void
+      EndTabItem() : void
+	  
+      EndTable() : void
+	  
+      EndTooltip() : void
+[[F]]
+[[G]]
+      GetColumnIndex() : int
+      GetColumnOffset() : float
+      GetColumnOffset(int column_index) : float
+      GetColumnsCount() : int
+      GetColumnWidth() : float
+      GetColumnWidth(int column_index) : float
+
+      GetKeyName(ImGuiKey key) : string
+      GetKeyPressedAmount(ImGuiKey key, float repeat_delay, float rate) : int
+
+      GetMouseClickedCount(ImGuiMouseButton button) : int
+      GetMouseCursor() : ImGuiMouseCursor
+      GetMouseDragDelta() : Vector2
+      GetMouseDragDelta(ImGuiMouseButton button) : Vector2
+      GetMouseDragDelta(ImGuiMouseButton button, float lock_threshold) : Vector2
+      GetMousePos() : Vector2
+      GetMousePosOnOpeningCurrentPopup() : Vector2
+[[H]]
+[[I]]
+      Indent() : void
+      Indent(float indent_w) : void
+
+	  InputDouble(ReadOnlySpan<char> label, ref double v) : bool
+	  InputDouble(ReadOnlySpan<char> label, ref double v, double step) : bool
+	  InputDouble(ReadOnlySpan<char> label, ref double v, double step, double step_fast) : bool
+	  InputDouble(ReadOnlySpan<char> label, ref double v, double step, double step_fast, ReadOnlySpan<char> format) : bool
+	  InputDouble(ReadOnlySpan<char> label, ref double v, double step, double step_fast, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputDouble(string label, ref double v) : bool
+	  InputDouble(string label, ref double v, double step) : bool
+	  InputDouble(string label, ref double v, double step, double step_fast) : bool
+	  InputDouble(string label, ref double v, double step, double step_fast, string format) : bool
+	  InputDouble(string label, ref double v, double step, double step_fast, string format, ImGuiInputTextFlags flags) : bool
+	  InputFloat(ReadOnlySpan<char> label, ref float v) : bool
+	  InputFloat(ReadOnlySpan<char> label, ref float v, float step) : bool
+	  InputFloat(ReadOnlySpan<char> label, ref float v, float step, float step_fast) : bool
+	  InputFloat(ReadOnlySpan<char> label, ref float v, float step, float step_fast, ReadOnlySpan<char> format) : bool
+	  InputFloat(ReadOnlySpan<char> label, ref float v, float step, float step_fast, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputFloat(string label, ref float v) : bool
+	  InputFloat(string label, ref float v, float step) : bool
+	  InputFloat(string label, ref float v, float step, float step_fast) : bool
+	  InputFloat(string label, ref float v, float step, float step_fast, string format) : bool
+	  InputFloat(string label, ref float v, float step, float step_fast, string format, ImGuiInputTextFlags flags) : bool
+	  InputFloat2(ReadOnlySpan<char> label, ref Vector2 v) : bool
+	  InputFloat2(ReadOnlySpan<char> label, ref Vector2 v, ReadOnlySpan<char> format) : bool
+	  InputFloat2(ReadOnlySpan<char> label, ref Vector2 v, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputFloat2(string label, ref Vector2 v) : bool
+	  InputFloat2(string label, ref Vector2 v, string format) : bool
+	  InputFloat2(string label, ref Vector2 v, string format, ImGuiInputTextFlags flags) : bool
+	  InputFloat3(ReadOnlySpan<char> label, ref Vector3 v) : bool
+	  InputFloat3(ReadOnlySpan<char> label, ref Vector3 v, ReadOnlySpan<char> format) : bool
+	  InputFloat3(ReadOnlySpan<char> label, ref Vector3 v, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputFloat3(string label, ref Vector3 v) : bool
+	  InputFloat3(string label, ref Vector3 v, string format) : bool
+	  InputFloat3(string label, ref Vector3 v, string format, ImGuiInputTextFlags flags) : bool
+	  InputFloat4(ReadOnlySpan<char> label, ref Vector4 v) : bool
+	  InputFloat4(ReadOnlySpan<char> label, ref Vector4 v, ReadOnlySpan<char> format) : bool
+	  InputFloat4(ReadOnlySpan<char> label, ref Vector4 v, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputFloat4(string label, ref Vector4 v) : bool
+	  InputFloat4(string label, ref Vector4 v, string format) : bool
+	  InputFloat4(string label, ref Vector4 v, string format, ImGuiInputTextFlags flags) : bool
+	  InputInt(ReadOnlySpan<char> label, ref int v) : bool
+	  InputInt(ReadOnlySpan<char> label, ref int v, int step) : bool
+	  InputInt(ReadOnlySpan<char> label, ref int v, int step, int step_fast) : bool
+	  InputInt(ReadOnlySpan<char> label, ref int v, int step, int step_fast, ImGuiInputTextFlags flags) : bool
+	  InputInt(string label, ref int v) : bool
+	  InputInt(string label, ref int v, int step) : bool
+	  InputInt(string label, ref int v, int step, int step_fast) : bool
+	  InputInt(string label, ref int v, int step, int step_fast, ImGuiInputTextFlags flags) : bool
+	  InputInt2(ReadOnlySpan<char> label, ref int v) : bool
+	  InputInt2(ReadOnlySpan<char> label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputInt2(string label, ref int v) : bool
+	  InputInt2(string label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputInt3(ReadOnlySpan<char> label, ref int v) : bool
+	  InputInt3(ReadOnlySpan<char> label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputInt3(string label, ref int v) : bool
+	  InputInt3(string label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputInt4(ReadOnlySpan<char> label, ref int v) : bool
+	  InputInt4(ReadOnlySpan<char> label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputInt4(string label, ref int v) : bool
+	  InputInt4(string label, ref int v, ImGuiInputTextFlags flags) : bool
+	  InputScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data) : bool
+	  InputScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step) : bool
+	  InputScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast) : bool
+	  InputScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast, ReadOnlySpan<char> format) : bool
+	  InputScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputScalar(string label, ImGuiDataType data_type, IntPtr p_data) : bool
+	  InputScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step) : bool
+	  InputScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast) : bool
+	  InputScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast, string format) : bool
+	  InputScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_step, IntPtr p_step_fast, string format, ImGuiInputTextFlags flags) : bool
+	  InputScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components) : bool
+	  InputScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step) : bool
+	  InputScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast) : bool
+	  InputScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast, ReadOnlySpan<char> format) : bool
+	  InputScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast, ReadOnlySpan<char> format, ImGuiInputTextFlags flags) : bool
+	  InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components) : bool
+	  InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step) : bool
+	  InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast) : bool
+	  InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast, string format) : bool
+	  InputScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_step, IntPtr p_step_fast, string format, ImGuiInputTextFlags flags) : bool
+	  InputText(ReadOnlySpan<char> label, byte[] buf, uint buf_size) : bool
+	  InputText(ReadOnlySpan<char> label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags) : bool
+	  InputText(ReadOnlySpan<char> label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(ReadOnlySpan<char> label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputText(ReadOnlySpan<char> label, IntPtr buf, uint buf_size) : bool
+	  InputText(ReadOnlySpan<char> label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags) : bool
+	  InputText(ReadOnlySpan<char> label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(ReadOnlySpan<char> label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputText(ReadOnlySpan<char> label, ref string input, uint maxLength) : bool
+	  InputText(ReadOnlySpan<char> label, ref string input, uint maxLength, ImGuiInputTextFlags flags) : bool
+	  InputText(ReadOnlySpan<char> label, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(ReadOnlySpan<char> label, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputText(string label, byte[] buf, uint buf_size) : bool
+	  InputText(string label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags) : bool
+	  InputText(string label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(string label, byte[] buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputText(string label, IntPtr buf, uint buf_size) : bool
+	  InputText(string label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags) : bool
+	  InputText(string label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(string label, IntPtr buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputText(string label, ref string input, uint maxLength) : bool
+	  InputText(string label, ref string input, uint maxLength, ImGuiInputTextFlags flags) : bool
+	  InputText(string label, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputText(string label, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputTextMultiline(ReadOnlySpan<char> label, ref string input, uint maxLength, Vector2 size) : bool
+	  InputTextMultiline(ReadOnlySpan<char> label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags) : bool
+	  InputTextMultiline(ReadOnlySpan<char> label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputTextMultiline(ReadOnlySpan<char> label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputTextMultiline(string label, ref string input, uint maxLength, Vector2 size) : bool
+	  InputTextMultiline(string label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags) : bool
+	  InputTextMultiline(string label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputTextMultiline(string label, ref string input, uint maxLength, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputTextWithHint(ReadOnlySpan<char> label, ReadOnlySpan<char> hint, ref string input, uint maxLength) : bool
+	  InputTextWithHint(ReadOnlySpan<char> label, ReadOnlySpan<char> hint, ref string input, uint maxLength, ImGuiInputTextFlags flags) : bool
+	  InputTextWithHint(ReadOnlySpan<char> label, ReadOnlySpan<char> hint, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputTextWithHint(ReadOnlySpan<char> label, ReadOnlySpan<char> hint, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+	  InputTextWithHint(string label, string hint, ref string input, uint maxLength) : bool
+	  InputTextWithHint(string label, string hint, ref string input, uint maxLength, ImGuiInputTextFlags flags) : bool
+	  InputTextWithHint(string label, string hint, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback) : bool
+	  InputTextWithHint(string label, string hint, ref string input, uint maxLength, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr user_data) : bool
+
+	  InvisibleButton(ReadOnlySpan<char> str_id, Vector2 size) : bool
+	  InvisibleButton(ReadOnlySpan<char> str_id, Vector2 size, ImGuiButtonFlags flags) : bool
+	  InvisibleButton(string str_id, Vector2 size) : bool
+	  InvisibleButton(string str_id, Vector2 size, ImGuiButtonFlags flags) : bool
+
+      IsAnyMouseDown() : bool
+
+      IsKeyChordPressed(ImGuiKey key_chord) : bool
+      IsKeyDown(ImGuiKey key) : bool
+      IsKeyPressed(ImGuiKey key) : bool
+      IsKeyPressed(ImGuiKey key, bool repeat) : bool
+      IsKeyReleased(ImGuiKey key) : bool
+
+      IsMouseClicked(ImGuiMouseButton button) : bool
+      IsMouseClicked(ImGuiMouseButton button, bool repeat) : bool
+      IsMouseDoubleClicked(ImGuiMouseButton button) : bool
+      IsMouseDown(ImGuiMouseButton button) : bool
+      IsMouseDragging(ImGuiMouseButton button) : bool
+      IsMouseDragging(ImGuiMouseButton button, float lock_threshold) : bool
+      IsMouseHoveringRect(Vector2 r_min, Vector2 r_max) : bool
+      IsMouseHoveringRect(Vector2 r_min, Vector2 r_max, bool clip) : bool
+      IsMousePosValid() : bool
+      IsMousePosValid(ref Vector2 mouse_pos) : bool
+      IsMouseReleased(ImGuiMouseButton button) : bool
+
+[[J]]
+[[K]]
+[[L]]
+      LabelText(ReadOnlySpan<char> label, ReadOnlySpan<char> fmt) : void
+      LabelText(string label, string fmt) : void
+
+      ListBox(ReadOnlySpan<char> label, ref int current_item, string[] items, int items_count) : bool
+      ListBox(ReadOnlySpan<char> label, ref int current_item, string[] items, int items_count, int height_in_items) : bool
+      ListBox(string label, ref int current_item, string[] items, int items_count) : bool
+      ListBox(string label, ref int current_item, string[] items, int items_count, int height_in_items) : bool
+
+[[M]]
+      MenuItem(ReadOnlySpan<char> label) : bool
+      MenuItem(ReadOnlySpan<char> label, bool enabled) : bool
+      MenuItem(ReadOnlySpan<char> label, ReadOnlySpan<char> shortcut) : bool
+      MenuItem(ReadOnlySpan<char> label, ReadOnlySpan<char> shortcut, bool selected) : bool
+      MenuItem(ReadOnlySpan<char> label, ReadOnlySpan<char> shortcut, bool selected, bool enabled) : bool
+      MenuItem(ReadOnlySpan<char> label, ReadOnlySpan<char> shortcut, ref bool p_selected) : bool
+      MenuItem(ReadOnlySpan<char> label, ReadOnlySpan<char> shortcut, ref bool p_selected, bool enabled) : bool
+      MenuItem(string label) : bool
+      MenuItem(string label, bool enabled) : bool
+      MenuItem(string label, string shortcut) : bool
+      MenuItem(string label, string shortcut, bool selected) : bool
+      MenuItem(string label, string shortcut, bool selected, bool enabled) : bool
+      MenuItem(string label, string shortcut, ref bool p_selected) : bool
+      MenuItem(string label, string shortcut, ref bool p_selected, bool enabled) : bool
+
+[[N]]
+      NewLine() : void
+	  
+      NextColumn() : void
+[[O]]
+[[P]]
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max, Vector2 graph_size) : void
+      PlotHistogram(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride) : void
+      PlotHistogram(string label, ref float values, int values_count) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset, string overlay_text) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max, Vector2 graph_size) : void
+      PlotHistogram(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max, Vector2 graph_size) : void
+      PlotLines(ReadOnlySpan<char> label, ref float values, int values_count, int values_offset, ReadOnlySpan<char> overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride) : void
+      PlotLines(string label, ref float values, int values_count) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset, string overlay_text) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max, Vector2 graph_size) : void
+      PlotLines(string label, ref float values, int values_count, int values_offset, string overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride) : void
+
+      ProgressBar(float fraction) : void
+      ProgressBar(float fraction, Vector2 size_arg) : void
+      ProgressBar(float fraction, Vector2 size_arg, ReadOnlySpan<char> overlay) : void
+      ProgressBar(float fraction, Vector2 size_arg, string overlay) : void
+
+[[Q]]
+[[R]]
+      RadioButton(ReadOnlySpan<char> label, bool active) : bool
+      RadioButton(ReadOnlySpan<char> label, ref int v, int v_button) : bool
+      RadioButton(string label, bool active) : bool
+      RadioButton(string label, ref int v, int v_button) : bool
+
+      ResetMouseDragDelta() : void
+      ResetMouseDragDelta(ImGuiMouseButton button) : void
+
+[[S]]
+      SameLine() : void
+      SameLine(float offset_from_start_x) : void
+      SameLine(float offset_from_start_x, float spacing) : void
+
+      Selectable(ReadOnlySpan<char> label) : bool
+      Selectable(ReadOnlySpan<char> label, bool selected) : bool
+      Selectable(ReadOnlySpan<char> label, bool selected, ImGuiSelectableFlags flags) : bool
+      Selectable(ReadOnlySpan<char> label, bool selected, ImGuiSelectableFlags flags, Vector2 size) : bool
+      Selectable(ReadOnlySpan<char> label, ref bool p_selected) : bool
+      Selectable(ReadOnlySpan<char> label, ref bool p_selected, ImGuiSelectableFlags flags) : bool
+      Selectable(ReadOnlySpan<char> label, ref bool p_selected, ImGuiSelectableFlags flags, Vector2 size) : bool
+      Selectable(string label) : bool
+      Selectable(string label, bool selected) : bool
+      Selectable(string label, bool selected, ImGuiSelectableFlags flags) : bool
+      Selectable(string label, bool selected, ImGuiSelectableFlags flags, Vector2 size) : bool
+      Selectable(string label, ref bool p_selected) : bool
+      Selectable(string label, ref bool p_selected, ImGuiSelectableFlags flags) : bool
+      Selectable(string label, ref bool p_selected, ImGuiSelectableFlags flags, Vector2 size) : bool
+
+      SeparatorText(ReadOnlySpan<char> label) : void
+      SeparatorText(string label) : void
+
+      Separator() : void
+
+      SetColumnOffset(int column_index, float offset_x) : void
+      SetColumnWidth(int column_index, float width) : void
+
+      SetMouseCursor(ImGuiMouseCursor cursor_type) : void
+
+      SetTabItemClosed(ReadOnlySpan<char> tab_or_docked_window_label) : void
+      SetTabItemClosed(string tab_or_docked_window_label) : void
+
+      SetItemKeyOwner(ImGuiKey key) : void
+
+      SetItemTooltip(ReadOnlySpan<char> fmt) : void
+      SetItemTooltip(string fmt) : void
+
+      SetKeyboardFocusHere() : void
+      SetKeyboardFocusHere(int offset) : void
+      SetNextFrameWantCaptureKeyboard(bool want_capture_keyboard) : void
+
+      SetNextFrameWantCaptureMouse(bool want_capture_mouse) : void
+
+      SetTooltip(ReadOnlySpan<char> fmt) : void
+      SetTooltip(string fmt) : void
+
+      Shortcut(ImGuiKey key_chord) : bool
+      Shortcut(ImGuiKey key_chord, ImGuiInputFlags flags) : bool
+
+      SliderAngle(ReadOnlySpan<char> label, ref float v_rad) : bool
+      SliderAngle(ReadOnlySpan<char> label, ref float v_rad, float v_degrees_min) : bool
+      SliderAngle(ReadOnlySpan<char> label, ref float v_rad, float v_degrees_min, float v_degrees_max) : bool
+      SliderAngle(ReadOnlySpan<char> label, ref float v_rad, float v_degrees_min, float v_degrees_max, ReadOnlySpan<char> format) : bool
+      SliderAngle(ReadOnlySpan<char> label, ref float v_rad, float v_degrees_min, float v_degrees_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderAngle(string label, ref float v_rad) : bool
+      SliderAngle(string label, ref float v_rad, float v_degrees_min) : bool
+      SliderAngle(string label, ref float v_rad, float v_degrees_min, float v_degrees_max) : bool
+      SliderAngle(string label, ref float v_rad, float v_degrees_min, float v_degrees_max, string format) : bool
+      SliderAngle(string label, ref float v_rad, float v_degrees_min, float v_degrees_max, string format, ImGuiSliderFlags flags) : bool
+      SliderFloat(ReadOnlySpan<char> label, ref float v, float v_min, float v_max) : bool
+      SliderFloat(ReadOnlySpan<char> label, ref float v, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+      SliderFloat(ReadOnlySpan<char> label, ref float v, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderFloat(string label, ref float v, float v_min, float v_max) : bool
+      SliderFloat(string label, ref float v, float v_min, float v_max, string format) : bool
+      SliderFloat(string label, ref float v, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_min, float v_max) : bool
+      SliderFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+      SliderFloat2(ReadOnlySpan<char> label, ref Vector2 v, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderFloat2(string label, ref Vector2 v, float v_min, float v_max) : bool
+      SliderFloat2(string label, ref Vector2 v, float v_min, float v_max, string format) : bool
+      SliderFloat2(string label, ref Vector2 v, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_min, float v_max) : bool
+      SliderFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+      SliderFloat3(ReadOnlySpan<char> label, ref Vector3 v, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderFloat3(string label, ref Vector3 v, float v_min, float v_max) : bool
+      SliderFloat3(string label, ref Vector3 v, float v_min, float v_max, string format) : bool
+      SliderFloat3(string label, ref Vector3 v, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_min, float v_max) : bool
+      SliderFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+      SliderFloat4(ReadOnlySpan<char> label, ref Vector4 v, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderFloat4(string label, ref Vector4 v, float v_min, float v_max) : bool
+      SliderFloat4(string label, ref Vector4 v, float v_min, float v_max, string format) : bool
+      SliderFloat4(string label, ref Vector4 v, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderInt(ReadOnlySpan<char> label, ref int v, int v_min, int v_max) : bool
+      SliderInt(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+      SliderInt(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderInt(string label, ref int v, int v_min, int v_max) : bool
+      SliderInt(string label, ref int v, int v_min, int v_max, string format) : bool
+      SliderInt(string label, ref int v, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderInt2(ReadOnlySpan<char> label, ref int v, int v_min, int v_max) : bool
+      SliderInt2(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+      SliderInt2(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderInt2(string label, ref int v, int v_min, int v_max) : bool
+      SliderInt2(string label, ref int v, int v_min, int v_max, string format) : bool
+      SliderInt2(string label, ref int v, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderInt3(ReadOnlySpan<char> label, ref int v, int v_min, int v_max) : bool
+      SliderInt3(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+      SliderInt3(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderInt3(string label, ref int v, int v_min, int v_max) : bool
+      SliderInt3(string label, ref int v, int v_min, int v_max, string format) : bool
+      SliderInt3(string label, ref int v, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderInt4(ReadOnlySpan<char> label, ref int v, int v_min, int v_max) : bool
+      SliderInt4(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+      SliderInt4(ReadOnlySpan<char> label, ref int v, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderInt4(string label, ref int v, int v_min, int v_max) : bool
+      SliderInt4(string label, ref int v, int v_min, int v_max, string format) : bool
+      SliderInt4(string label, ref int v, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+      SliderScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max) : bool
+      SliderScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format) : bool
+      SliderScalar(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max) : bool
+      SliderScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, string format) : bool
+      SliderScalar(string label, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, string format, ImGuiSliderFlags flags) : bool
+      SliderScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max) : bool
+      SliderScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format) : bool
+      SliderScalarN(ReadOnlySpan<char> label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      SliderScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max) : bool
+      SliderScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max, string format) : bool
+      SliderScalarN(string label, ImGuiDataType data_type, IntPtr p_data, int components, IntPtr p_min, IntPtr p_max, string format, ImGuiSliderFlags flags) : bool
+
+      SmallButton(ReadOnlySpan<char> label) : bool
+      SmallButton(string label) : bool
+
+      Spacing() : void
+[[T]]
+      TabItemButton(ReadOnlySpan<char> label) : bool
+      TabItemButton(string label) : bool
+      TabItemButton(ReadOnlySpan<char> label, ImGuiTabItemFlags flags) : bool
+      TabItemButton(string label, ImGuiTabItemFlags flags) : bool
+
+      TableAngledHeadersRow() : void
+      TableGetColumnCount() : int
+      TableGetColumnFlags() : ImGuiTableColumnFlags
+      TableGetColumnFlags(int column_n) : ImGuiTableColumnFlags
+      TableGetColumnIndex() : int
+      TableGetColumnName() : string
+      TableGetColumnName(int column_n) : string
+      TableGetHoveredColumn() : int
+      TableGetRowIndex() : int
+      TableGetSortSpecs() : ImGuiTableSortSpecsPtr
+      TableHeader(ReadOnlySpan<char> label) : void
+      TableHeader(string label) : void
+      TableHeadersRow() : void
+      TableNextColumn() : bool
+      TableNextRow() : void
+      TableNextRow(ImGuiTableRowFlags row_flags) : void
+      TableNextRow(ImGuiTableRowFlags row_flags, float min_row_height) : void
+      TableSetBgColor(ImGuiTableBgTarget target, uint color) : void
+      TableSetBgColor(ImGuiTableBgTarget target, uint color, int column_n) : void
+      TableSetColumnEnabled(int column_n, bool v) : void
+      TableSetColumnIndex(int column_n) : bool
+      TableSetupColumn(ReadOnlySpan<char> label) : void
+      TableSetupColumn(ReadOnlySpan<char> label, ImGuiTableColumnFlags flags) : void
+      TableSetupColumn(ReadOnlySpan<char> label, ImGuiTableColumnFlags flags, float init_width_or_weight) : void
+      TableSetupColumn(ReadOnlySpan<char> label, ImGuiTableColumnFlags flags, float init_width_or_weight, uint user_id) : void
+      TableSetupColumn(string label) : void
+      TableSetupColumn(string label, ImGuiTableColumnFlags flags) : void
+      TableSetupColumn(string label, ImGuiTableColumnFlags flags, float init_width_or_weight) : void
+      TableSetupColumn(string label, ImGuiTableColumnFlags flags, float init_width_or_weight, uint user_id) : void
+      TableSetupScrollFreeze(int cols, int rows) : void
+
+      Text(ReadOnlySpan<char> fmt) : void
+      Text(string fmt) : void
+      TextColored(Vector4 col, ReadOnlySpan<char> fmt) : void
+      TextColored(Vector4 col, string fmt) : void
+      TextDisabled(ReadOnlySpan<char> fmt) : void
+      TextDisabled(string fmt) : void
+      TextLink(ReadOnlySpan<char> label) : bool
+      TextLink(string label) : bool
+      TextLinkOpenURL(ReadOnlySpan<char> label) : void
+      TextLinkOpenURL(ReadOnlySpan<char> label, ReadOnlySpan<char> url) : void
+      TextLinkOpenURL(string label) : void
+      TextLinkOpenURL(string label, string url) : void
+      TextUnformatted(ReadOnlySpan<char> text) : void
+      TextUnformatted(string text) : void
+      TextWrapped(ReadOnlySpan<char> fmt) : void
+      TextWrapped(string fmt) : void
+
+      TreeNode(IntPtr ptr_id, ReadOnlySpan<char> fmt) : bool
+      TreeNode(IntPtr ptr_id, string fmt) : bool
+      TreeNode(ReadOnlySpan<char> label) : bool
+      TreeNode(ReadOnlySpan<char> str_id, ReadOnlySpan<char> fmt) : bool
+      TreeNode(string label) : bool
+      TreeNode(string str_id, string fmt) : bool
+      TreeNodeEx(IntPtr ptr_id, ImGuiTreeNodeFlags flags, ReadOnlySpan<char> fmt) : bool
+      TreeNodeEx(IntPtr ptr_id, ImGuiTreeNodeFlags flags, string fmt) : bool
+      TreeNodeEx(ReadOnlySpan<char> label) : bool
+      TreeNodeEx(ReadOnlySpan<char> label, ImGuiTreeNodeFlags flags) : bool
+      TreeNodeEx(ReadOnlySpan<char> str_id, ImGuiTreeNodeFlags flags, ReadOnlySpan<char> fmt) : bool
+      TreeNodeEx(string label) : bool
+      TreeNodeEx(string label, ImGuiTreeNodeFlags flags) : bool
+      TreeNodeEx(string str_id, ImGuiTreeNodeFlags flags, string fmt) : bool
+      TreePop() : void
+      TreePush(IntPtr ptr_id) : void
+      TreePush(ReadOnlySpan<char> str_id) : void
+      TreePush(string str_id) : void
+
+[[U]]
+      Unindent() : void
+      Unindent(float indent_w) : void
+
+[[V]]
+      VSliderFloat(ReadOnlySpan<char> label, Vector2 size, ref float v, float v_min, float v_max) : bool
+      VSliderFloat(ReadOnlySpan<char> label, Vector2 size, ref float v, float v_min, float v_max, ReadOnlySpan<char> format) : bool
+      VSliderFloat(ReadOnlySpan<char> label, Vector2 size, ref float v, float v_min, float v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      VSliderFloat(string label, Vector2 size, ref float v, float v_min, float v_max) : bool
+      VSliderFloat(string label, Vector2 size, ref float v, float v_min, float v_max, string format) : bool
+      VSliderFloat(string label, Vector2 size, ref float v, float v_min, float v_max, string format, ImGuiSliderFlags flags) : bool
+      VSliderInt(ReadOnlySpan<char> label, Vector2 size, ref int v, int v_min, int v_max) : bool
+      VSliderInt(ReadOnlySpan<char> label, Vector2 size, ref int v, int v_min, int v_max, ReadOnlySpan<char> format) : bool
+      VSliderInt(ReadOnlySpan<char> label, Vector2 size, ref int v, int v_min, int v_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      VSliderInt(string label, Vector2 size, ref int v, int v_min, int v_max) : bool
+      VSliderInt(string label, Vector2 size, ref int v, int v_min, int v_max, string format) : bool
+      VSliderInt(string label, Vector2 size, ref int v, int v_min, int v_max, string format, ImGuiSliderFlags flags) : bool
+      VSliderScalar(ReadOnlySpan<char> label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max) : bool
+      VSliderScalar(ReadOnlySpan<char> label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format) : bool
+      VSliderScalar(ReadOnlySpan<char> label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, ReadOnlySpan<char> format, ImGuiSliderFlags flags) : bool
+      VSliderScalar(string label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max) : bool
+      VSliderScalar(string label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, string format) : bool
+      VSliderScalar(string label, Vector2 size, ImGuiDataType data_type, IntPtr p_data, IntPtr p_min, IntPtr p_max, string format, ImGuiSliderFlags flags) : bool
+
+      Value(ReadOnlySpan<char> prefix, bool b) : void
+      Value(ReadOnlySpan<char> prefix, float v) : void
+      Value(ReadOnlySpan<char> prefix, float v, ReadOnlySpan<char> float_format) : void
+      Value(ReadOnlySpan<char> prefix, int v) : void
+      Value(ReadOnlySpan<char> prefix, uint v) : void
+      Value(string prefix, bool b) : void
+      Value(string prefix, float v) : void
+      Value(string prefix, float v, string float_format) : void
+      Value(string prefix, int v) : void
+      Value(string prefix, uint v) : void
+
+[[W]]
+[[X]]
+[[Y]]
+[[Z]]
