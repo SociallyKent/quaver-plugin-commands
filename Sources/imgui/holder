@@ -1,354 +1,89 @@
-      AcceptDragDropPayload(ReadOnlySpan<char> type) : ImGuiPayloadPtr
-      AcceptDragDropPayload(string type) : ImGuiPayloadPtr
-      AcceptDragDropPayload(ReadOnlySpan<char> type, ImGuiDragDropFlags flags) : ImGuiPayloadPtr
-      AcceptDragDropPayload(string type, ImGuiDragDropFlags flags) : ImGuiPayloadPtr
-      AlignTextToFramePadding() : void
-      Begin(ReadOnlySpan<char> name) : bool
-      Begin(string name) : bool
-      Begin(ReadOnlySpan<char> name, ref bool p_open) : bool
-      Begin(string name, ref bool p_open) : bool
-      Begin(ReadOnlySpan<char> name, ImGuiWindowFlags flags) : bool
-      Begin(string name, ImGuiWindowFlags flags) : bool
-      Begin(ReadOnlySpan<char> name, ref bool p_open, ImGuiWindowFlags flags) : bool
-      Begin(string name, ref bool p_open, ImGuiWindowFlags flags) : bool
-      BeginChild(uint id) : bool
-      BeginChild(ReadOnlySpan<char> str_id) : bool
-      BeginChild(string str_id) : bool
-      BeginChild(uint id, Vector2 size) : bool
-      BeginChild(string str_id, Vector2 size) : bool
-      BeginChild(ReadOnlySpan<char> str_id, Vector2 size) : bool
-      BeginChild(uint id, Vector2 size, ImGuiChildFlags child_flags) : bool
-      BeginChild(ReadOnlySpan<char> str_id, Vector2 size, ImGuiChildFlags child_flags) : bool
-      BeginChild(string str_id, Vector2 size, ImGuiChildFlags child_flags) : bool
-      BeginChild(uint id, Vector2 size, ImGuiChildFlags child_flags, ImGuiWindowFlags window_flags) : bool
-      BeginChild(ReadOnlySpan<char> str_id, Vector2 size, ImGuiChildFlags child_flags, ImGuiWindowFlags window_flags) : bool
-      BeginChild(string str_id, Vector2 size, ImGuiChildFlags child_flags, ImGuiWindowFlags window_flags) : bool
-      BeginDisabled() : void
-      BeginDisabled(bool disabled) : void
-      BeginDragDropSource() : bool
-      BeginDragDropSource(ImGuiDragDropFlags flags) : bool
-      BeginDragDropTarget() : bool
-      BeginGroup() : void
-      BeginPopup(ReadOnlySpan<char> str_id) : bool
-      BeginPopup(string str_id) : bool
-      BeginPopup(ReadOnlySpan<char> str_id, ImGuiWindowFlags flags) : bool
-      BeginPopup(string str_id, ImGuiWindowFlags flags) : bool
-      BeginPopupContextItem() : bool
-      BeginPopupContextItem(ReadOnlySpan<char> str_id) : bool
-      BeginPopupContextItem(string str_id) : bool
-      BeginPopupContextItem(ReadOnlySpan<char> str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupContextItem(string str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupContextVoid() : bool
-      BeginPopupContextVoid(string str_id) : bool
-      BeginPopupContextVoid(ReadOnlySpan<char> str_id) : bool
-      BeginPopupContextVoid(ReadOnlySpan<char> str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupContextVoid(string str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupContextWindow() : bool
-      BeginPopupContextWindow(ReadOnlySpan<char> str_id) : bool
-      BeginPopupContextWindow(string str_id) : bool
-      BeginPopupContextWindow(ReadOnlySpan<char> str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupContextWindow(string str_id, ImGuiPopupFlags popup_flags) : bool
-      BeginPopupModal(ReadOnlySpan<char> name) : bool
-      BeginPopupModal(string name) : bool
-      BeginPopupModal(string name, ImGuiWindowFlags flags) : bool
-      BeginPopupModal(ReadOnlySpan<char> name, ImGuiWindowFlags flags) : bool
-      BeginPopupModal(string name, ref bool p_open) : bool
-      BeginPopupModal(ReadOnlySpan<char> name, ref bool p_open) : bool
-      BeginPopupModal(ReadOnlySpan<char> name, ref bool p_open, ImGuiWindowFlags flags) : bool
-      BeginPopupModal(string name, ref bool p_open, ImGuiWindowFlags flags) : bool
-      CalcItemWidth() : float
-      CalcTextSize(string text) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, float wrapWidth) : Vector2
-      CalcTextSize(string text, float wrapWidth) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, bool hide_text_after_double_hash) : Vector2
-      CalcTextSize(string text, bool hide_text_after_double_hash) : Vector2
-      CalcTextSize(string text, int start) : Vector2
-      CalcTextSize(string text, int start, bool hideTextAfterDoubleHash) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, bool hide_text_after_double_hash, float wrap_width) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, int length) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, bool hideTextAfterDoubleHash) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, float wrapWidth) : Vector2
-      CalcTextSize(string text, bool hide_text_after_double_hash, float wrap_width) : Vector2
-      CalcTextSize(string text, int start, int length) : Vector2
-      CalcTextSize(string text, int start, float wrapWidth) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, int length, float wrapWidth) : Vector2
-      CalcTextSize(string text, int start, int length, float wrapWidth) : Vector2
-      CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, int length, bool hideTextAfterDoubleHash) : Vector2
-      CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth) : Vector2
-      CalcTextSize(ReadOnlySpan<char> text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth) : Vector2
-      CalcTextSizeImpl(ReadOnlySpan<char> text, int start, int? length, bool hideTextAfterDoubleHash, float wrapWidth) : Vector2
-      CalcTextSizeImpl(string text, int start, int? length, bool hideTextAfterDoubleHash, float wrapWidth) : Vector2
-      CloseCurrentPopup() : void
-      CreateContext() : IntPtr
-      CreateContext(ImFontAtlasPtr shared_font_atlas) : IntPtr
-      DebugCheckVersionAndDataLayout(ReadOnlySpan<char> version_str, uint sz_io, uint sz_style, uint sz_vec2, uint sz_vec4, uint sz_drawvert, uint sz_drawidx) : bool
-      DebugCheckVersionAndDataLayout(string version_str, uint sz_io, uint sz_style, uint sz_vec2, uint sz_vec4, uint sz_drawvert, uint sz_drawidx) : bool
-      DebugFlashStyleColor(ImGuiCol idx) : void
-      DebugLog(string fmt) : void
-      DebugLog(ReadOnlySpan<char> fmt) : void
-      DebugStartItemPicker() : void
-      DebugTextEncoding(ReadOnlySpan<char> text) : void
-      DebugTextEncoding(string text) : void
-      DestroyContext() : void
-      DestroyContext(IntPtr ctx) : void
-      DestroyPlatformWindows() : void
-      DockSpace(uint dockspace_id) : uint
-      DockSpace(uint dockspace_id, Vector2 size) : uint
-      DockSpace(uint dockspace_id, Vector2 size, ImGuiDockNodeFlags flags) : uint
-      DockSpace(uint dockspace_id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClassPtr window_class) : uint
-      DockSpaceOverViewport() : uint
-      DockSpaceOverViewport(uint dockspace_id) : uint
-      DockSpaceOverViewport(uint dockspace_id, ImGuiViewportPtr viewport) : uint
-      DockSpaceOverViewport(uint dockspace_id, ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags) : uint
-      DockSpaceOverViewport(uint dockspace_id, ImGuiViewportPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClassPtr window_class) : uint
-      End() : void
-      EndChild() : void
-      EndDisabled() : void
-      EndDragDropSource() : void
-      EndDragDropTarget() : void
-      EndFrame() : void
-      EndGroup() : void
-      EndPopup() : void
-      FindViewportByID(uint id) : ImGuiViewportPtr
-      FindViewportByPlatformHandle(IntPtr platform_handle) : ImGuiViewportPtr
-	  GetAllocatorFunctions(ref IntPtr p_alloc_func, ref IntPtr p_free_func, ref void* p_user_data) : void
-      GetBackgroundDrawList() : ImDrawListPtr
-      GetBackgroundDrawList(ImGuiViewportPtr viewport) : ImDrawListPtr
-      GetClipboardText() : string
-      GetContentRegionAvail() : Vector2
-      GetCurrentContext() : IntPtr
-      GetCursorPos() : Vector2
-      GetCursorPosX() : float
-      GetCursorPosY() : float
-      GetCursorScreenPos() : Vector2
-      GetCursorStartPos() : Vector2
-      GetDragDropPayload() : ImGuiPayloadPtr
-      GetDrawData() : ImDrawDataPtr
-      GetDrawListSharedData() : IntPtr
-      GetFont() : ImFontPtr
-      GetFontSize() : float
-      GetFontTexUvWhitePixel() : Vector2
-      GetForegroundDrawList() : ImDrawListPtr
-      GetForegroundDrawList(ImGuiViewportPtr viewport) : ImDrawListPtr
-      GetFrameCount() : int
-      GetFrameHeight() : float
-      GetFrameHeightWithSpacing() : float
-      GetID(int int_id) : uint
-      GetID(IntPtr ptr_id) : uint
-      GetID(string str_id) : uint
-      GetID(ReadOnlySpan<char> str_id) : uint
-      GetIO() : ImGuiIOPtr
-      GetItemID() : uint
-      GetItemRectMax() : Vector2
-      GetItemRectMin() : Vector2
-      GetItemRectSize() : Vector2
-      GetMainViewport() : ImGuiViewportPtr
-      GetPlatformIO() : ImGuiPlatformIOPtr
-      GetScrollMaxX() : float
-      GetScrollMaxY() : float
-      GetScrollX() : float
-      GetScrollY() : float
-      GetStateStorage() : ImGuiStoragePtr
-      GetTextLineHeight() : float
-      GetTextLineHeightWithSpacing() : float
-      GetTime() : double
-      GetTreeNodeToLabelSpacing() : float
-      GetVersion() : string
-      GetWindowDockID() : uint
-      GetWindowDpiScale() : float
-      GetWindowDrawList() : ImDrawListPtr
-      GetWindowHeight() : float
-      GetWindowPos() : Vector2
-      GetWindowSize() : Vector2
-      GetWindowViewport() : ImGuiViewportPtr
-      GetWindowWidth() : float
-      Image(IntPtr user_texture_id, Vector2 image_size) : void
-      Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0) : void
-      Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1) : void
-      Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 tint_col) : void
-      Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 tint_col, Vector4 border_col) : void
-      ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size) : bool
-      ImageButton(string str_id, IntPtr user_texture_id, Vector2 image_size) : bool
-      ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0) : bool
-      ImageButton(string str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0) : bool
-      ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1) : bool
-      ImageButton(string str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1) : bool
-      ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col) : bool
-      ImageButton(string str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col) : bool
-      ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col, Vector4 tint_col) : bool
-      ImageButton(string str_id, IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col, Vector4 tint_col) : bool
-      IsAnyItemActive() : bool
-      IsAnyItemFocused() : bool
-      IsAnyItemHovered() : bool
-      IsItemActivated() : bool
-      IsItemActive() : bool
-      IsItemClicked() : bool
-      IsItemClicked(ImGuiMouseButton mouse_button) : bool
-      IsItemDeactivated() : bool
-      IsItemDeactivatedAfterEdit() : bool
-      IsItemEdited() : bool
-      IsItemFocused() : bool
-      IsItemHovered() : bool
-      IsItemHovered(ImGuiHoveredFlags flags) : bool
-      IsItemToggledOpen() : bool
-      IsItemToggledSelection() : bool
-      IsItemVisible() : bool
-      IsPopupOpen(ReadOnlySpan<char> str_id) : bool
-      IsPopupOpen(string str_id) : bool
-      IsPopupOpen(string str_id, ImGuiPopupFlags flags) : bool
-      IsPopupOpen(ReadOnlySpan<char> str_id, ImGuiPopupFlags flags) : bool
-      IsRectVisible(Vector2 size) : bool
-      IsRectVisible(Vector2 rect_min, Vector2 rect_max) : bool
-      IsWindowAppearing() : bool
-      IsWindowCollapsed() : bool
-      IsWindowDocked() : bool
-      IsWindowFocused() : bool
-      IsWindowFocused(ImGuiFocusedFlags flags) : bool
-      IsWindowHovered() : bool
-      IsWindowHovered(ImGuiHoveredFlags flags) : bool
-      LoadIniSettingsFromDisk(ReadOnlySpan<char> ini_filename) : void
-      LoadIniSettingsFromDisk(string ini_filename) : void
-      LoadIniSettingsFromMemory(ReadOnlySpan<char> ini_data) : void
-      LoadIniSettingsFromMemory(string ini_data) : void
-      LoadIniSettingsFromMemory(ReadOnlySpan<char> ini_data, uint ini_size) : void
-      LoadIniSettingsFromMemory(string ini_data, uint ini_size) : void
-      LogButtons() : void
-      LogFinish() : void
-      LogText(ReadOnlySpan<char> fmt) : void
-      LogText(string fmt) : void
-      LogToClipboard() : void
-      LogToClipboard(int auto_open_depth) : void
-      LogToFile() : void
-      LogToFile(int auto_open_depth) : void
-      LogToFile(int auto_open_depth, ReadOnlySpan<char> filename) : void
-      LogToFile(int auto_open_depth, string filename) : void
-      LogToTTY() : void
-      LogToTTY(int auto_open_depth) : void
-      MemAlloc(uint size) : IntPtr
-      MemFree(IntPtr ptr) : void
-      NewFrame() : void
-      OpenPopup(string str_id) : void
-      OpenPopup(uint id) : void
-      OpenPopup(ReadOnlySpan<char> str_id) : void
-      OpenPopup(ReadOnlySpan<char> str_id, ImGuiPopupFlags popup_flags) : void
-      OpenPopup(string str_id, ImGuiPopupFlags popup_flags) : void
-      OpenPopup(uint id, ImGuiPopupFlags popup_flags) : void
-      OpenPopupOnItemClick() : void
-      OpenPopupOnItemClick(ReadOnlySpan<char> str_id) : void
-      OpenPopupOnItemClick(string str_id) : void
-      OpenPopupOnItemClick(ReadOnlySpan<char> str_id, ImGuiPopupFlags popup_flags) : void
-      OpenPopupOnItemClick(string str_id, ImGuiPopupFlags popup_flags) : void
-      PopClipRect() : void
-      PopFont() : void
-      PopID() : void
-      PopItemFlag() : void
-      PopItemWidth() : void
-      PopTextWrapPos() : void
-      PushClipRect(Vector2 clip_rect_min, Vector2 clip_rect_max, bool intersect_with_current_clip_rect) : void
-      PushFont(ImFontPtr font) : void
-      PushID(ReadOnlySpan<char> str_id) : void
-      PushID(string str_id) : void
-      PushID(IntPtr ptr_id) : void
-      PushID(int int_id) : void
-      PushItemFlag(ImGuiItemFlags option, bool enabled) : void
-      PushItemWidth(float item_width) : void
-      PushTextWrapPos() : void
-      PushTextWrapPos(float wrap_local_pos_x) : void
-      Render() : void
-      RenderPlatformWindowsDefault() : void
-      RenderPlatformWindowsDefault(IntPtr platform_render_arg) : void
-      RenderPlatformWindowsDefault(IntPtr platform_render_arg, IntPtr renderer_render_arg) : void
-      SaveIniSettingsToDisk(ReadOnlySpan<char> ini_filename) : void
-      SaveIniSettingsToDisk(string ini_filename) : void
-      SaveIniSettingsToMemory() : string
-      SaveIniSettingsToMemory(out uint out_ini_size) : string
-      SetAllocatorFunctions(IntPtr alloc_func, IntPtr free_func) : void
-      SetAllocatorFunctions(IntPtr alloc_func, IntPtr free_func, IntPtr user_data) : void
-      SetClipboardText(ReadOnlySpan<char> text) : void
-      SetClipboardText(string text) : void
-      SetCurrentContext(IntPtr ctx) : void
-      SetCursorPos(Vector2 local_pos) : void
-      SetCursorPosX(float local_x) : void
-      SetCursorPosY(float local_y) : void
-      SetCursorScreenPos(Vector2 pos) : void
-      SetDragDropPayload(ReadOnlySpan<char> type, IntPtr data, uint sz) : bool
-      SetDragDropPayload(string type, IntPtr data, uint sz) : bool
-      SetDragDropPayload(string type, IntPtr data, uint sz, ImGuiCond cond) : bool
-      SetDragDropPayload(ReadOnlySpan<char> type, IntPtr data, uint sz, ImGuiCond cond) : bool
-      SetItemDefaultFocus() : void
-      SetNextItemAllowOverlap() : void
-      SetNextItemOpen(bool is_open) : void
-      SetNextItemOpen(bool is_open, ImGuiCond cond) : void
-      SetNextItemSelectionUserData(long selection_user_data) : void
-      SetNextItemShortcut(ImGuiKey key_chord) : void
-      SetNextItemShortcut(ImGuiKey key_chord, ImGuiInputFlags flags) : void
-      SetNextItemStorageID(uint storage_id) : void
-      SetNextItemWidth(float item_width) : void
-      SetNextWindowBgAlpha(float alpha) : void
-      SetNextWindowClass(ImGuiWindowClassPtr window_class) : void
-      SetNextWindowCollapsed(bool collapsed) : void
-      SetNextWindowCollapsed(bool collapsed, ImGuiCond cond) : void
-      SetNextWindowContentSize(Vector2 size) : void
-      SetNextWindowDockID(uint dock_id) : void
-      SetNextWindowDockID(uint dock_id, ImGuiCond cond) : void
-      SetNextWindowFocus() : void
-      SetNextWindowPos(Vector2 pos) : void
-      SetNextWindowPos(Vector2 pos, ImGuiCond cond) : void
-      SetNextWindowPos(Vector2 pos, ImGuiCond cond, Vector2 pivot) : void
-      SetNextWindowScroll(Vector2 scroll) : void
-      SetNextWindowSize(Vector2 size) : void
-      SetNextWindowSize(Vector2 size, ImGuiCond cond) : void
-      SetNextWindowSizeConstraints(Vector2 size_min, Vector2 size_max) : void
-      SetNextWindowSizeConstraints(Vector2 size_min, Vector2 size_max, ImGuiSizeCallback custom_callback) : void
-      SetNextWindowSizeConstraints(Vector2 size_min, Vector2 size_max, ImGuiSizeCallback custom_callback, IntPtr custom_callback_data) : void
-      SetNextWindowViewport(uint viewport_id) : void
-      SetScrollFromPosX(float local_x) : void
-      SetScrollFromPosX(float local_x, float center_x_ratio) : void
-      SetScrollFromPosY(float local_y) : void
-      SetScrollFromPosY(float local_y, float center_y_ratio) : void
-      SetScrollHereX() : void
-      SetScrollHereX(float center_x_ratio) : void
-      SetScrollHereY() : void
-      SetScrollHereY(float center_y_ratio) : void
-      SetScrollX(float scroll_x) : void
-      SetScrollY(float scroll_y) : void
-      SetStateStorage(ImGuiStoragePtr storage) : void
-      SetWindowCollapsed(bool collapsed) : void
-      SetWindowCollapsed(ReadOnlySpan<char> name, bool collapsed) : void
-      SetWindowCollapsed(bool collapsed, ImGuiCond cond) : void
-      SetWindowCollapsed(string name, bool collapsed) : void
-      SetWindowCollapsed(ReadOnlySpan<char> name, bool collapsed, ImGuiCond cond) : void
-      SetWindowCollapsed(string name, bool collapsed, ImGuiCond cond) : void
-      SetWindowFocus() : void
-      SetWindowFocus(string name) : void
-      SetWindowFocus(ReadOnlySpan<char> name) : void
-      SetWindowFontScale(float scale) : void
-      SetWindowPos(Vector2 pos) : void
-      SetWindowPos(ReadOnlySpan<char> name, Vector2 pos) : void
-      SetWindowPos(string name, Vector2 pos) : void
-      SetWindowPos(Vector2 pos, ImGuiCond cond) : void
-      SetWindowPos(ReadOnlySpan<char> name, Vector2 pos, ImGuiCond cond) : void
-      SetWindowPos(string name, Vector2 pos, ImGuiCond cond) : void
-      SetWindowSize(Vector2 size) : void
-      SetWindowSize(ReadOnlySpan<char> name, Vector2 size) : void
-      SetWindowSize(Vector2 size, ImGuiCond cond) : void
-      SetWindowSize(string name, Vector2 size) : void
-      SetWindowSize(string name, Vector2 size, ImGuiCond cond) : void
-      SetWindowSize(ReadOnlySpan<char> name, Vector2 size, ImGuiCond cond) : void
-      ShowAboutWindow() : void
-      ShowAboutWindow(ref bool p_open) : void
-      ShowDebugLogWindow() : void
-      ShowDebugLogWindow(ref bool p_open) : void
-      ShowDemoWindow() : void
-      ShowDemoWindow(ref bool p_open) : void
-      ShowFontSelector(ReadOnlySpan<char> label) : void
-      ShowFontSelector(string label) : void
-      ShowIDStackToolWindow() : void
-      ShowIDStackToolWindow(ref bool p_open) : void
-      ShowMetricsWindow() : void
-      ShowMetricsWindow(ref bool p_open) : void
-      ShowUserGuide() : void
-      UpdatePlatformWindows() : void
+[[A]]
+[[B]]
+[[C]]
+      ColorButton(string desc_id, Vector4 col) : bool
+      ColorButton(ReadOnlySpan<char> desc_id, Vector4 col) : bool
+      ColorButton(ReadOnlySpan<char> desc_id, Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorButton(string desc_id, Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorButton(ReadOnlySpan<char> desc_id, Vector4 col, ImGuiColorEditFlags flags, Vector2 size) : bool
+      ColorButton(string desc_id, Vector4 col, ImGuiColorEditFlags flags, Vector2 size) : bool
+      ColorConvertFloat4ToU32(Vector4 @in) : uint
+      ColorConvertHSVtoRGB(float h, float s, float v, out float out_r, out float out_g, out float out_b) : void
+      ColorConvertRGBtoHSV(float r, float g, float b, out float out_h, out float out_s, out float out_v) : void
+      ColorConvertU32ToFloat4(uint @in) : Vector4
+      ColorEdit3(ReadOnlySpan<char> label, ref Vector3 col) : bool
+      ColorEdit3(string label, ref Vector3 col) : bool
+      ColorEdit3(ReadOnlySpan<char> label, ref Vector3 col, ImGuiColorEditFlags flags) : bool
+      ColorEdit3(string label, ref Vector3 col, ImGuiColorEditFlags flags) : bool
+      ColorEdit4(ReadOnlySpan<char> label, ref Vector4 col) : bool
+      ColorEdit4(string label, ref Vector4 col) : bool
+      ColorEdit4(ReadOnlySpan<char> label, ref Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorEdit4(string label, ref Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorPicker3(ReadOnlySpan<char> label, ref Vector3 col) : bool
+      ColorPicker3(string label, ref Vector3 col) : bool
+      ColorPicker3(ReadOnlySpan<char> label, ref Vector3 col, ImGuiColorEditFlags flags) : bool
+      ColorPicker3(string label, ref Vector3 col, ImGuiColorEditFlags flags) : bool
+      ColorPicker4(ReadOnlySpan<char> label, ref Vector4 col) : bool
+      ColorPicker4(string label, ref Vector4 col) : bool
+      ColorPicker4(ReadOnlySpan<char> label, ref Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags) : bool
+      ColorPicker4(string label, ref Vector4 col, ImGuiColorEditFlags flags, ref float ref_col) : bool
+      ColorPicker4(ReadOnlySpan<char> label, ref Vector4 col, ImGuiColorEditFlags flags, ref float ref_col) : bool
+
+[[D]]
+[[E]]
+[[F]]
+[[G]]
+      GetColorU32(Vector4 col) : uint
+      GetColorU32(ImGuiCol idx) : uint
+      GetColorU32(uint col) : uint
+      GetColorU32(uint col, float alpha_mul) : uint
+      GetColorU32(ImGuiCol idx, float alpha_mul) : uint
+
+      GetStyle() : ImGuiStylePtr
+      GetStyleColorName(ImGuiCol idx) : string
+      GetStyleColorVec4(ImGuiCol idx) : Vector4*
+
+[[H]]
+[[I]]
+[[J]]
+[[K]]
+[[L]]
+[[M]]
+[[N]]
+[[O]]
+[[P]]
+      PopStyleColor() : void
+      PopStyleColor(int count) : void
+      PopStyleVar() : void
+      PopStyleVar(int count) : void
+
+      PushStyleColor(ImGuiCol idx, uint col) : void
+      PushStyleColor(ImGuiCol idx, Vector4 col) : void
+      PushStyleVar(ImGuiStyleVar idx, float val) : void
+      PushStyleVar(ImGuiStyleVar idx, Vector2 val) : void
+
+[[Q]]
+[[R]]
+[[S]]
+      SetColorEditOptions(ImGuiColorEditFlags flags) : void
+
+      ShowStyleEditor() : void
+      ShowStyleEditor(ImGuiStylePtr @ref) : void
+      ShowStyleSelector(ReadOnlySpan<char> label) : bool
+      ShowStyleSelector(string label) : bool
+
+      StyleColorsClassic() : void
+      StyleColorsClassic(ImGuiStylePtr dst) : void
+      StyleColorsDark() : void
+      StyleColorsDark(ImGuiStylePtr dst) : void
+      StyleColorsLight() : void
+      StyleColorsLight(ImGuiStylePtr dst) : void
+
+[[T]]
+[[U]]
+[[V]]
+[[W]]
+[[X]]
+[[Y]]
+[[Z]]
