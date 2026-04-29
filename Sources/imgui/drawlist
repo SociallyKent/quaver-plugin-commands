@@ -1,0 +1,114 @@
+      ImDrawListPtr(ImDrawList* nativePtr)
+      ImDrawListPtr(IntPtr nativePtr)
+      AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness) : void
+      AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int num_segments) : void
+      AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness) : void
+      AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int num_segments) : void
+      AddCallback(IntPtr callback, IntPtr callback_data) : void
+      AddCircle(Vector2 center, float radius, uint col) : void
+      AddCircle(Vector2 center, float radius, uint col, int num_segments) : void
+      AddCircle(Vector2 center, float radius, uint col, int num_segments, float thickness) : void
+      AddCircleFilled(Vector2 center, float radius, uint col) : void
+      AddCircleFilled(Vector2 center, float radius, uint col, int num_segments) : void
+      AddConcavePolyFilled(ref Vector2 points, int num_points, uint col) : void
+      AddConvexPolyFilled(ref Vector2 points, int num_points, uint col) : void
+      AddDrawCmd() : void
+      AddEllipse(Vector2 center, Vector2 radius, uint col) : void
+      AddEllipse(Vector2 center, Vector2 radius, uint col, float rot) : void
+      AddEllipse(Vector2 center, Vector2 radius, uint col, float rot, int num_segments) : void
+      AddEllipse(Vector2 center, Vector2 radius, uint col, float rot, int num_segments, float thickness) : void
+      AddEllipseFilled(Vector2 center, Vector2 radius, uint col) : void
+      AddEllipseFilled(Vector2 center, Vector2 radius, uint col, float rot) : void
+      AddEllipseFilled(Vector2 center, Vector2 radius, uint col, float rot, int num_segments) : void
+      AddImage(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max) : void
+      AddImage(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min) : void
+      AddImage(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max) : void
+      AddImage(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max, uint col) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4) : void
+      AddImageQuad(IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col) : void
+      AddImageRounded(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max, uint col, float rounding) : void
+      AddImageRounded(IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max, uint col, float rounding, ImDrawFlags flags) : void
+      AddLine(Vector2 p1, Vector2 p2, uint col) : void
+      AddLine(Vector2 p1, Vector2 p2, uint col, float thickness) : void
+      AddNgon(Vector2 center, float radius, uint col, int num_segments) : void
+      AddNgon(Vector2 center, float radius, uint col, int num_segments, float thickness) : void
+      AddNgonFilled(Vector2 center, float radius, uint col, int num_segments) : void
+      AddPolyline(ref Vector2 points, int num_points, uint col, ImDrawFlags flags, float thickness) : void
+      AddQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col) : void
+      AddQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness) : void
+      AddQuadFilled(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col) : void
+      AddRect(Vector2 p_min, Vector2 p_max, uint col) : void
+      AddRect(Vector2 p_min, Vector2 p_max, uint col, float rounding) : void
+      AddRect(Vector2 p_min, Vector2 p_max, uint col, float rounding, ImDrawFlags flags) : void
+      AddRect(Vector2 p_min, Vector2 p_max, uint col, float rounding, ImDrawFlags flags, float thickness) : void
+      AddRectFilled(Vector2 p_min, Vector2 p_max, uint col) : void
+      AddRectFilled(Vector2 p_min, Vector2 p_max, uint col, float rounding) : void
+      AddRectFilled(Vector2 p_min, Vector2 p_max, uint col, float rounding, ImDrawFlags flags) : void
+      AddRectFilledMultiColor(Vector2 p_min, Vector2 p_max, uint col_upr_left, uint col_upr_right, uint col_bot_right, uint col_bot_left) : void
+      AddText(Vector2 pos, uint col, ReadOnlySpan<char> text_begin) : void
+      AddText(Vector2 pos, uint col, string text_begin) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, string text_begin) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, ReadOnlySpan<char> text_begin) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, ReadOnlySpan<char> text_begin, float wrap_width) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, string text_begin, float wrap_width) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, string text_begin, float wrap_width, ref Vector4 cpu_fine_clip_rect) : void
+      AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, ReadOnlySpan<char> text_begin, float wrap_width, ref Vector4 cpu_fine_clip_rect) : void
+      AddTriangle(Vector2 p1, Vector2 p2, Vector2 p3, uint col) : void
+      AddTriangle(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness) : void
+      AddTriangleFilled(Vector2 p1, Vector2 p2, Vector2 p3, uint col) : void
+      ChannelsMerge() : void
+      ChannelsSetCurrent(int n) : void
+      ChannelsSplit(int count) : void
+      CloneOutput() : ImDrawListPtr
+      Destroy() : void
+      GetClipRectMax() : Vector2
+      GetClipRectMin() : Vector2
+      PathArcTo(Vector2 center, float radius, float a_min, float a_max) : void
+      PathArcTo(Vector2 center, float radius, float a_min, float a_max, int num_segments) : void
+      PathArcToFast(Vector2 center, float radius, int a_min_of_12, int a_max_of_12) : void
+      PathBezierCubicCurveTo(Vector2 p2, Vector2 p3, Vector2 p4) : void
+      PathBezierCubicCurveTo(Vector2 p2, Vector2 p3, Vector2 p4, int num_segments) : void
+      PathBezierQuadraticCurveTo(Vector2 p2, Vector2 p3) : void
+      PathBezierQuadraticCurveTo(Vector2 p2, Vector2 p3, int num_segments) : void
+      PathClear() : void
+      PathEllipticalArcTo(Vector2 center, Vector2 radius, float rot, float a_min, float a_max) : void
+      PathEllipticalArcTo(Vector2 center, Vector2 radius, float rot, float a_min, float a_max, int num_segments) : void
+      PathFillConcave(uint col) : void
+      PathFillConvex(uint col) : void
+      PathLineTo(Vector2 pos) : void
+      PathLineToMergeDuplicate(Vector2 pos) : void
+      PathRect(Vector2 rect_min, Vector2 rect_max) : void
+      PathRect(Vector2 rect_min, Vector2 rect_max, float rounding) : void
+      PathRect(Vector2 rect_min, Vector2 rect_max, float rounding, ImDrawFlags flags) : void
+      PathStroke(uint col) : void
+      PathStroke(uint col, ImDrawFlags flags) : void
+      PathStroke(uint col, ImDrawFlags flags, float thickness) : void
+      PopClipRect() : void
+      PopTextureID() : void
+      PrimQuadUV(Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uv_a, Vector2 uv_b, Vector2 uv_c, Vector2 uv_d, uint col) : void
+      PrimRect(Vector2 a, Vector2 b, uint col) : void
+      PrimRectUV(Vector2 a, Vector2 b, Vector2 uv_a, Vector2 uv_b, uint col) : void
+      PrimReserve(int idx_count, int vtx_count) : void
+      PrimUnreserve(int idx_count, int vtx_count) : void
+      PrimVtx(Vector2 pos, Vector2 uv, uint col) : void
+      PrimWriteIdx(ushort idx) : void
+      PrimWriteVtx(Vector2 pos, Vector2 uv, uint col) : void
+      PushClipRect(Vector2 clip_rect_min, Vector2 clip_rect_max) : void
+      PushClipRect(Vector2 clip_rect_min, Vector2 clip_rect_max, bool intersect_with_current_clip_rect) : void
+      PushClipRectFullScreen() : void
+      PushTextureID(IntPtr texture_id) : void
+      _CalcCircleAutoSegmentCount(float radius) : int
+      _ClearFreeMemory() : void
+      _OnChangedClipRect() : void
+      _OnChangedTextureID() : void
+      _OnChangedVtxOffset() : void
+      _PathArcToFastEx(Vector2 center, float radius, int a_min_sample, int a_max_sample, int a_step) : void
+      _PathArcToN(Vector2 center, float radius, float a_min, float a_max, int num_segments) : void
+      _PopUnusedDrawCmd() : void
+      _ResetForNewFrame() : void
+      _TryMergeDrawCmds() : void
+      
