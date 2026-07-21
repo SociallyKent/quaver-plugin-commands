@@ -1,40 +1,137 @@
+# --put before table/string to get the length
+print()
+ipairs()
+pairs()
+goto name | ::name::
+local
+return
+
+or
+not
+and
+do
+
+nil -- no value
+true
+false
+
 boolean -- true or false
 number|numeric -- 1 
 string -- "one" or "1"
-table|vector -- [1, "one"}
+table|vector -- {1, "one"}
+[[ ]] " " ' '
 
+--[[
 tostring()
 tonumber()
-
-setmetatable()
-getmetatable()
-
-__index 
+setmetatable() getmetatable() rawequal() rawget() rawlen() rawset()
 print|error
-table
-	t = {} --(item, ...)
-	'table.'
+--]]
+
+table.
+	table.concat
+	table.insert
+	table.pack
+	pack
+	table.remove
+	table.sort
+	table.unpack
+	unpack
+	
 	table.concat(table)--(table, seperator)-- takes each item of table, puts them in a string
 	table.insert(table, position, value) -- if no posiion is given; defaults to last
 	table.remove(table, position) -- if no posiion is given; defaults to last
 	table.pack() | table.unpack(table)
 	table.sort(table)
+string.
+	string.byte
+	string.char
+	string.contains
+	string.dump
+	string.endsWith
+	string.find
+	string.format
+	string.gmatch
+	string.gsub
+	string.len
+	string.lower
+	string.match
+	string.rep
+	string.reverse
+	string.startsWith
+	string.sub
+	string.unicode
+	string.upper
+os.
+package.
+
+----
+
+imgui.CalcListClipping
+imgui.GetFrameCount
+imgui.GetTime()
+
 
 imgui.
 |Detect
-|"Mouse"
-	'MouseDragDelta'
-	imgui.GetMouseDragDelta()
-	imgui.ResetMouseDragDelta()
-	'IsMouse'
-	IsMouseDown
-	IsMouseClicked
-	IsMouseReleased
-	IsMouseDoubleClicked
-	IsMouseHoveringRect
-	IsMousePosValid
-	IsAnyMouseDown
-	IsMouseDragging
+	"Mouse"
+		--[[imgui_mouse_button]]
+		imgui.GetMouseClickedCount(button)
+		imgui.GetMouseCursor()
+		--[[imgui_mouse_button, numeric]]
+		imgui.GetMouseDragDelta(¿button, ¿threshold)
+			--[[imgui_mouse_button, numeric]]
+			imgui.IsMouseDragging(button, ¿threshold)
+			--[[imgui_mouse_button]]
+			imgui.ResetMouseDragDelta(¿button)
+		imgui.GetMousePos()
+		imgui.GetMousePosOnOpeningCurrentPopup()
+		imgui.IsAnyMouseDown()
+		--[[imgui_mouse_button, boolean]]
+		imgui.IsMouseClicked(button, ¿repeat)
+		--[[imgui_mouse_button]]
+		imgui.IsMouseDoubleClicked(button)
+		imgui.IsMouseDown(button)
+		--[[{x, y}, {x, y}, boolean]]
+		imgui.IsMouseHoveringRect(min, max, ¿clip)
+		--[[{x, y}]]
+		imgui.IsMousePosValid(¿pos)
+		--[[imgui_mouse_button]]
+		imgui.IsMouseReleased(button)
+		--[[imgui_mouse_cursor]]
+		imgui.SetMouseCursor(cursor)
+		--[[boolean]]
+		imgui.SetNextFrameWantCaptureMouse(value)
+	"keyboard"
+		--Alt, Shift, Control:
+		imgui_key.Left[[Key]] imgui_key.Right[[Key]]
+		--(Arrow keys) Up, Down, Left, Right:
+		imgui_key.[[Dirrection]]Arrow
+		--Letters
+		imgui_key.[[Key]]
+		--[[imgui_key, numeric, numeric]]
+		imgui.GetKeyPressedAmount(key, delay, rate)
+		imgui.GetKeyName(key)--[[imgui_key]]
+		imgui.GetKeyIndex(key)--[[imgui_key]]
+	
+		--[[imgui_key?]]
+		imgui.IsKeyChordPressed(key_chord)
+		imgui.IsKeyDown(key)--[[imgui_key]]
+		--[[imgui_key, boolean]]
+		imgui.IsKeyPressed(key, ¿repeat)
+		imgui.IsKeyReleased(key)--[[imgui_key]]
+	
+		imgui.SetItemKeyOwner(key)--[[imgui_key]]
+		--[[numeric]]
+		imgui.SetKeyboardFocusHere(¿offset)
+		--[[boolean]]
+		imgui.SetNextFrameWantCaptureKeyboard(capture)
+	
+		--[[imgui_key?, imgui_input_flags]]
+		imgui.ShortCut(key_chord, ¿flags)
+	
+	--[[(boolean)
+	imgui.CaptureKeyboardFromApp(?)]]
 |"Show"
 	imgui.ShowAboutWindow()
 	imgui.ShowDemoWindow()
@@ -43,8 +140,6 @@ imgui.
 	imgui.ShowStyleEditor()
 	imgui.ShowStyleSelector()--crashes
 	imgui.ShowUserGuide()
-	--tofind
-	ShowAboutWindow
 |""
 	--[["##text" = invisable]]
 	--ex	imgui.button("##can't see me") imgui.button("can see me")
@@ -72,50 +167,44 @@ imgui.
 	'CollapsingHeader'
 		--[[varable, boolean, imgui_tree_node_flags]]
 		imgui.CollapsingHeader(name, ¿visable, ¿flags)--(text, flags)/(text, state, flags)
-	'Columns'
-		--[[numeric, imgui_id, boolean]]
-		imgui.Columns(¿count, ¿id, ¿border)
-		imgui.GetColumnCount()
-		imgui.GetColumnIndex()
-		imgui.NextColumn()
-		imgui.SetColumnOffset() | imgui.GetColumnOffset()
-		imgui.SetColumnWidth() | imgui.GetColumnWidth()
 	'Combo'
 		--[[varable, numeric, string|vector, numeric]]
 		imgui.Combo(name, item, items, ¿length)--if string: "item1\0...\0" : otherwise the usual {item1, ...}
 		--[[varable, varable, imgui_combo_flags]]
 		imgui.BeginCombo(name, preview, ¿flags)
+		imgui.EndCombo()
 	'Drag'
 		--[[varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
 		imgui.DragFloat(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)		
-			DragFloat2 DragFloat3 DragFloat4--[[same, but value = vector{2/3/4}]]
+			DragFloat2 DragFloat3 DragFloat4--same, but value = vector{2/3/4}
 		--[[varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags]]
-		imgui.DragFloatRange2(name, min, max, ¿speed, ¿min, ¿max, ¿format, ¿max_format, ¿flags)
+		imgui.DragFloatRange2(name, value1, value2, ¿speed, ¿min, ¿max, ¿format, ¿max_format, ¿flags)
 		--[[varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
 		imgui.DragInt(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)
-			DragInt2 DragInt3 DragInt4--[[same, but value = vector{2/3/4}]]
+			DragInt2 DragInt3 DragInt4--same, but value = vector{2/3/4}
 		--[[varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags]]
 		imgui.DragIntRange2(name, min, max, ¿speed, ¿min, ¿max, ¿format, ¿max_format, ¿flags)
 		--[[varable, imgui_data_type, dependant numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
 		imgui.DragScalar(name, data, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)
-		--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, numeric, format, imgui_slider_flags]]
-		imgui.DragScalarN(name, data, value, components, ¿speed, ¿min, ¿max, ¿format, ¿flags)
+			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, numeric, format, imgui_slider_flags]]
+			imgui.DragScalarN(name, data, value, components, ¿speed, ¿min, ¿max, ¿format, ¿flags)
 	'InputText'
-		--[[varable, {numeric, numeric}, numeric, numeric, format, imgui_input_text_flags]]
+			---'Double' refers to decimal numbers (1.0/1.5/2.0). Will also take non decimal numbers.
+		--[[varable, numeric(double), numeric, numeric, format, imgui_input_text_flags]]
 		imgui.InputDouble(name, value, ¿step, ¿step_fast, ¿format, ¿flags)
 		--[[varable, numeric, numeric, numeric, format, imgui_input_text_flags]]
 		imgui.InputFloat(name, value, ¿step, ¿step_fast, ¿format, ¿flags)
-			InputFloat2 InputFloat3 InputFloat4--[[name, vector{2/3/4}, ¿flags]]
+			InputFloat2 InputFloat3 InputFloat4--(name, vector{2/3/4}, ¿flags)
 		--[[varable, numeric, numeric, numeric, imgui_input_text_flags]]
 		imgui.InputInt(name, value, ¿step, ¿step_fast, ¿flags)
-			InputInt2 InputInt3 InputInt4--[[name, vector{2/3/4}, ¿flags]]
+			InputInt2 InputInt3 InputInt4--(name, vector{2/3/4}, ¿flags)
 		--[[varable, imgui_data_type, dependant numeric, numeric, numeric, format, imgui_input_text_flags]]
 		imgui.InputScaler(name, data, value, ¿step, ¿step_fast, ¿format, ¿flags)
-		--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, format, imgui_input_text_flags_flags]]
-		imgui.InputScalerN(name, data, value, components, ¿step, ¿step_fast, ¿format, ¿flags)
+			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, format, imgui_input_text_flags_flags]]
+			imgui.InputScalerN(name, data, value, components, ¿step, ¿step_fast, ¿format, ¿flags)
 		--[[varable, varable, numeric, imgui_input_text_flags_flags, ?, ?]]
 		imgui.InputText(name, value, length, ¿flags, ¿callback, ¿user_data)
-		--[[varable, varable, numberic, {x, y}, imgui_input_text_flags_flags, ?, ?]]
+		--[[varable, varable, numeric, {x, y}, imgui_input_text_flags_flags, ?, ?]]
 		imgui.InputTextMultiline(name, value, length, size, ¿flags, ¿callback, ¿user_data)
 		--[[varable, varable, varable, numeric, imgui_input_text_flags_flags, ?, ?]]
 		imgui.InputTextWithHint(name, hint, value, length, ¿flags, ¿callback, ¿user_data)
@@ -125,6 +214,16 @@ imgui.
 		--[[varable, {x, y}]]
 		imgui.BeginListBox(name, ¿size)
 		imgui.EndListBox()
+	'Menu'
+		imgui.BeginMainMenuBar()
+		imgui.EndMainMenuBar()
+		--[[varable, ¿boolean|string, ¿nil|boolean, ¿nil|boolean]]
+		imgui.MenuItem(name, ¿enabled|shortcut, ¿|value, ¿|enabled)
+		--[[varable, boolean]]
+		imgui.BeginMenu(name, ¿enabled)
+		imgui.EndMenu()
+		imgui.BeginMenuBar()
+		imgui.EndMenuBar()
 	'PlotHistogram'/'PlotLines'
 		--[[string, vector{numeric...}, numeric, numeric, varable, numeric, numeric, {x, y}, numeric?]]
 		imgui.PlotHistogram(name, value, length, ¿offset, ¿overlay, ¿min, ¿max, ¿size, ¿stride)
@@ -133,22 +232,31 @@ imgui.
 	'ProgressBar'
 		--[[numeric/numeric, {x, y}, varable]]
 		imgui.ProgressBar(fraction, ¿size, ¿overlay)
-	'Selectable'
+	'Selectable'/'MultiSelect'
 		--(varable, boolean, imgui_selectable_flags, {x, y})
 		imgui.Selectable(name, value, ¿flags, ¿size))
+		--[[imgui_multi_select_flags, numeric, numeric]]
+		imgui.BeginMultiSelect(flags, ¿length, ¿count)
+		imgui.EndMultiSelect()--returns: ImGuiMultiSelectIOPtr
 	'Slider'
 		--[[varable, radious, numeric, numeric, format, imgui_slider_flags]]
 		imgui.SliderAngle(name, value, ¿min, ¿max, ¿format, ¿flags)
 		--[[varable, numeric, numeric, numeric, format, imgui_slider_flags]]
-		imgui.SliderFloat(name, value, min, max, ¿format, ¿flags)--(text, value, min, max)
+		imgui.SliderFloat(name, value, min, max, ¿format, ¿flags)
 			SliderFloat2 SliderFloat3 SliderFloat4--same, but value = vector{2/3/4}
+			--[[varable, {x, y}, numeric, numeric, numeric, format, imgui_slider_flags]]
+			imgui.VSliderFloat(name, size, value, min, max, ¿format, ¿flags)
 		--[[varable, numeric, numeric, numeric, format, imgui_slider_flags]]
-		imgui.SliderInt(name, value, min, max, ¿format, ¿flags)--same as Float
+		imgui.SliderInt(name, value, min, max, ¿format, ¿flags)
 			SliderInt2 SliderInt3 SliderInt4--same, but value = vector{2/3/4}
+			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags]]
+			imgui.VSliderInt(name, size, value, min, max, ¿format, ¿flag)
 		--[[varable, imgui_data_type, numeric, numeric?, numeric?, format, imgui_slider_flags]]
 		imgui.SliderScaler(name, data, value, min, max, ¿format, ¿flag)
-		--[[varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags]]
-		imgui.SliderScalerN(name, data, value, min, max, ¿format, ¿flag)
+			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags]]
+			imgui.SliderScalerN(name, data, value, min, max, ¿format, ¿flag)
+			--[[varable, imgui_data_type, numeric, numeric, numeric, format, imgui_slider_flags]]
+			imgui.VSliderScalar(name, size, data, value, min, max, ¿format, ¿flag)
 	'Spacers'
 		imgui.Dummy()
 		imgui.NewLine()
@@ -161,29 +269,113 @@ imgui.
 		--[[varable]]
 		imgui.BulletText(value)
 		--[[varable, varable]]
-		imgui.LableText(value1, value2)
+		imgui.LabelText(value1, value2)
 		--[[varable]]
 		imgui.SeparatorText(value)
 		--[[varable]]
 		imgui.Text(value)
-		
-		imgui.TextColored(color, text)
-		imgui.TextDisabled(text)
-		imgui.TextLink(text)
-		imgui.TextLinkOpenURL()
-		imgui.TextUnformatted(text)
-		imgui.TextWrapped(text)
-	'Tree'
-		imgui.GetTreeNodeToLabelSpacing()
-		imgui.TreeNode(text)-- -- imgui.TreeNodeV(string)
-		imgui.TreeNodeEx(text)--(text, flags) -- imgui.TreeNodeExV(string)
-		imgui.TreePush(string) | imgui.TreePop()
+		--[[vector4, varable]]
+		imgui.TextColored(color, value)
+		--[[varable]]
+		imgui.TextDisabled(value)
+		--[[varable]]
+		imgui.TextLink(value)
+		--[[varable, string]]
+		imgui.TextLinkOpenURL(value, ¿link)
+		--[[varable]]
+		imgui.TextUnformatted(value)
+		--[[varable]]
+		imgui.TextWrapped(value)
+	'TreeNode'
+		--[[varable, string?]]
+		imgui.TreeNode(name, ¿value)
+		--[[varable, imgui_tree_node_flags, string?]]
+		imgui.TreeNodeEx(name, ¿flags, ¿value)
+		--[[varable]]
+		imgui.TreePush(name)
+		imgui.TreePop()
+		-- imgui.TreeNodeV(string)
+	'Tab'
+		--[[varable, imgui_tab_bar_flags]]
+		imgui.BeginTabBar(name, ¿flags)
+		imgui.EndTabBar()
+		--[[varable, imgui_tab_item_flags]]
+		imgui.TabItemButton(name, ¿flags)
+		--[[varable?]]
+		imgui.SetTabItemClosed(id)
+		--[[varable, boolean, imgui_tab_item_flags]]
+		imgui.BeginTabItem(name, ¿open, ¿flags)
+		imgui.EndTabItem()
 	'Value'
-	imgui.Value("ab", 0)
-	--to find:
-	imgui.AlignTextToFramePadding()
-	imgui.AlignTextToFramePadding()
-	imgui.SetNextItemOpen()--(state)
+		--[[varable, varable|format]]
+		imgui.Value(value1, value2)
+	'Misc'
+		imgui.Separator()
+|"spacers"
+	'Columns'
+		--[[numeric, imgui_id, boolean]]
+		imgui.Columns(¿count, ¿id, ¿border)
+		imgui.GetColumnIndex()
+		--[[numeric]]
+		imgui.GetColumnOffset(¿column)
+		--[[numeric, numeric]]
+		imgui.SetColumnOffset(column, offset)
+		imgui.GetColumnsCount()
+		--[[numeric]]
+		imgui.GetColumnWidth(¿column)
+		--[[numeric, numeric]]
+		imgui.SetColumnWidth(column, width)
+	'Indent'
+		--[[numeric]]
+		imgui.Indent(¿width)
+		--[[numeric]]
+		imgui.Unindent(¿width)
+	'Table'
+		imgui.TableAngledHeadersRow()
+		imgui.TableGetColumnCount()
+		--[[numeric]]
+		imgui.TableGetColumnFlags(¿column)
+		imgui.TableGetColumnIndex
+		--[[numeric]]
+		imgui.TableGetColumnName(¿column)
+		imgui.TableGetHoveredColumn
+		imgui.TableGetRowIndex
+		imgui.TableGetSortSpecs
+		--[[varable]]
+		imgui.TableHeader(name)
+		imgui.TableHeadersRow
+		imgui.TableNextColumn
+		--[[imgui_table_row_flags, numeric]]
+		imgui.TableNextRow(¿flags, ¿min_length)
+		--[[imgui_table_bg_target, color, numeric]]
+		imgui.TableSetBgColor(target, color, ¿column)
+		--[[numeric, boolean]]
+		imgui.TableSetColumnEnabled(column, value)
+		--[[numeric]]
+		imgui.TableSetColumnIndex(column)
+		---[[varable, imgui_table_column_flags, numeric, numeric?]]
+		imgui.TableSetupColumn(name, ¿flags, ¿width, ¿user_id)
+		--[[numeric, numeric]]
+		imgui.TableSetupScrollFreeze(columns, rows)
+		--[[varable, numberic, imgui_table_flags, {x, y}, numeric]]
+		imgui.BeginTable(name, columns, ¿flags, ¿size, ¿width)
+		imgui.EndTable()
+	'Misc'
+		--[[{x, y}]]
+		imgui.Dummy(size)
+		imgui.NewLine()
+		--[[numeric, numeric]]
+		imgui.SameLine(¿offset-x, ¿spacing)
+		imgui.Spacing()
+
+|
+	'ToolTip'
+		--[[varable]]
+		imgui.SetTooltip(name)
+		--[[varable]]
+		imgui.SetItemTooltip
+		imgui.BeginItemTooltip()
+		imgui.EndTooltip()
 |"begin"|"end"
 	imgui.Begin(Text, ¿p_open, ¿flags)
 	imgui.End()
@@ -326,7 +518,7 @@ imgui.
 	--to find:
 	CalcItemWidth()
 |"push"|"pop"
-	;--push overrides current style      | pop restores previous style
+	;--push overrides current style	  | pop restores previous style
 	'StyleCol'/'StyleVar'
 	imgui.PushStyleCol(imgui_style_col.) | imgui.PopStyleCol(imgui_style_col.)
 	imgui.PushStyleVar(imgui_style_var.) | imgui.PopStyleVar(imgui_style_var.)
@@ -342,8 +534,24 @@ imgui.
 	imgui.PushFont() | imgui.PopFont()
 	imgui.PushClipRect(min{x, y}, max{x, y}, boolean) | imgui.PopClipRect
 |Utils
+	'item'
+		imgui.IsAnyItemActive()
+		imgui.IsAnyItemActive()
+		imgui.IsItemToggledOpen()
+		imgui.IsItemDeactivatedAfterEdit()
+		imgui.GetItemRectMax()
+		imgui.GetItemRectMin()
+		imgui.GetItemRectSize()
+		imgui.SetItemAllowOverlap()
+	'text'
+		imgui.CalcTextSize(text, textend, hidedoubldashext, wrapwidth)
+	--[[numeric|{min, max}, numeric]]
+	imgui.IsRectVisible(min|size, max|)
 	imgui.GetKeyName
+	imgui.GetKeyName
+	--Global imgui time
 	imgui.GetTime()
+	--Global imgui frame count
 	imgui.GetFrameCount()
 	imgui.CalcTextSize(Text)
 	imgui.GetFrameHeight()
@@ -366,8 +574,8 @@ math.atan(x) -- arc tangent
 math.atan2(y, x) ---
 math.tan(x) -- tangent
 math.tanh(x) -- hyperbolic tangent
-math.ceil(x)--(x, ...)-- returns the first value
-math.floor(x)--(x, ...)-- returns the last value
+math.ceil(x) -- rounds up to the neariest integer
+math.floor(x) -- rounds down to the neariest integer
 math.max(x)--(x, ...)-- returns the highest value
 math.min(x)--(x, ...)-- returns the lowest value
 math.exp(x) -- exponential
@@ -387,17 +595,51 @@ math.random(x, y) -- returns a random number between x and y. -- if no value is 
 math.randomseed(x)
 math.sqrt(x) -- square root
 
+bit32:
+ --Shift X bitwise right by Y
+--X numeric
+--Y numeric
+bit32.arshift(X, Y)
+ --get bitwise and
+bit32.band(...)
+ --get bitwise not
+--X numeric
+bit32.bnot(X)
+ --get bitwise or
+bit32.bor(...)
+ --get bitwise xor
+bit32.bxor
+ --get bitwise 'and' and if different from zero.
+bit32.btest(...)
+--N numeric
+bit32.extract(n, field, ¿width)
+--N numeric
+--V numeric
+bit32.replace(n, v, field, ¿width)
+ --bit shift X rotated left by Y
+bit32.lrotate(X, Y)
+ --bit shift X rotated right by Y
+bit32.rrotate(X, Y)
+ --bit shift X shifted left by Y
+bit32.lshift(X, Y)
+ --bit shift X shifted right by Y
+bit32.rshift(X, Y)
+
+
+
 Quaver:
 Custom Commands:
 state.
 	state.SelectedHitObjects[]
 	state.SelectedScrollGroupId
+	--to select a TimingGroup within lua: state.SelectedScrollGroupId = [Name of the TG]
+	state.SelectedScrollGroup.InitialScrollVelocity
 	
 	state.CurrentBookmark
 	state.CurrentLayer
 	state.CurrentScrollFactor
 	state.CurrentScrollVelocity
-	state.CurrentSnap 
+	state.CurrentSnap
 	state.CurrentTimingPoint
 	state.SetValue(varable, value) | state.GetValue(varable)
 	
@@ -417,37 +659,9 @@ map.
 	map.ScrollVelocities[]
 	map.TimingGroups[]
 	map.TimingPoints[]
-	 --Shift X bitwise right by Y
-	--X numeric
-	--Y numeric
-	bit32.arshift(X, Y)
-	 --get bitwise and
-	bit32.band(...)
-	 --get bitwise not
-	--X numeric
-	bit32.bnot(X)
-	 --get bitwise or
-	bit32.bor(...)
-	 --get bitwise xor
-	bit32.bxor
-	 --get bitwise 'and' and if different from zero.
-	bit32.btest(...)
-	--N numeric
-	bit32.extract(n, field, ¿width)
-	--N numeric
-	--V numeric
-	bit32.replace(n, v, field, ¿width)
-	 --bit shift X rotated left by Y
-	bit32.lrotate(X, Y)
-	 --bit shift X rotated right by Y
-	bit32.rrotate(X, Y)
-	 --bit shift X shifted left by Y
-	bit32.lshift(X, Y)
-	 --bit shift X shifted right by Y
-	bit32.rshift(X, Y)
-	 --(in context) Express STRING as Lua code
+	--(in context) Express STRING as Lua code
 	expr(STRING)
-	 --(in context) Evaluate STRING as Lua code
+	--(in context) Evaluate STRING as Lua code
 	eval(STRING)
 	map.DefaultScrollGroup
 	map.DefaultLayer
@@ -482,7 +696,7 @@ map.
 	map.GetTimingGroup
 	map.GetTimingGroupIds()[]
 	map.GetTimingGroupObjects
-userdata--place after userdata to get that select data value
+Values
 ----bookmarks
 	.StartTime
 	.Note
@@ -528,6 +742,14 @@ actions.
 	actions.PerformBatch({})---({utils.CreateEditorAction(action_type.), ...})
 
 action_type.
+----book-mark
+40: AddBookmark
+41: AddBookmarkBatch
+42: EditBookmark
+43: RemoveBookmark
+44: RemoveBookmarkBatch
+45: ChangeBookmarkOffsetBatch
+----hit-object
 0: PlaceHitObject
 1: RemoveHitObject
 2: ResizeLongNote
@@ -538,147 +760,154 @@ action_type.
 7: MoveHitObjects
 8: AddHitsound
 9: RemoveHitsound
-
+37: ResnapHitObjects
+39: ReverseHitObjects
+----scroll-velocity (sv)
+17: AddScrollVelocity
+18: RemoveScrollVelocity
+19: AddScrollVelocityBatch
+20: RemoveScrollVelocityBatch
+34: ChangeScrollVelocityOffsetBatch
+35: ChangeScrollVelocityMultiplierBatch	
+----scroll-speed-factor (ssf)
+53: AddScrollSpeedFactor
+54: AddScrollSpeedFactorBatch
+55: ChangeScrollSpeedFactorMultiplierBatch
+56: ChangeScrollSpeedFactorLaneMaskBatch
+57: ChangeScrollSpeedFactorOffsetBatch
+58: RemoveScrollSpeedFactor
+59: RemoveScrollSpeedFactorBatch
+----layers
 10: CreateLayer
 11: RemoveLayer
 12: RenameLayer
 13: MoveToLayer
-14: ColorLayer
-15: ToggleLayerVisibility
-
-16: AddScrollVelocity
-17: RemoveScrollVelocity
-18: AddScrollVelocityBatch
-19: RemoveScrollVelocityBatch
-
-20: AddTimingPoint
-21: RemoveTimingPoint
-22: AddTimingPointBatch
-23: RemoveTimingPointBatch
-
-24: ChangePreviewTime
-
-25: ChangeTimingPointOffset
-26: ChangeTimingPointBpm
-27: ChangeTimingPointSignature
-28: ChangeTimingPointHidden
-29: ResetTimingPoint
-30: ChangeTimingPointBpmBatch
-31: ChangeTimingPointSignatureBatch
-32: ChangeTimingPointOffsetBatch
-
-33: ChangeScrollVelocityOffsetBatch
-34: ChangeScrollVelocityMultiplierBatch
-
-35: ApplyOffset
-36: ResnapHitObjects
-37: Batch
-38: ReverseHitObjects
-
-39: AddBookmark
-40: AddBookmarkBatch
-41: EditBookmark
-42: RemoveBookmark
-43: RemoveBookmarkBatch
-44: ChangeBookmarkOffsetBatch
-
-45: CreateTimingGroup
-46: RemoveTimingGroup
-47: RenameTimingGroup
-48: MoveObjectsToTimingGroup
-49: ColorTimingGroup
-50: AddTimingGroupBatch
-51: RemoveTimingGroupBatch
-
-52: AddScrollSpeedFactor
-53: AddScrollSpeedFactorBatch
-54: ChangeScrollSpeedFactorMultiplierBatch
-55: ChangeScrollSpeedFactorLaneMaskBatch
-56: ChangeScrollSpeedFactorOffsetBatch
-57: RemoveScrollSpeedFactor
-58: RemoveScrollSpeedFactorBatch
-
--1: None
-----book-mark
-	action_type.AddBookmark	| action_type.RemoveBookmark
-	action_type.AddBookmarkBatch--alt:40
-	action_type.RemoveBookmarkbatch--alt:43
-	action_type.EditBookmarkBatch
-	ChangeBookmarkOffsetBatch
-----hit-object
-	action_type.PlaceHitObject--alt:0
-	action_type.RemoveHitObject--alt:1
-	action_type.RemoveHitObjectbatch--alt:3
-	action_type.PlaceHitObjectBatch--alt:4
-	action_type.FlipHitObjects--alt:5
-	action_type.ResnapHitObjects--alt:6
-	action_type.SwapLanes--alt:6
-	action_type.MoveHitObjects--alt:7
-	action_type.ReverseHitObjects--alt:38
-----scroll-velocity (sv)
-	ation_type.AddScrollVelocityBatch
-----scroll-speed-factor (ssf)
-	action_type.AddScrollSpeedFactor--alt:52
-	action_type.RemoveScrollSpeedFactor--alt:57
-	action_type.AddScrollSpeedFactorBatch--alt:53
-	action_type.RemoveScrollSpeedFactorBatch--alt:58
+14: MoveLayer
+15: ColorLayer
+16: ToggleLayerVisibility
 ----timing-point
-	action_type.AddTimingPoint | action_type.RemoveTimingPoint
-	action_type.AddTimingPointBatch | action_type.RemoveTimingPointBatch
-	ChangeTimingPointBpm
-	ChangeTimingPointOffset
-	ResetTimingPoint
-	ChangeTimingPointSignature
-	ChangeTimingPointHidden
-----layers
-	action_type.AddLayer | action_type.RemoveLayer
-	action_type.MoveToLayer
-----timing-group
-	action_type.CreateTimingGroup
-	RemoveTimingGroup
-	action_type.MoveObjectsToTimingGroup
-	RenameTimingGroup
-	ChangeTimingGroupColor
-	MoveToTimingGroup?
-----misc
-	ChangePreviewTime
-	ApplyOffset
+21: AddTimingPoint
+22: RemoveTimingPoint
+23: AddTimingPointBatch
+24: RemoveTimingPointBatch
+26: ChangeTimingPointOffset
+27: ChangeTimingPointBpm
+28: ChangeTimingPointSignature
+29: ChangeTimingPointHidden
+30: ResetTimingPoint
+31: ChangeTimingPointBpmBatch
+32: ChangeTimingPointSignatureBatch
+33: ChangeTimingPointOffsetBatch
+----timing-group (TG, SG)
+46: CreateTimingGroup
+47: RemoveTimingGroup
+48: RenameTimingGroup
+49: MoveObjectsToTimingGroup
+50: ColorTimingGroup
+51: AddTimingGroupBatch
+52: RemoveTimingGroupBatch
+
+36: ApplyOffset
+38: Batch
+25: ChangePreviewTime
+
 actions.
-	
-----hit-object
-	actions.PlaceHitObject() | actions.RemoveHitObject()
-	actions.PlaceHitObjectBatch({}) | actions.RemoveHitObjectBatch({})
-	actions.MoveHitObject()
-	actions.MoveHitObjectBatch({})
-----scroll-speed-factor
-	actions.PlaceScrollSpeedFactor	| actions.RemoveScrollSpeedFactor
-	actions.PlaceScrollSpeedFactorBatch({})
-	actions.RemoveScrollSpeedFactorBatch({})
-	actions.ChangeScrollSpeedFactorOffsetBatch() actions.ChangeScrollSpeedFactorMultiplierBatch()
-----scroll-velocity
-	actions.PlaceScrollVelocity	| actions.RemoveScrollVelocity
-	actions.PlaceScrollVelocityBatch({}) | actions.RemoveScrollVelocityBatch({})
-	actions.ChangeScrollVelocityOffsetBatch() actions.ChangeScrollVelocityMultiplierBatch()
-----timing-point
-	actions.PlaceTimingPoint() | actions.RemoveTimingPoint()
-	actions.PlaceTimingPointBatch({}) | actions.RemoveTimingPointBatch({})
-	actions.ChangeTimingPointOffset() | actions.ChangeTimingPointOffsetBatch({}) ; actions.ChangeTimingPointBpm() | actions.ChangeTimingPointBpmBatch({}) ; actions.ChangeTimingPointSignature() | actions.ChangeTimingPointSignatureBatch({}) ; actions.ChangeTimingPointHidden() ; actions.ResetTimingPoint()
+	{
+----book-mark (BM)
+	--[[userdata]]--[[numeric, string]]
+	AddBookmark(Mark)|(Time, String)
+	AddBookmarkBatch(Marks)--[[{userdata¿...}]]
+	--[[{userdata¿...}, numeric]]
+	ChangeBookmarkBatchOffset(Marks, Offset)
+	--[[userdata, string]]
+	EditBookmark(Mark, String)
+	--[[userdata]]
+	RemoveBookmark(Mark)
+	RemoveBookmarkBatch(Marks)--[[{userdata¿...}]]
+----hit-object (Note, HO)
+	--[[userdata]]--[[numeric, numeric, numeric, string, numeric?, string, `HitObjectType]]
+	PlaceHitObject(Note)|(Lane, StartTime, ¿EndTime, ¿Layer, ¿HitSounds, ¿GroupId, ¿Type)
+	PlaceHitObjectBatch(Notes)--[[{userdata¿...}]]
+	--[[userdata]]
+	RemoveHitObject(Note)
+	RemoveHitObjectBatch(Notes)--[[{userdata¿...}]]
+	--[[userdata, numeric, numeric]]
+	ResizeLongNote(Note, originalTime, time)
+	--[[{numeric¿...}, {userdata¿...}]]
+	ResnapNotes(Snaps, Note)
+	--[[{userdata¿...}]]
+	SetHitObjectSelection(Notes)
+	--[[userdata, {userdata¿...}]]
+	MoveHitObjectsToLayer(Layer, Notes)
+	--[[{userdata¿...}, string]]
+	MoveObjectsToTimingGroup(Notes, GroupId)
 ----layers
-	actions.CreateLayer() | actions.RemoveLayer()
-	actions.RenameLayer() ; actions.ChangeLayerColor()
-	actions.MoveHitObjectsToLayer()	; actions.ToggleLayerVisibility()
+	--[[userdata, numeric, numeric, numeric]]
+	ChangeLayerColor(Layer, R, G, B)
+	--[[userdata, numeric]]
+	CreateLayer(Layer, Index)
+	--[[userdata]]
+	RemoveLayer(Layer)
+	--[[userdata, string]]
+	RenameLayer(Layer, Name)
+	--[[userdata]]
+	ToggleLayerVisibility(Layer)
+		--[[userdata, {userdata¿...}]]
+		MoveHitObjectsToLayer(Layer, Notes)
+----scroll-speed-factor (SSF)
+----scroll-velocity (SV)
+	--[[userdata, userdata]]
+	PlaceScrollVelocity(Scroll, scrollGroup)
+	PlaceScrollVelocityBatch(Scrolls, scrollGroup)--[[{userdata¿...}, userdata]]
+	--[[userdata, userdata]]
+	RemoveScrollVelocity(Scroll, scrollGroup)
+	RemoveScrollVelocityBatch(Scrolls, scrollGroup)--[[{userdata¿...}, userdata]]
+----timing-group (TG, SG)
+	--[[string, numeric, numeric, numeric]]
+	ChangeTimingGroupColor(Group, R, G, B)
+	--[[string]]
+	RemoveTimingGroup(Group)
+	--[[string, string]]
+	RenameTimingGroup(Group, Id)
+	PlaceTimingGroup(string id, TimingGroup timingGroup, List<HitObjectInfo> hitObjectInfos)
+		--[[{userdata¿...}, string]]
+		MoveObjectsToTimingGroup(Notes, Id)
+----timing-point (TP)
+	--[[userdata, numeric]]
+	ChangeTimingPointBpm(Point, bpm)
+	ChangeTimingPointBpmBatch(Points, bpm)--[[{userdata¿...}, numeric]]
+	--[[userdata, boolean]]
+	ChangeTimingPointHidden(Point, Hidden)
+	--[[userdata, numeric]]
+	ChangeTimingPointOffset(Point, Offset)
+	ChangeTimingPointOffsetBatch(Points, Offset)--[[{userdata¿...}, numeric]]
+	--[[userdata]]
+	PlaceTimingPoint(Point)
+	PlaceTimingPointBatch(Points)--[[{userdata¿...}]]
+	--[[userdata]]
+	RemoveTimingPoint(Point)
+	RemoveTimingPointBatch(Points)--[[{userdata¿...}]]
+	--[[userdata]]
+	ResetTimingPoint(Point)
 ----misc
-	actions.Undo() | actions.Redo()
-	actions.ResnapNotes()
-	actions.ResizeLongNote()
-	actions.GoToObjects()
-	actions.SetHitObjectSelection()
-	actions.ChangeTimingGroupColor
-	actions.DetectBpm() ;; actions.SetPreviewTime() ;; actions.TriggerEvent()
+	Destroy()
+	--[[numeric|string?]]
+	GoToObjects(input)
+	Redo()
+	Undo()
+	--[[userdata]]
+	Perform(Action)
+	--[[{userdata¿...}]]
+	PerformBatch(Actions)
+	--[[numeric]]
+	SetPreviewTime(Time)
+	}
+
 utils.
+	{
 	--(numeric, string)
 	utils.CreateBookmark(StartTime, Note)
-	--(numeric, numeric, numeric, ?, ?, ?)
+	--(numeric, numeric, ¿numeric, ?, ?, ?, ?)
 	utils.CreateHitObject(StartTime, Lane, ¿EndTime, ¿HitSound, ¿EditorLayer, ¿Type)
 	--(numeric, numeric, boolean)
 	utils.CreateScrollVelocity(StartTime, Multiplier, ¿IsEditableInLuaScript)
@@ -704,345 +933,197 @@ utils.
 	utils.IsKeyDown
 	utils.IsKeyReleased
 	utils.IsKeyUp
-os.
+	}
+
+
+
+imgui_data_type
+imgui_dir
+imgui_nav_input
+
+imgui_mouse_cursor--GetMouseCursor
+imgui_mouse_button
+
+imgui_key
+imgui_key_mod
+
+imgui_config_flags
+imgui_backend_flags
+imgui_combo_flags
+imgui_tab_bar_flags
+imgui_drag_drop_flags
+imgui_tab_item_flags
+imgui_input_text_flags
+imgui_selectable_flags
+imgui_table_flags
+imgui_tree_node_flags
+
+imgui_window_flags
+imgui_cond--setwindow
+imgui_hovered_flags
+imgui_focused_flags
+
+imgui_col
+imgui_style_var
+imgui_color_edit_flags
+|os.
 	os.clock()
 	os.date()
 	os.time()
-keys         = {
-0: None
-8: Back
-9: Tab
-13: Enter
-19: Pause
-20: CapsLock
-21: Kana
-25: Kanji
-27: Escape
-28: ImeConvert
-29: ImeNoConvert
-32: Space
-33: PageUp
-34: PageDown
-35: End
-36: Home
-37: Left
-38: Up
-39: Right
-40: Down
-41: Select
-42: Print
-43: Execute
-44: PrintScreen
-45: Insert
-46: Delete
-47: Help
-48: D0
-49: D1
-50: D2
-51: D3
-52: D4
-53: D5
-54: D6
-55: D7
-56: D8
-57: D9
-65: A
-66: B
-67: C
-68: D
-69: E
-70: F
-71: G
-72: H
-73: I
-74: J
-75: K
-76: L
-77: M
-78: N
-79: O
-80: P
-81: Q
-82: R
-83: S
-84: T
-85: U
-86: V
-87: W
-88: X
-89: Y
-90: Z
-91: LeftWindows
-92: RightWindows
-93: Apps
-95: Sleep
-96: NumPad0
-97: NumPad1
-98: NumPad2
-99: NumPad3
-100: NumPad4
-101: NumPad5
-102: NumPad6
-103: NumPad7
-104: NumPad8
-105: NumPad9
-106: Multiply
-107: Add
-108: Separator
-109: Subtract
-110: Decimal
-111: Divide
-112: F1
-113: F2
-114: F3
-115: F4
-116: F5
-117: F6
-118: F7
-119: F8
-120: F9
-121: F10
-122: F11
-123: F12
-124: F13
-125: F14
-126: F15
-127: F16
-128: F17
-129: F18
-130: F19
-131: F20
-132: F21
-133: F22
-134: F23
-135: F24
-144: NumLock
-145: Scroll
-160: LeftShift
-161: RightShift
-162: LeftControl
-163: RightControl
-164: LeftAlt
-165: RightAlt
-166: BrowserBack
-167: BrowserForward
-168: BrowserRefresh
-169: BrowserStop
-170: BrowserSearch
-171: BrowserFavorites
-172: BrowserHome
-173: VolumeMute
-174: VolumeDown
-175: VolumeUp
-176: MediaNextTrack
-177: MediaPreviousTrack
-178: MediaStop
-179: MediaPlayPause
-180: LaunchMail
-181: SelectMedia
-182: LaunchApplication1
-183: LaunchApplication2
-186: OemSemicolon
-187: OemPlus
-188: OemComma
-189: OemMinus
-190: OemPeriod
-191: OemQuestion
-192: OemTilde
-193: OemColon
-194: OemExclamationMark
-195: PunctuatedU
-196: Asterisk
-197: Caret
-198: DollarSign
-199: OemCloseParenthesis
-200: Squared
-202: ChatPadGreen
-203: ChatPadOrange
-219: OemOpenBrackets
-220: OemPipe
-221: OemCloseBrackets
-222: OemQuotes
-223: Oem8
-226: OemBackslash
-229: ProcessKey
-242: OemCopy
-243: OemAuto
-244: OemEnlW
-246: Attn
-247: Crsel
-248: Exsel
-249: EraseEof
-250: Play
-251: Zoom
-253: Pa1
-254: OemClear
-None--alt:0 Reserved.
-Back--alt:8
-Tab--alt:9
-Enter--alt:13
-CapsLock--alt:20
-Escape--alt:27
-Space--alt:32
-PageUp--alt:33
-PageDown--alt:34
-End--alt:35
-Home--alt:36
-Left--alt:37
-Up--alt:38
-Right--alt:39
-Down--alt:40
-Select--alt:41
-Print--alt:42
-Execute--alt:43
-PrintScreen--alt:44
-Insert--alt:45
-Delete--alt:46
-Help--alt:47
-D0--alt:48 Used for miscellaneous characters; varys by keyboard.
-D1--alt:49 Used for miscellaneous characters; varys by keyboard.
-D2--alt:50 Used for miscellaneous characters; varys by keyboard.
-D3--alt:51 Used for miscellaneous characters; varys by keyboard.
-D4--alt:52 Used for miscellaneous characters; varys by keyboard.
-D5--alt:53 Used for miscellaneous characters; varys by keyboard.
-D6--alt:54 Used for miscellaneous characters; varys by keyboard.
-D7--alt:55 Used for miscellaneous characters; varys by keyboard.
-D8--alt:56 Used for miscellaneous characters; varys by keyboard.
-D9--alt:57 Used for miscellaneous characters; varys by keyboard.
-A--alt:65
-B--alt:66
-C--alt:67
-D--alt:68
-E--alt:69
-F--alt:70
-G--alt:71
-H--alt:72
-I--alt:73
-J--alt:74
-K--alt:75
-L--alt:76
-M--alt:77
-N--alt:78
-O--alt:79
-P--alt:80
-Q--alt:81
-R--alt:82
-S--alt:83
-T--alt:84
-U--alt:85
-V--alt:86
-W--alt:87
-X--alt:88
-Y--alt:89
-Z--alt:90
-LeftWindows--alt:91
-RightWindows--alt:92
-Apps--alt:93
-Sleep--alt:95 Computer Sleep key.
-NumPad0--alt:96
-NumPad1--alt:97
-NumPad2--alt:98
-NumPad3--alt:99
-NumPad4--alt:100
-NumPad5--alt:101
-NumPad6--alt:102
-NumPad7--alt:103
-NumPad8--alt:104
-NumPad9--alt:105
-Multiply--alt:106
-Add--alt:107
-Separator--alt:108
-Subtract--alt:109
-Decimal--alt:110
-Divide--alt:111
-F1--alt:112
-F2--alt:113
-F3--alt:114
-F4--alt:115
-F5--alt:116
-F6--alt:117
-F7--alt:118
-F8--alt:119
-F9--alt:120
-F10--alt:121
-F11--alt:122
-F12--alt:123
-F13--alt:124
-F14--alt:125
-F15--alt:126
-F16--alt:127
-F17--alt:128
-F18--alt:129
-F19--alt:130
-F20--alt:131
-F21--alt:132
-F22--alt:133
-F23--alt:134
-F24--alt:135
-NumLock--alt:144
-Scroll--alt:145
-LeftShift--alt:160
-RightShift--alt:161
-LeftControl--alt:162
-RightControl--alt:163
-LeftAlt--alt:164
-RightAlt--alt:165
-BrowserBack--alt:166
-BrowserForward--alt:167
-BrowserRefresh--alt:168
-BrowserStop--alt:169
-BrowserSearch--alt:170
-BrowserFavorites--alt:171
-BrowserHome--alt:172 Browser Start and Homekey.
-VolumeMute--alt:173
-VolumeDown--alt:174
-VolumeUp--alt:175
-MediaNextTrack--alt:176
-MediaPreviousTrack--alt:177
-MediaStop--alt:178
-MediaPlayPause--alt:179
-LaunchMail--alt:180
-SelectMedia--alt:181
-LaunchApplication1--alt:182
-LaunchApplication2--alt:183
-OemSemicolon--alt:186
-OemPlus--alt:187
-OemComma--alt:188
-OemMinus--alt:189
-OemPeriod--alt:190
-OemQuestion--alt:191
-OemTilde--alt:192
-OemColon--alt:193
-OemExclamationMark--alt:194
-PunctuatedU--alt:195
-Asterisk--alt:196
-Caret--alt:197
-DollarSign--alt:198
-OemCloseParenthesis--alt:199
-Squared--alt:200
-OemOpenBrackets--alt:219 US keyboard.
-OemPipe--alt:220 US keyboard.
-OemCloseBrackets--alt:221 US keyboard.
-OemQuotes--alt:222 US keyboard.
-Oem8--alt:223 US keyboard.
-OemBackslash--alt:226 The OEM angle bracket or backslash key on the RT102 key keyboard.
-ProcessKey--alt:229 IME PROCESS key.
-Attn--alt:246
-Crsel--alt:247
-Exsel--alt:248
-EraseEof--alt:249
-Play--alt:250
-Zoom--alt:251
-Pa1--alt:253
-OemClear--alt:254 
-ChatPadGreen--alt:0xCA
-ChatPadOrange--alt:0xCB
-Pause--alt:0x13 
-ImeConvert--alt:0x1c
-ImeNoConvert--alt:0x1d
-Kana--alt:0x15 Japanese keyboard
-Kanji--alt:0x19 Japanese keyboard
-OemAuto--alt:0xf3
-OemCopy--alt:0xf2
-OemEnlW--alt:0xf4
-}
+
+vector.
+	--table = (vector or table)|numeric
+	vector.Abs(table)
+	--[[table, table|numeric]]
+	vector.Add(table, value)
+	--[[vector|numeric, vector|numeric, vector|numeric]]
+	vector.Clamp(table, min, max)
+	vector.Cross(table, table)--?
+	--[[table|numeric, table|numeric]]
+	vector.Distance(value, value)
+	vector.DistanceSquared(table, table)
+	vector.Divide(table, value)
+	vector.Dot(?, ?)
+	vector.Length(?)
+	vector.Lerp(?, ?, ?)
+	vector.Max(?, ?)
+	vector.Min(?, ?)
+	vector.Modulo(?, ?)
+	vector.Multiply(?, ?)
+	vector.Negate(?, ?)
+	--[[numeric, numeric, numeric, numeric]]
+	vector.New(x, y, z, w)
+	vector.Normalize(table)
+	vector.One(?)
+	vector.Reflect(?, ?)
+	vector.RemEuclid(?, ?)
+	vector.SquareRoot(?)
+	vector.Subtract(value, value)--{x = , y = }
+	vector.Table(table)
+	vector.UnitW(vector)--{0, 0, 0, 1}
+	vector.UnitX(vector)--{1, 0, 0, 0}
+	vector.UnitY(vector)--{0, 1, 0, 0}
+	vector.UnitZ(vector)--{0, 0, 1, 0}
+	vector.Unpack(?)
+	vector.Zero
+	
+	
+	vector3:vector4(value)
+
+local mt = {__index = function (t) return t.___ end}
+  local key = {}	-- unique key
+	local mt = {__index = function(t) return t[key] end}
+	function setDefault(t, d)
+	  t[key] = d
+	  setmetatable(t, mt)
+	end
+function newIndex()
+	local myTable = {someKey = {5}}
+	local myMetatable = {}
+	setmetatable(myTable, myMetatable)
+	myMetatable.__newindex = function(Table, Key, Value)
+	print("You can't set a new value directly!")
+	end
+	myTable.newKey = "Hello, World!" -- Output: You can't set a new value directly!
+end
+function Index()
+	local myTable = {5}
+	local myMetatable = {}
+	setmetatable(myTable, myMetatable)
+	myMetatable.__index = function(Table, key)
+	return "Key '" .. key .. "' not found!"
+	end
+	print(myTable[2]) -- Output: Key 'someKey' not found!
+end
+
+function Call()
+	local myTable = {}
+	local myMetatable = {}
+	setmetatable(myTable, myMetatable)
+	myMetatable.__call = function(table, ...)
+	print("The table was called with arguments:", ...)
+	end
+	myTable(1, "Hello") -- Output: The table was called with arguments: 1 Hello-- do
+end
+function Math()
+	local myTable = {}
+	local myMetatable = {}
+	setmetatable(myTable, myMetatable)
+	myMetatable.__add = function(table, value)
+	return value + 5
+	end
+	print(myTable + 10) -- Output: 15
+end
+| MoonSharp
+[[prime tables]]
+primetable = ${ ... }
+string.contains(string, string)
+string.startsWith(string, string)
+string.endsWith(string, string)
+string.unicode(string, ¿start, ¿end)
+--- turns a json-like string into a table
+json.parse(string)
+--- turns a table into a json-like string
+json.serialize(table)
+json.isNull(varable)
+json.null()
+| MetaTables
+rawequal
+rawget
+rawlen
+rawset
+__index
+__newindex
+__tostring --[[tostring]]
+__concat
+__call
+__len
+__metatable --[[getmetatable]]
+__add--	+
+__mod-- %
+__mul--	*
+__sub--	-
+__div--	/
+__unm--	negation
+__pow--	^
+__eq--	=
+__lt--	>  (less than)
+__le--	>= (Less than or Equal)
+__mode-- weaktable options ("k", "v", "kv", "s")
+__ipairs
+__pairs
+__gc
+
+__name
+__shr
+__idiv
+__shl
+__close
+
+MetaTable = {}
+__index--on call Table[Key]
+	MetaTable.__index = function(TABLE, KEY)
+		[[
+		If TABLE[KEY] exsists; return TABLE[KEY]
+		Otherwise; return this function
+		]]
+	end
+__newindex--on call Table[Key] = Value
+	MetaTable.__newindex = function(TABLE, KEY, VALUE)
+		[[
+		If TABLE[KEY] exsists; return TABLE[KEY]
+		Otherwise; return this function
+		]]
+	end
+__len--on call #Table
+	MetaTable.__len = function(TABLE)
+		[[
+		Always; return this function
+		]]
+	end
+__metatable
+	MetaTable.__metatable = "not your business"
+	getmetatable(Table)--> not your business
+	setmetatable(Table, {})--> error: cannot change protected metatable
+__mode
+	MetaTable.__metatable = "k"-- modes can be "k", "v", "kv", or "s'
