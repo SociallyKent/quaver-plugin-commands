@@ -21,12 +21,12 @@ string -- "one" or "1"
 table|vector -- {1, "one"}
 [[ ]] " " ' '
 
---[[
+--[=[ 
 tostring()
 tonumber()
 setmetatable() getmetatable() rawequal() rawget() rawlen() rawset()
 print|error
---]]
+-- ]=]
 
 table.
 	table.concat
@@ -75,32 +75,33 @@ imgui.GetTime()
 imgui.
 |Detect
 	"Mouse"
-		--[[imgui_mouse_button]]
+		--[=[ imgui_mouse_button ]=]
 		imgui.GetMouseClickedCount(button)
+		--[=[  ]=]
 		imgui.GetMouseCursor()
-		--[[imgui_mouse_button, numeric]]
+		--[=[ imgui_mouse_button, numeric ]=]
 		imgui.GetMouseDragDelta(¿button, ¿threshold)
-			--[[imgui_mouse_button, numeric]]
+			--[=[ imgui_mouse_button, numeric ]=]
 			imgui.IsMouseDragging(button, ¿threshold)
-			--[[imgui_mouse_button]]
+			--[=[ imgui_mouse_button ]=]
 			imgui.ResetMouseDragDelta(¿button)
 		imgui.GetMousePos()
 		imgui.GetMousePosOnOpeningCurrentPopup()
 		imgui.IsAnyMouseDown()
-		--[[imgui_mouse_button, boolean]]
+		--[=[ imgui_mouse_button, boolean ]=]
 		imgui.IsMouseClicked(button, ¿repeat)
-		--[[imgui_mouse_button]]
+		--[=[ imgui_mouse_button ]=]
 		imgui.IsMouseDoubleClicked(button)
 		imgui.IsMouseDown(button)
-		--[[{x, y}, {x, y}, boolean]]
+		--[=[ {x, y}, {x, y}, boolean ]=]
 		imgui.IsMouseHoveringRect(min, max, ¿clip)
-		--[[{x, y}]]
+		--[=[ {x, y} ]=]
 		imgui.IsMousePosValid(¿pos)
-		--[[imgui_mouse_button]]
+		--[=[ imgui_mouse_button ]=]
 		imgui.IsMouseReleased(button)
-		--[[imgui_mouse_cursor]]
+		--[=[ imgui_mouse_cursor ]=]
 		imgui.SetMouseCursor(cursor)
-		--[[boolean]]
+		--[=[ boolean ]=]
 		imgui.SetNextFrameWantCaptureMouse(value)
 	"keyboard"
 		--Alt, Shift, Control:
@@ -109,30 +110,48 @@ imgui.
 		imgui_key.[[Dirrection]]Arrow
 		--Letters
 		imgui_key.[[Key]]
-		--[[imgui_key, numeric, numeric]]
+		--[=[ imgui_key, numeric, numeric ]=]
 		imgui.GetKeyPressedAmount(key, delay, rate)
-		imgui.GetKeyName(key)--[[imgui_key]]
-		imgui.GetKeyIndex(key)--[[imgui_key]]
+		imgui.GetKeyName(key)--[=[ imgui_key ]=]
+		imgui.GetKeyIndex(key)--[=[ imgui_key ]=]
 	
-		--[[imgui_key?]]
+		--[=[ imgui_key? ]=]
 		imgui.IsKeyChordPressed(key_chord)
-		imgui.IsKeyDown(key)--[[imgui_key]]
-		--[[imgui_key, boolean]]
+		imgui.IsKeyDown(key) [=[ imgui_key ]=]
+		--[=[ imgui_key, boolean ]=]
 		imgui.IsKeyPressed(key, ¿repeat)
-		imgui.IsKeyReleased(key)--[[imgui_key]]
+		imgui.IsKeyReleased(key)--[=[ imgui_key ]=]
 	
-		imgui.SetItemKeyOwner(key)--[[imgui_key]]
-		--[[numeric]]
+		imgui.SetItemKeyOwner(key)--[=[ imgui_key ]=]
+		--[=[ numeric ]=]
 		imgui.SetKeyboardFocusHere(¿offset)
-		--[[boolean]]
+		--[=[ boolean ]=]
 		imgui.SetNextFrameWantCaptureKeyboard(capture)
 	
-		--[[imgui_key?, imgui_input_flags]]
+		--[=[ imgui_key?, imgui_input_flags ]=]
 		imgui.ShortCut(key_chord, ¿flags)
 	
-	--[[(boolean)
-	imgui.CaptureKeyboardFromApp(?)]]
+	--[=[ (boolean)
+	imgui.CaptureKeyboardFromApp(?) ]=]
 |"Show"
+	ShowAboutWindow() : void
+    ShowAboutWindow(ref bool p_open) : void
+    ShowDebugLogWindow() : void
+    ShowDebugLogWindow(ref bool p_open) : void
+    ShowDemoWindow() : void
+    ShowDemoWindow(ref bool p_open) : void
+    ShowFontSelector(ReadOnlySpan<char> label) : void
+    ShowFontSelector(string label) : void
+    ShowIDStackToolWindow() : void
+    ShowIDStackToolWindow(ref bool p_open) : void
+    ShowMetricsWindow() : void
+    ShowMetricsWindow(ref bool p_open) : void
+    ShowStyleEditor() : void
+    ShowStyleEditor(ImGuiStylePtr @ref) : void
+    ShowStyleSelector(ReadOnlySpan<char> label) : bool
+    ShowStyleSelector(string label) : bool
+    ShowUserGuide() : void
+	
 	imgui.ShowAboutWindow()
 	imgui.ShowDemoWindow()
 	imgui.ShowFontSelector()--crashes
@@ -140,122 +159,125 @@ imgui.
 	imgui.ShowStyleEditor()
 	imgui.ShowStyleSelector()--crashes
 	imgui.ShowUserGuide()
+	
+	imgui.ShowDebugLogWindow()
 |""
-	--[["##text" = invisable]]
+	--[[ "##text" = invisable ]]
 	--ex	imgui.button("##can't see me") imgui.button("can see me")
 	---Does not work with imgui.Text
 	'Bullet'
+		--[=[  ]=]
 		imgui.Bullet()
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.BulletText(value)
 	'Button'
-		--[[name, imgui_dir]]
+		--[=[ name, imgui_dir ]=]
 		imgui.ArrowButton(name, dirrection)
-		--[[varable, {x, y}]]
+		--[=[ varable, {x, y} ]=]
 		imgui.Button(name, ¿size)
-		--[[varable, {x, y}, imgui_button_flags]]
+		--[=[ varable, {x, y}, imgui_button_flags ]=]
 		imgui.InvisibleButton(name, size, ¿flags)
-		--[[varable, numeric?, numeric?]]
+		--[=[ varable, numeric?, numeric? ]=]
 		imgui.RadioButton(name, value, ¿value_button)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.SmallButton(name)
 	'Checkbox'
-		--[[varable, boolean]]
+		--[=[ varable, boolean ]=]
 		imgui.CheckBox(name, value)
-		--[[varable, ?, ?]]
+		--[=[ varable, ?, ? ]=]
 		imgui.CheckBoxFlags(name, id, value)
 	'CollapsingHeader'
-		--[[varable, boolean, imgui_tree_node_flags]]
+		--[=[ varable, boolean, imgui_tree_node_flags ]=]
 		imgui.CollapsingHeader(name, ¿visable, ¿flags)--(text, flags)/(text, state, flags)
 	'Combo'
-		--[[varable, numeric, string|vector, numeric]]
+		--[=[ varable, numeric, string|vector, numeric ]=]
 		imgui.Combo(name, item, items, ¿length)--if string: "item1\0...\0" : otherwise the usual {item1, ...}
-		--[[varable, varable, imgui_combo_flags]]
+		--[=[ varable, varable, imgui_combo_flags ]=]
 		imgui.BeginCombo(name, preview, ¿flags)
 		imgui.EndCombo()
 	'Drag'
-		--[[varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
-		imgui.DragFloat(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)		
+		--[=[ varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags ]=]
+		imgui.DragFloat(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags) [=[ boolean, numeric ]=]	
 			DragFloat2 DragFloat3 DragFloat4--same, but value = vector{2/3/4}
-		--[[varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags]]
+		--[=[ varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags ]=]
 		imgui.DragFloatRange2(name, value1, value2, ¿speed, ¿min, ¿max, ¿format, ¿max_format, ¿flags)
-		--[[varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
-		imgui.DragInt(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)
+		--[=[ varable, numeric, numeric, numeric, numeric, format, imgui_slider_flags ]=]
+		imgui.DragInt(name, value, ¿speed, ¿min, ¿max, ¿format, ¿flags) [=[ boolean, numeric ]=]
 			DragInt2 DragInt3 DragInt4--same, but value = vector{2/3/4}
-		--[[varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags]]
+		--[=[ varable, numeric, numeric, numeric, numeric, numeric, format, format, imgui_slider_flags ]=]
 		imgui.DragIntRange2(name, min, max, ¿speed, ¿min, ¿max, ¿format, ¿max_format, ¿flags)
-		--[[varable, imgui_data_type, dependant numeric, numeric, numeric, numeric, format, imgui_slider_flags]]
+		--[=[ varable, imgui_data_type, dependant numeric, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 		imgui.DragScalar(name, data, value, ¿speed, ¿min, ¿max, ¿format, ¿flags)
-			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, numeric, format, imgui_slider_flags]]
+			--[=[ varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 			imgui.DragScalarN(name, data, value, components, ¿speed, ¿min, ¿max, ¿format, ¿flags)
 	'InputText'
 			---'Double' refers to decimal numbers (1.0/1.5/2.0). Will also take non decimal numbers.
-		--[[varable, numeric(double), numeric, numeric, format, imgui_input_text_flags]]
+		--[=[ varable, numeric(double), numeric, numeric, format, imgui_input_text_flags ]=]
 		imgui.InputDouble(name, value, ¿step, ¿step_fast, ¿format, ¿flags)
-		--[[varable, numeric, numeric, numeric, format, imgui_input_text_flags]]
+		--[=[ varable, numeric, numeric, numeric, format, imgui_input_text_flags ]=]
 		imgui.InputFloat(name, value, ¿step, ¿step_fast, ¿format, ¿flags)
-			InputFloat2 InputFloat3 InputFloat4--(name, vector{2/3/4}, ¿flags)
-		--[[varable, numeric, numeric, numeric, imgui_input_text_flags]]
+			InputFloat2 InputFloat3 InputFloat4--(name, table{2/3/4}, ¿format, ¿flags)
+		--[=[ varable, numeric, numeric, numeric, imgui_input_text_flags ]=]
 		imgui.InputInt(name, value, ¿step, ¿step_fast, ¿flags)
-			InputInt2 InputInt3 InputInt4--(name, vector{2/3/4}, ¿flags)
-		--[[varable, imgui_data_type, dependant numeric, numeric, numeric, format, imgui_input_text_flags]]
+			InputInt2 InputInt3 InputInt4--(name, table{2/3/4}, ¿format, ¿flags)
+		--[=[ varable, imgui_data_type, dependant numeric, numeric, numeric, format, imgui_input_text_flags ]=]
 		imgui.InputScaler(name, data, value, ¿step, ¿step_fast, ¿format, ¿flags)
-			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, format, imgui_input_text_flags_flags]]
+			--[=[ varable, imgui_data_type, dependant numeric, numeric?, numeric, numeric, format, imgui_input_text_flags_flags ]=]
 			imgui.InputScalerN(name, data, value, components, ¿step, ¿step_fast, ¿format, ¿flags)
-		--[[varable, varable, numeric, imgui_input_text_flags_flags, ?, ?]]
+		--[=[ varable, varable, numeric, imgui_input_text_flags_flags, ?, ? ]=]
 		imgui.InputText(name, value, length, ¿flags, ¿callback, ¿user_data)
-		--[[varable, varable, numeric, {x, y}, imgui_input_text_flags_flags, ?, ?]]
+		--[=[ varable, varable, numeric, {x, y}, imgui_input_text_flags_flags, ?, ? ]=]
 		imgui.InputTextMultiline(name, value, length, size, ¿flags, ¿callback, ¿user_data)
-		--[[varable, varable, varable, numeric, imgui_input_text_flags_flags, ?, ?]]
+		--[=[ varable, varable, varable, numeric, imgui_input_text_flags_flags, ?, ? ]=]
 		imgui.InputTextWithHint(name, hint, value, length, ¿flags, ¿callback, ¿user_data)
 	'ListBox'
-		--[[varable, numeric, vector, numeric, numeric]]
+		--[=[ varable, numeric, vector, numeric, numeric ]=]
 		imgui.ListBox(name, item, items, count, ¿length)
-		--[[varable, {x, y}]]
+		--[=[ varable, {x, y} ]=]
 		imgui.BeginListBox(name, ¿size)
 		imgui.EndListBox()
 	'Menu'
 		imgui.BeginMainMenuBar()
 		imgui.EndMainMenuBar()
-		--[[varable, ¿boolean|string, ¿nil|boolean, ¿nil|boolean]]
+		--[=[ varable, ¿boolean|string, ¿nil|boolean, ¿nil|boolean ]=]
 		imgui.MenuItem(name, ¿enabled|shortcut, ¿|value, ¿|enabled)
-		--[[varable, boolean]]
+		--[=[ varable, boolean ]=]
 		imgui.BeginMenu(name, ¿enabled)
 		imgui.EndMenu()
 		imgui.BeginMenuBar()
 		imgui.EndMenuBar()
 	'PlotHistogram'/'PlotLines'
-		--[[string, vector{numeric...}, numeric, numeric, varable, numeric, numeric, {x, y}, numeric?]]
+		--[=[ string, vector{numeric...}, numeric, numeric, varable, numeric, numeric, {x, y}, numeric? ]=]
 		imgui.PlotHistogram(name, value, length, ¿offset, ¿overlay, ¿min, ¿max, ¿size, ¿stride)
-		--[[string, vector{numeric...}, numeric, numeric, varable, numeric, numeric, {x, y}, numeric?]]
+		--[=[ string, vector{numeric...}, numeric, numeric, varable, numeric, numeric, {x, y}, numeric? ]=]
 		imgui.PlotLines(name, value, length, ¿offset, ¿overlay, ¿min, ¿max, ¿size, ¿stride)
 	'ProgressBar'
-		--[[numeric/numeric, {x, y}, varable]]
+		--[=[ numeric/numeric, {x, y}, varable ]=]
 		imgui.ProgressBar(fraction, ¿size, ¿overlay)
 	'Selectable'/'MultiSelect'
 		--(varable, boolean, imgui_selectable_flags, {x, y})
 		imgui.Selectable(name, value, ¿flags, ¿size))
-		--[[imgui_multi_select_flags, numeric, numeric]]
+		--[=[ imgui_multi_select_flags, numeric, numeric ]=]
 		imgui.BeginMultiSelect(flags, ¿length, ¿count)
 		imgui.EndMultiSelect()--returns: ImGuiMultiSelectIOPtr
 	'Slider'
-		--[[varable, radious, numeric, numeric, format, imgui_slider_flags]]
+		--[=[ varable, radious, numeric, numeric, format, imgui_slider_flags ]=]
 		imgui.SliderAngle(name, value, ¿min, ¿max, ¿format, ¿flags)
-		--[[varable, numeric, numeric, numeric, format, imgui_slider_flags]]
+		--[=[ varable, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 		imgui.SliderFloat(name, value, min, max, ¿format, ¿flags)
 			SliderFloat2 SliderFloat3 SliderFloat4--same, but value = vector{2/3/4}
-			--[[varable, {x, y}, numeric, numeric, numeric, format, imgui_slider_flags]]
+			--[=[ varable, {x, y}, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 			imgui.VSliderFloat(name, size, value, min, max, ¿format, ¿flags)
-		--[[varable, numeric, numeric, numeric, format, imgui_slider_flags]]
+		--[=[ varable, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 		imgui.SliderInt(name, value, min, max, ¿format, ¿flags)
 			SliderInt2 SliderInt3 SliderInt4--same, but value = vector{2/3/4}
-			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags]]
+			--[=[ varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags ]=]
 			imgui.VSliderInt(name, size, value, min, max, ¿format, ¿flag)
-		--[[varable, imgui_data_type, numeric, numeric?, numeric?, format, imgui_slider_flags]]
-		imgui.SliderScaler(name, data, value, min, max, ¿format, ¿flag)
-			--[[varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags]]
-			imgui.SliderScalerN(name, data, value, min, max, ¿format, ¿flag)
-			--[[varable, imgui_data_type, numeric, numeric, numeric, format, imgui_slider_flags]]
+		--[=[ varable, imgui_data_type, numeric, numeric?, numeric?, format, imgui_slider_flags ]=]
+		imgui.SliderScalar(name, data, value, min, max, ¿format, ¿flag)
+			--[=[ varable, imgui_data_type, dependant numeric, numeric?, numeric?, format, imgui_slider_flags ]=]
+			imgui.SliderScalarN(name, data, value, min, max, ¿format, ¿flag)
+			--[=[ varable, imgui_data_type, numeric, numeric, numeric, format, imgui_slider_flags ]=]
 			imgui.VSliderScalar(name, size, data, value, min, max, ¿format, ¿flag)
 	'Spacers'
 		imgui.Dummy()
@@ -266,113 +288,140 @@ imgui.
 		imgui.Separator()
 		imgui.Spacing()
 	'Text'
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.BulletText(value)
-		--[[varable, varable]]
+		--[=[ varable, varable ]=]
 		imgui.LabelText(value1, value2)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.SeparatorText(value)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.Text(value)
-		--[[vector4, varable]]
+		--[=[ vector4, varable ]=]
 		imgui.TextColored(color, value)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TextDisabled(value)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TextLink(value)
-		--[[varable, string]]
+		--[=[ varable, string ]=]
 		imgui.TextLinkOpenURL(value, ¿link)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TextUnformatted(value)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TextWrapped(value)
 	'TreeNode'
-		--[[varable, string?]]
+		--[=[ varable, string? ]=]
 		imgui.TreeNode(name, ¿value)
-		--[[varable, imgui_tree_node_flags, string?]]
+		--[=[ varable, imgui_tree_node_flags, string? ]=]
 		imgui.TreeNodeEx(name, ¿flags, ¿value)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TreePush(name)
 		imgui.TreePop()
 		-- imgui.TreeNodeV(string)
 	'Tab'
-		--[[varable, imgui_tab_bar_flags]]
+		--[=[ varable, imgui_tab_bar_flags ]=]
 		imgui.BeginTabBar(name, ¿flags)
 		imgui.EndTabBar()
-		--[[varable, imgui_tab_item_flags]]
+		--[=[ varable, imgui_tab_item_flags ]=]
 		imgui.TabItemButton(name, ¿flags)
-		--[[varable?]]
+		--[=[ varable? ]=]
 		imgui.SetTabItemClosed(id)
-		--[[varable, boolean, imgui_tab_item_flags]]
+		--[=[ varable, boolean, imgui_tab_item_flags ]=]
 		imgui.BeginTabItem(name, ¿open, ¿flags)
 		imgui.EndTabItem()
 	'Value'
-		--[[varable, varable|format]]
+		--[=[ varable, varable|format ]=]
 		imgui.Value(value1, value2)
 	'Misc'
 		imgui.Separator()
 |"spacers"
 	'Columns'
-		--[[numeric, imgui_id, boolean]]
+		--[=[ numeric, imgui_id, boolean ]=]
 		imgui.Columns(¿count, ¿id, ¿border)
 		imgui.GetColumnIndex()
-		--[[numeric]]
+		--[=[ numeric ]=]
 		imgui.GetColumnOffset(¿column)
-		--[[numeric, numeric]]
+		--[=[ numeric, numeric ]=]
 		imgui.SetColumnOffset(column, offset)
 		imgui.GetColumnsCount()
-		--[[numeric]]
+		--[=[ numeric ]=]
 		imgui.GetColumnWidth(¿column)
-		--[[numeric, numeric]]
+		--[=[ numeric, numeric ]=]
 		imgui.SetColumnWidth(column, width)
 	'Indent'
-		--[[numeric]]
+		--[=[ numeric ]=]
 		imgui.Indent(¿width)
-		--[[numeric]]
-		imgui.Unindent(¿width)
+		--[=[ numeric ]=]
+		imgui.Unindent(¿width) [=[ ]=]
 	'Table'
-		imgui.TableAngledHeadersRow()
-		imgui.TableGetColumnCount()
-		--[[numeric]]
-		imgui.TableGetColumnFlags(¿column)
+		--[=[ string, numeric, imgui_table_flags, {x, y}, numeric ]=]
+		imgui.BeginTable(name, columns, ¿flags, ¿size, ¿width) [=[ boolean ]=]
+		--[=[  ]=]
+		imgui.EndTable() [=[  ]=]
+		--[=[  ]=]
+		imgui.TableAngledHeadersRow() [=[  ]=]
+		--[=[  ]=]
+		imgui.TableGetColumnCount() [=[ numeric ]=]
+		--[=[ numeric ]=]
+		imgui.TableGetColumnFlags(¿column) [=[ imgui_table_flags ]=]
+		--[=[  ]=]
+		imgui.TableGetColumnIndex() [=[ numeric ]=]
+		--[=[ numeric ]=]
+		imgui.TableGetColumnName(¿column) [=[ string ]=]
+		--[=[  ]=]
+		imgui.TableGetHoveredColumn() [=[ numeric ]=]
+		--[=[  ]=]
+		imgui.TableGetRowIndex() [=[ numeric ]=]
+		--[=[ imgui_table_row_flags, numeric ]=]
+		imgui.TableNextRow(¿flags, ¿minimum-height) [=[  ]=]
+		--[=[ imgui_table_bg_target, numeric, numeric ]=]
+		imgui.TableSetBgColor(target, color, ¿column) [=[  ]=]
+		--[=[ numeric, boolean ]=]
+		imgui.TableSetColumnEnabled(column, enabled) [=[  ]=] 
+		--[=[ numeric ]=]
+		imgui.TableSetColumnIndex(column) [=[  ]=]
+		--[=[ string, imgui_table_column_flags, numeric, numeric? ]=]
+		imgui.TableSetupColumn(name, ¿flags, ¿width, ¿user_id) [=[  ]=]
+		--[=[ numeric, numeric ]=]
+		imgui.TableSetupScrollFreeze(column, row) [=[  ]=]
+		
 		imgui.TableGetColumnIndex
-		--[[numeric]]
+		--[=[ numeric ]=]
 		imgui.TableGetColumnName(¿column)
 		imgui.TableGetHoveredColumn
 		imgui.TableGetRowIndex
 		imgui.TableGetSortSpecs
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.TableHeader(name)
 		imgui.TableHeadersRow
 		imgui.TableNextColumn
-		--[[imgui_table_row_flags, numeric]]
+		--[=[ imgui_table_row_flags, numeric ]=]
 		imgui.TableNextRow(¿flags, ¿min_length)
-		--[[imgui_table_bg_target, color, numeric]]
+		--[=[ imgui_table_bg_target, color, numeric ]=]
 		imgui.TableSetBgColor(target, color, ¿column)
-		--[[numeric, boolean]]
+		--[=[ numeric, boolean ]=]
 		imgui.TableSetColumnEnabled(column, value)
-		--[[numeric]]
+		--[=[ numeric ]=]
 		imgui.TableSetColumnIndex(column)
-		---[[varable, imgui_table_column_flags, numeric, numeric?]]
+		---[=[ varable, imgui_table_column_flags, numeric, numeric? ]=]
 		imgui.TableSetupColumn(name, ¿flags, ¿width, ¿user_id)
-		--[[numeric, numeric]]
+		--[=[ numeric, numeric ]=]
 		imgui.TableSetupScrollFreeze(columns, rows)
-		--[[varable, numberic, imgui_table_flags, {x, y}, numeric]]
+		--[=[ varable, numberic, imgui_table_flags, {x, y}, numeric ]=]
 		imgui.BeginTable(name, columns, ¿flags, ¿size, ¿width)
 		imgui.EndTable()
 	'Misc'
-		--[[{x, y}]]
+		--[=[ {x, y} ]=]
 		imgui.Dummy(size)
 		imgui.NewLine()
-		--[[numeric, numeric]]
+		--[=[ numeric, numeric ]=]
 		imgui.SameLine(¿offset-x, ¿spacing)
 		imgui.Spacing()
 
 |
 	'ToolTip'
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.SetTooltip(name)
-		--[[varable]]
+		--[=[ varable ]=]
 		imgui.SetItemTooltip
 		imgui.BeginItemTooltip()
 		imgui.EndTooltip()
@@ -394,8 +443,13 @@ imgui.
 		imgui.GetDragDropPayload("MY_PAYLOAD", 1, 1)
 	'Disabled'
 	imgui.BeginDisabled() | imgui.EndDisabled()
+	'Frame'
+	imgui.BeginFrame() | imgui.EndFrame()
 	'Group'
 	imgui.BeginGroup() | imgui.EndGroup()
+	'ListBox'
+	imgui.BeginListBox(name, ¿size)
+	imgui.EndListBox()
 	'Menu'/'MenuBar'/'MainMenuBar'
 	-- imgui.BeginMenuBar()
 	-- imgui.EndMenuBar()
@@ -416,61 +470,6 @@ imgui.
 	TableFindByID
 	imgui.BeginTable(string, columns, flags, outer_size, inner_width)
 	imgui.EndTable()
-		--
-		imgui.TableSetColumnIndex() | imgui.TableGetColumnIndex()
-	BeginTable()--user begin into a table
-		BeginChild()--(if ScrollX/ScrollY is set)
-		imgui.TableBeginInitMemory()--first time table is used
-		imgui.TableResetSettings()--on settings reset
-		imgui.TableLoadSettings()--on settings load
-		imgui.TableBeginApplyRequests()--apply queued resizing/reordering/hiding requests
-			imgui.TableSetColumnWidth()--apply resizing width(for mouse resize, often requested by previous frame)
-				imgui.TableUpdateColumnsWeightFromWidth()--recompute columns weights(of stretch columns) from the irrespective width
-	imgui.TableSetupColumn()--user submit columns details(optional)
-	imgui.TableSetupScrollFreeze()--user submit scroll freeze information(optional)
-	--
-	--internal only--imgui.TableUpdateLayout()--follow up to Begin imgui.Table():setup everything:widths, columns positions, clipping rectangles.Automatically called by the FIRST call to imgui.TableNextRow() or imgui.TableHeadersRow().
-		imgui.TableSetupDrawChannels()--setup ImDrawList channels
-		imgui.TableUpdateBorders()--detect hovering columns for resize, a head of contents submission
-		imgui.TableBeginContextMenuPopup()
-			imgui.TableDrawDefaultContextMenu()--draw right-click context menu contents
-	--
-	imgui.TableHeadersRow() or imgui.TableHeader()--user submit a headers row (optional)
-		imgui.TableSortSpecsClickColumn()--when left-clicked: alter sort order and sort direction
-		imgui.TableOpenContextMenu()--when right-clicked: trigger opening of the default context menu
-	imgui.TableGetSortSpecs()--user queries updated sort specs(optional,generally after submitting headers)
-	imgui.TableNextRow()--user begin into a new row(also automatically called by imgui.TableHeadersRow())
-		imgui.TableEndRow()--finish existing row
-		imgui.TableBeginRow()--add a new row
-	imgui.TableSetColumnIndex()/imgui.TableNextColumn()--user begin into a cell
-		imgui.TableEndCell()--close existing column/cell
-		imgui.TableBeginCell()--enter into current column/cell
-	--[...]									--user emit contents
-	--
-	EndTable()	--user ends the table
-		TableDrawBorders()--draw outer borders, inner vertical borders
-		TableMergeDrawChannels()--merge draw channels if clipping isn't required
-		EndChild()--(if Scroll X/Scroll Y is set)
-		TableSetColumnIndex() / TableNextColumn()
-			TableBeginCell() | TableEndCell()
-		imgui.TableNextColumn()
-		imgui.TableGetSortSpecs
-		imgui.TableSetupScrollFreeze()
-		imgui.TableSetupColumn()
-		imgui.TableHeadersRow()
-		imgui.TableUpdateLayout
-		imgui.TableSetupDrawChannels
-		imgui.TableUpdateBorders
-		imgui.TableSetColumnWidth
-		imgui.TableNextRow
-		imgui.PushID() | imgui.PopID()
-		TableResized
-		TableResizedColumnNextWidth
-		AutoFitSingleColumn
-		InstanceCurrent
-		ReorderColumn
-		ReorderColumnDir
-		HeldHeaderColumn
 	'Tooltip'
 	imgui.BeginTooltip() | imgui.EndTooltip()
 		--
@@ -489,10 +488,26 @@ imgui.
 	imgui.SetCursorStartPos() | imgui.GetCursorStartPos()
 	imgui.SetCursorScreenPos() | imgui.GetCursorScreenPos() 
 	imgui.SetWindowPos() | imgui.GetWindowPos()
+	'Window'
+	imgui.SetWindowCollapsed(¿name, collapsed, ¿condition)--[=[ string, boolean, imgui_cond ]=][=[ ]=]
+	imgui.GetWindowCollapsed(¿name, collapsed, ¿condition)--[=[ string, boolean, imgui_cond ]=][=[ ]=]
+	
+	imgui.SetWindowFocus(¿name)--[=[ string ]=][=[ ]=]
+	
+	imgui.SetWindowPos(¿name, pos, ¿condition)--[=[ string, {x, y}, imgui_cond ]=][=[ ]=]
+	imgui.GetWindowPos()--[=[  ]=][=[ {x, y} ]=]
+	
+	imgui.SetWindowSize(¿name, pos, ¿condition)--[=[ string, {x, y}, imgui_cond ]=][=[ ]=]
+	imgui.GetWindowSize()--[=[  ]=][=[ {x, y} ]=]
+	imgui.GetWindowWidth()--[=[  ]=][=[ numeric ]=]
+	imgui.GetWindowHeight()--[=[  ]=][=[ numeric ]=]
+
 	'FontSize'/'WindowSize'
 	imgui.SetFontSize() | imgui.GetFontSize()
 	imgui.SetWindowFontScale() | imgui.GetWindowFontScale()
 	imgui.SetWindowSize() | imgui.GetWindowSize()
+	imgui.GetWindowWidth()
+	imgui.GetWindowHeight()
 	'ClipboardText'
 	imgui.SetClipboardText(value) | imgui.GetClipboardText()
 	'DrawList'
@@ -517,6 +532,7 @@ imgui.
 		imgui.[]Min()
 	--to find:
 	CalcItemWidth()
+	CalcTextSizeImpl()
 |"push"|"pop"
 	;--push overrides current style	  | pop restores previous style
 	'StyleCol'/'StyleVar'
@@ -532,6 +548,7 @@ imgui.
 	imgui.PushButtonRepeat() | imgui.PopButtonRepeat()
 	'Font'
 	imgui.PushFont() | imgui.PopFont()
+
 	imgui.PushClipRect(min{x, y}, max{x, y}, boolean) | imgui.PopClipRect
 |Utils
 	'item'
@@ -545,9 +562,8 @@ imgui.
 		imgui.SetItemAllowOverlap()
 	'text'
 		imgui.CalcTextSize(text, textend, hidedoubldashext, wrapwidth)
-	--[[numeric|{min, max}, numeric]]
+	--[=[ numeric|{min, max}, numeric ]=]
 	imgui.IsRectVisible(min|size, max|)
-	imgui.GetKeyName
 	imgui.GetKeyName
 	--Global imgui time
 	imgui.GetTime()
@@ -555,6 +571,12 @@ imgui.
 	imgui.GetFrameCount()
 	imgui.CalcTextSize(Text)
 	imgui.GetFrameHeight()
+--| to find:
+imgui.SetNextItemSelectionUserData(?)
+imgui.GetMainViewport() : ImGuiViewportPtr
+imgui.DockSpace
+imgui.DebugLog(string fmt) : void
+imgui.GetPlatformIO() : ImGuiPlatformIOPtr
 Mathematics:
 + --- Addition
 - --- Subtraction/Subtract
@@ -600,14 +622,14 @@ bit32:
 --X numeric
 --Y numeric
 bit32.arshift(X, Y)
- --get bitwise and
+ --get bitwise-and
 bit32.band(...)
- --get bitwise not
+ --get bitwise-not
 --X numeric
 bit32.bnot(X)
  --get bitwise or
 bit32.bor(...)
- --get bitwise xor
+ --get bitwise-xor
 bit32.bxor
  --get bitwise 'and' and if different from zero.
 bit32.btest(...)
@@ -625,14 +647,19 @@ bit32.lshift(X, Y)
  --bit shift X shifted right by Y
 bit32.rshift(X, Y)
 
-
+coroutine.create(  )--[=[  ]=][=[  ]=]
+coroutine.resume(  )--[=[  ]=][=[  ]=]
+coroutine.running(  )--[=[  ]=][=[  ]=]
+coroutine.status(  )--[=[  ]=][=[  ]=]
+coroutine.wrap(  )--[=[  ]=][=[  ]=]
+coroutine.yield(  )--[=[  ]=][=[  ]=]
 
 Quaver:
 Custom Commands:
 state.
 	state.SelectedHitObjects[]
-	state.SelectedScrollGroupId
 	--to select a TimingGroup within lua: state.SelectedScrollGroupId = [Name of the TG]
+	state.SelectedScrollGroupId
 	state.SelectedScrollGroup.InitialScrollVelocity
 	
 	state.CurrentBookmark
@@ -641,15 +668,14 @@ state.
 	state.CurrentScrollVelocity
 	state.CurrentSnap
 	state.CurrentTimingPoint
-	state.SetValue(varable, value) | state.GetValue(varable)
+	state.SetValue(label, value)--[=[ string, variable ]=][=[  ]=]
+	state.GetValue(label)--[=[ string ]=][=[ variable ]=]
 	
-	state.SongTime
-	state.DeltaTime
-	
-	state.WindowSize -- Size of Game Window
-	
-	-- state.CurrentSnap
-	-- state.Scale
+	state.SongTime [=[ numeric ]=]
+	state.DeltaTime [=[ numeric ]=] -- Time since last frame
+	state.IsWindowHovered [=[ boolean ]=] -- Size of Game Window
+	state.WindowSize [=[ {x, y} ]=] -- Size of Game Window
+	state.Scale [=[ numeric ]=] -- ImGui scale
 map.
 |""
 	map.Bookmarks[]
@@ -723,6 +749,10 @@ Values
 	.StartTime
 	.Multiplier
 	.IsEditableInLuaScript
+----scrollgroups
+	.ScrollVelocities
+	.ScrollSpeedFactors
+	.InitialScrollVelocity
 ----timinggroups
 	.ScrollVelocities
 	.ColorRgb
@@ -814,92 +844,92 @@ action_type.
 actions.
 	{
 ----book-mark (BM)
-	--[[userdata]]--[[numeric, string]]
+	--[=[ userdata ]=]--[=[ numeric, string ]=]
 	AddBookmark(Mark)|(Time, String)
-	AddBookmarkBatch(Marks)--[[{userdata¿...}]]
-	--[[{userdata¿...}, numeric]]
+	AddBookmarkBatch(Marks)--[=[ {userdata¿...} ]=]
+	--[=[ {userdata¿...}, numeric ]=]
 	ChangeBookmarkBatchOffset(Marks, Offset)
-	--[[userdata, string]]
+	--[=[ userdata, string ]=]
 	EditBookmark(Mark, String)
-	--[[userdata]]
+	--[=[ userdata ]=]
 	RemoveBookmark(Mark)
-	RemoveBookmarkBatch(Marks)--[[{userdata¿...}]]
+	RemoveBookmarkBatch(Marks)--[=[ {userdata¿...} ]=]
 ----hit-object (Note, HO)
-	--[[userdata]]--[[numeric, numeric, numeric, string, numeric?, string, `HitObjectType]]
+	--[=[ userdata ]=]--[=[ numeric, numeric, numeric, string, numeric?, string, `HitObjectType ]=]
 	PlaceHitObject(Note)|(Lane, StartTime, ¿EndTime, ¿Layer, ¿HitSounds, ¿GroupId, ¿Type)
-	PlaceHitObjectBatch(Notes)--[[{userdata¿...}]]
-	--[[userdata]]
+	PlaceHitObjectBatch(Notes)--[=[ {userdata¿...} ]=]
+	--[=[ userdata ]=]
 	RemoveHitObject(Note)
-	RemoveHitObjectBatch(Notes)--[[{userdata¿...}]]
-	--[[userdata, numeric, numeric]]
+	RemoveHitObjectBatch(Notes)--[=[ {userdata¿...} ]=]
+	--[=[ userdata, numeric, numeric ]=]
 	ResizeLongNote(Note, originalTime, time)
-	--[[{numeric¿...}, {userdata¿...}]]
+	--[=[ {numeric¿...}, {userdata¿...} ]=]
 	ResnapNotes(Snaps, Note)
-	--[[{userdata¿...}]]
+	--[=[ {userdata¿...} ]=]
 	SetHitObjectSelection(Notes)
-	--[[userdata, {userdata¿...}]]
+	--[=[ userdata, {userdata¿...} ]=]
 	MoveHitObjectsToLayer(Layer, Notes)
-	--[[{userdata¿...}, string]]
+	--[=[ {userdata¿...}, string ]=]
 	MoveObjectsToTimingGroup(Notes, GroupId)
 ----layers
-	--[[userdata, numeric, numeric, numeric]]
+	--[=[ userdata, numeric, numeric, numeric ]=]
 	ChangeLayerColor(Layer, R, G, B)
-	--[[userdata, numeric]]
+	--[=[ userdata, numeric ]=]
 	CreateLayer(Layer, Index)
-	--[[userdata]]
+	--[=[ userdata ]=]
 	RemoveLayer(Layer)
-	--[[userdata, string]]
+	--[=[ userdata, string ]=]
 	RenameLayer(Layer, Name)
-	--[[userdata]]
+	--[=[ userdata ]=]
 	ToggleLayerVisibility(Layer)
-		--[[userdata, {userdata¿...}]]
+		--[=[ userdata, {userdata¿...} ]=]
 		MoveHitObjectsToLayer(Layer, Notes)
 ----scroll-speed-factor (SSF)
 ----scroll-velocity (SV)
-	--[[userdata, userdata]]
+	--[=[ userdata, userdata ]=]
 	PlaceScrollVelocity(Scroll, scrollGroup)
-	PlaceScrollVelocityBatch(Scrolls, scrollGroup)--[[{userdata¿...}, userdata]]
-	--[[userdata, userdata]]
+	PlaceScrollVelocityBatch(Scrolls, scrollGroup)--[=[ {userdata¿...}, userdata ]=]
+	--[=[ userdata, userdata ]=]
 	RemoveScrollVelocity(Scroll, scrollGroup)
-	RemoveScrollVelocityBatch(Scrolls, scrollGroup)--[[{userdata¿...}, userdata]]
+	RemoveScrollVelocityBatch(Scrolls, scrollGroup)--[=[ {userdata¿...}, userdata ]=]
 ----timing-group (TG, SG)
-	--[[string, numeric, numeric, numeric]]
+	--[=[ string, numeric, numeric, numeric ]=]
 	ChangeTimingGroupColor(Group, R, G, B)
-	--[[string]]
+	--[=[ string ]=]
 	RemoveTimingGroup(Group)
-	--[[string, string]]
+	--[=[ string, string ]=]
 	RenameTimingGroup(Group, Id)
 	PlaceTimingGroup(string id, TimingGroup timingGroup, List<HitObjectInfo> hitObjectInfos)
-		--[[{userdata¿...}, string]]
+		--[=[ {userdata¿...}, string ]=]
 		MoveObjectsToTimingGroup(Notes, Id)
 ----timing-point (TP)
-	--[[userdata, numeric]]
+	--[=[ userdata, numeric ]=]
 	ChangeTimingPointBpm(Point, bpm)
-	ChangeTimingPointBpmBatch(Points, bpm)--[[{userdata¿...}, numeric]]
-	--[[userdata, boolean]]
+	ChangeTimingPointBpmBatch(Points, bpm)--[=[ {userdata¿...}, numeric ]=]
+	--[=[ userdata, boolean ]=]
 	ChangeTimingPointHidden(Point, Hidden)
-	--[[userdata, numeric]]
+	--[=[ userdata, numeric ]=]
 	ChangeTimingPointOffset(Point, Offset)
-	ChangeTimingPointOffsetBatch(Points, Offset)--[[{userdata¿...}, numeric]]
-	--[[userdata]]
+	ChangeTimingPointOffsetBatch(Points, Offset)--[=[ {userdata¿...}, numeric ]=]
+	--[=[ userdata ]=]
 	PlaceTimingPoint(Point)
-	PlaceTimingPointBatch(Points)--[[{userdata¿...}]]
-	--[[userdata]]
+	PlaceTimingPointBatch(Points)--[=[ {userdata¿...} ]=]
+	--[=[ userdata ]=]
 	RemoveTimingPoint(Point)
-	RemoveTimingPointBatch(Points)--[[{userdata¿...}]]
-	--[[userdata]]
+	RemoveTimingPointBatch(Points)--[=[ {userdata¿...} ]=]
+	--[=[ userdata ]=]
 	ResetTimingPoint(Point)
 ----misc
 	Destroy()
-	--[[numeric|string?]]
+	--[=[ numeric|string? ]=]
 	GoToObjects(input)
 	Redo()
 	Undo()
-	--[[userdata]]
+	--[=[ userdata ]=]
 	Perform(Action)
-	--[[{userdata¿...}]]
+	--[=[ {userdata¿...} ]=]
 	PerformBatch(Actions)
-	--[[numeric]]
+	--[=[ numeric ]=]
 	SetPreviewTime(Time)
 	}
 
@@ -974,12 +1004,12 @@ imgui_color_edit_flags
 vector.
 	--table = (vector or table)|numeric
 	vector.Abs(table)
-	--[[table, table|numeric]]
+	--[=[ table, table|numeric ]=]
 	vector.Add(table, value)
-	--[[vector|numeric, vector|numeric, vector|numeric]]
+	--[=[ vector|numeric, vector|numeric, vector|numeric ]=]
 	vector.Clamp(table, min, max)
 	vector.Cross(table, table)--?
-	--[[table|numeric, table|numeric]]
+	--[=[ table|numeric, table|numeric ]=]
 	vector.Distance(value, value)
 	vector.DistanceSquared(table, table)
 	vector.Divide(table, value)
@@ -991,7 +1021,7 @@ vector.
 	vector.Modulo(?, ?)
 	vector.Multiply(?, ?)
 	vector.Negate(?, ?)
-	--[[numeric, numeric, numeric, numeric]]
+	--[=[ numeric, numeric, numeric, numeric ]=]
 	vector.New(x, y, z, w)
 	vector.Normalize(table)
 	vector.One(?)
@@ -1008,54 +1038,11 @@ vector.
 	vector.Zero
 	
 	
-	vector3:vector4(value)
+	vector3
+	vector4
 
-local mt = {__index = function (t) return t.___ end}
-  local key = {}	-- unique key
-	local mt = {__index = function(t) return t[key] end}
-	function setDefault(t, d)
-	  t[key] = d
-	  setmetatable(t, mt)
-	end
-function newIndex()
-	local myTable = {someKey = {5}}
-	local myMetatable = {}
-	setmetatable(myTable, myMetatable)
-	myMetatable.__newindex = function(Table, Key, Value)
-	print("You can't set a new value directly!")
-	end
-	myTable.newKey = "Hello, World!" -- Output: You can't set a new value directly!
-end
-function Index()
-	local myTable = {5}
-	local myMetatable = {}
-	setmetatable(myTable, myMetatable)
-	myMetatable.__index = function(Table, key)
-	return "Key '" .. key .. "' not found!"
-	end
-	print(myTable[2]) -- Output: Key 'someKey' not found!
-end
-
-function Call()
-	local myTable = {}
-	local myMetatable = {}
-	setmetatable(myTable, myMetatable)
-	myMetatable.__call = function(table, ...)
-	print("The table was called with arguments:", ...)
-	end
-	myTable(1, "Hello") -- Output: The table was called with arguments: 1 Hello-- do
-end
-function Math()
-	local myTable = {}
-	local myMetatable = {}
-	setmetatable(myTable, myMetatable)
-	myMetatable.__add = function(table, value)
-	return value + 5
-	end
-	print(myTable + 10) -- Output: 15
-end
 | MoonSharp
-[[prime tables]]
+-- prime table (unsure what it does; though is a limited table)
 primetable = ${ ... }
 string.contains(string, string)
 string.startsWith(string, string)
@@ -1074,22 +1061,22 @@ rawlen
 rawset
 __index
 __newindex
-__tostring --[[tostring]]
-__concat
+__tostring --[=[ tostring ]=]
+__concat --[=[ .. ]=]
 __call
 __len
-__metatable --[[getmetatable]]
-__add--	+
-__mod-- %
-__mul--	*
-__sub--	-
-__div--	/
-__unm--	negation
-__pow--	^
-__eq--	=
-__lt--	>  (less than)
-__le--	>= (Less than or Equal)
-__mode-- weaktable options ("k", "v", "kv", "s")
+__metatable --[=[ getmetatable ]=]
+__add --	+
+__mod -- %
+__mul --	*
+__sub --	-
+__div --	/
+__unm --	negation
+__pow --	^
+__eq --	=
+__lt --	>  (less than)
+__le --	>= (Less than or Equal)
+__mode -- weaktable options ("k", "v", "kv", "s")
 __ipairs
 __pairs
 __gc
@@ -1099,27 +1086,28 @@ __shr
 __idiv
 __shl
 __close
+__iterator
 
 MetaTable = {}
 __index--on call Table[Key]
 	MetaTable.__index = function(TABLE, KEY)
-		[[
+		[=[
 		If TABLE[KEY] exsists; return TABLE[KEY]
 		Otherwise; return this function
-		]]
+		 ]=]
 	end
 __newindex--on call Table[Key] = Value
 	MetaTable.__newindex = function(TABLE, KEY, VALUE)
-		[[
+		[=[
 		If TABLE[KEY] exsists; return TABLE[KEY]
 		Otherwise; return this function
-		]]
+		 ]=]
 	end
 __len--on call #Table
 	MetaTable.__len = function(TABLE)
-		[[
+		[=[
 		Always; return this function
-		]]
+		 ]=]
 	end
 __metatable
 	MetaTable.__metatable = "not your business"
