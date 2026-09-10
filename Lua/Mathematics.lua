@@ -16,8 +16,8 @@ math.atan(x) -- arc tangent
 math.atan2(y, x) ---
 math.tan(x) -- tangent
 math.tanh(x) -- hyperbolic tangent
-math.ceil(x)--(x, ...)-- returns the first value
-math.floor(x)--(x, ...)-- returns the last value
+math.ceil(x) -- rounds up to the neariest integer
+math.floor(x) -- rounds down to the neariest integer
 math.max(x)--(x, ...)-- returns the highest value
 math.min(x)--(x, ...)-- returns the lowest value
 math.exp(x) -- exponential
@@ -30,7 +30,6 @@ math.modf(x) -- returns whole value aswell as the fractional value
   --example: if x = 2.56, it returns 2 and 0.56. if x = 7, it returns 7 and 0, because 7 has no number in a decimal point.
 math.fmod(x, y) -- x = dividend, y = divisor/modulus 
   --example: if x = 499, y = 360, it returns 139 because 499 cannot fit into 360 so it wrapped it around until it could. (does not return amount of wraps needed)
-  -- fmod is not a wrapper though! x - trunc(x / y) * y, where trunc removes the fractional part toward zero
 math.frexp(x)
 math.ldexp(m, e) -- returns m2^e
 math.log(x, base) -- logarithm -- if no base is given; defaults to e
