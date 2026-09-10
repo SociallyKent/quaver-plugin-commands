@@ -26,7 +26,7 @@ math.deg(x) -- return angle of value in degrees; output is in radians
 math.rad(x) -- return angle of value in radians; output is in degrees
 math.huge -- represents a higher or equal number, no matter what it is
 math.pi -- represents π
-math.modf(x) -- returns whole value aswell as the fractional value
+math.modf(x) -- returns the whole value aswell as the minor value
   --example: if x = 2.56, it returns 2 and 0.56. if x = 7, it returns 7 and 0, because 7 has no number in a decimal point.
 math.fmod(x, y) -- x = dividend, y = divisor/modulus 
   --example: if x = 499, y = 360, it returns 139 because 499 cannot fit into 360 so it wrapped it around until it could. (does not return amount of wraps needed)
