@@ -1,14 +1,15 @@
+--[[imgui_item_flags, boolean]]
 imgui.PushItemFlag(flags, enabled)
 imgui.PopItemFlag()
  --you can add multiple flags by putting '+' between them
 |""
-	'button_flags'
+	'button'
 	imgui_button_flags.None--alt:0
 	imgui_button_flags.MouseButtonLeft--alt:1
 	imgui_button_flags.MouseButtonRight--alt:2
 	imgui_button_flags.MouseButtonMiddle--alt:4
 	imgui_button_flags.MouseButtonMask--alt:7
-	'selectable_flags'
+	'selectable'
 	imgui_selectable_flags.None--alt:0
 	imgui_selectable_flags.NoAutoClosePopups--alt:1
 	imgui_selectable_flags.SpanAllColumns--alt:2
@@ -16,7 +17,7 @@ imgui.PopItemFlag()
 	imgui_selectable_flags.Disabled--alt:8
 	imgui_selectable_flags.AllowOverlap--alt:16
 	imgui_selectable_flags.Highlight--alt:32
-	'slider_flags'
+	'slider'
 	imgui_slider_flags.None--alt:0
 	imgui_slider_flags.AlwaysClamp--alt:16
 	imgui_slider_flags.Logarithmic--alt:32
@@ -24,7 +25,7 @@ imgui.PopItemFlag()
 	imgui_slider_flags.NoInput--alt:128
 	imgui_slider_flags.WrapAround--alt:256
 	imgui_slider_flags.InvalidMask--alt:1879048207
-	'input_text_flags'--Works with most kinds of input text
+	'inputtext'--Works with most kinds of input text
 	imgui_input_text_flags.None--alt:0
 	imgui_input_text_flags.CharsDecimal--alt:1 -- 0123456789.+-*/
 	imgui_input_text_flags.CharsHexadecimal--alt:2 -- 0123456789ABCDEFabcdef
@@ -51,6 +52,25 @@ imgui.PopItemFlag()
 	imgui_input_text_flags.CallbackResize--alt:2097152
 	imgui_input_text_flags.CallbackEdit--alt:4194304
 	--[[toget ImGuiInputTextCallback]]
+	'treenode'--Also CollapsingHeader flags
+	imgui_tree_node_flags.None--alt:0
+	imgui_tree_node_flags.Selected--alt:1
+	imgui_tree_node_flags.Framed--alt:2
+	imgui_tree_node_flags.AllowOverlap--alt:4
+	imgui_tree_node_flags.NoTreePushOnOpen--alt:8
+	imgui_tree_node_flags.NoAutoOpenOnLog--alt:16
+	imgui_tree_node_flags.CollapsingHeader--alt:26
+	imgui_tree_node_flags.DefaultOpen--alt:32
+	imgui_tree_node_flags.OpenOnDoubleClick--alt:64
+	imgui_tree_node_flags.OpenOnArrow--alt:128
+	imgui_tree_node_flags.Leaf--alt:256
+	imgui_tree_node_flags.Bullet--alt:512 -- replace arrow with bullet point
+	imgui_tree_node_flags.FramePadding--alt:1024
+	imgui_tree_node_flags.SpanAvailWidth--alt:2048
+	imgui_tree_node_flags.SpanFullWidth--alt:4096
+	imgui_tree_node_flags.SpanTextWidth--alt:8192
+	imgui_tree_node_flags.SpanAllColumns--alt:16384
+	imgui_tree_node_flags.NavLeftJumpsBackHere--alt:32768
 |"begin"|"end"
 	'Child'
 	imgui_child_flags.None--alt:0
@@ -199,61 +219,6 @@ imgui.PopItemFlag()
 	imgui_hovered_flags.DelayShort--alt:32768
 	imgui_hovered_flags.DelayNormal--alt:65536
 	imgui_hovered_flags.NoSharedDelay--alt:131072
-|"color_edit_flags"	
-	imgui_color_edit_flags.None--alt:0
-	imgui_color_edit_flags.NoAlpha--alt:2
-	imgui_color_edit_flags.NoPicker--alt:4
-	imgui_color_edit_flags.NoOptions--alt:8
-	imgui_color_edit_flags.NoSmallPreview--alt:16
-	imgui_color_edit_flags.NoInputs--alt:32
-	imgui_color_edit_flags.NoTooltip--alt:64
-	imgui_color_edit_flags.NoLabel--alt:128
-	imgui_color_edit_flags.NoSidePreview--alt:256
-	imgui_color_edit_flags.NoDragDrop--alt:512
-	imgui_color_edit_flags.NoBorder--alt:1024
-	imgui_color_edit_flags.AlphaBar--alt:65536
-	imgui_color_edit_flags.AlphaPreview--alt:131072
-	imgui_color_edit_flags.AlphaPreviewHalf--alt:262144
-	imgui_color_edit_flags.HDR--alt:524288
-	imgui_color_edit_flags.DisplayRGB--alt:1048576
-	imgui_color_edit_flags.DisplayHSV--alt:2097152
-	imgui_color_edit_flags.DisplayHex--alt:4194304
-	imgui_color_edit_flags.DisplayMask--alt:7340032
-	imgui_color_edit_flags.Uint8--alt:8388608
-	imgui_color_edit_flags.Float--alt:16777216
-	imgui_color_edit_flags.DataTypeMask--alt:25165824
-	imgui_color_edit_flags.PickerHueBar--alt:33554432
-	imgui_color_edit_flags.PickerHueWheel--alt:67108864
-	imgui_color_edit_flags.PickerMask--alt:100663296
-	imgui_color_edit_flags.InputRGB--alt:134217728
-	imgui_color_edit_flags.DefaultOptions--alt:177209344
-	imgui_color_edit_flags.InputHSV--alt:268435456
-	imgui_color_edit_flags.InputMask--alt:402653184
-
-	--[[old, replace once transfering discriptions]]
-	imgui_color_edit_flags.NoAlpha --  ColorEdit, ColorPicker, ColorButton: ignore Alpha component (will only read 3 components from the input pointer).
-	imgui_color_edit_flags.NoPicker --  ColorEdit: disable picker when clicking on colored square.
-	imgui_color_edit_flags.NoOptions --  ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.
-	imgui_color_edit_flags.NoSmallPreview --  ColorEdit, ColorPicker: disable colored square preview next to the inputs. (e.g. to show only the inputs)
-	imgui_color_edit_flags.NoInputs --  ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the small preview colored square).
-	imgui_color_edit_flags.NoTooltip --  ColorEdit, ColorPicker, ColorButton: disable tooltip when hovering the preview.
-	imgui_color_edit_flags.NoLabel --  ColorEdit, ColorPicker: disable display of inline text label (the label is still forwarded to the tooltip and picker).
-	imgui_color_edit_flags.NoSidePreview --  ColorPicker: disable bigger color preview on right side of the picker, use small colored square preview instead.
-	imgui_color_edit_flags.NoDragDrop --  ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.
-	imgui_color_edit_flags.NoBorder --  ColorButton: disable border (which is enforced by default)
-	imgui_color_edit_flags.AlphaBar --  ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
-	imgui_color_edit_flags.AlphaPreview --  ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a checkerboard, instead of opaque.
-	18 --  ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard, instead of opaque.
-	imgui_color_edit_flags.HDR --  (WIP) ColorEdit: Currently only disable 0.0f..1.0f limits in RGBA edition (note: you probably want to use imgui_color_edit_flags.Float flag as well).
-	imgui_color_edit_flags.DisplayRGB -- [Display] ColorEdit: override display type among RGB/HSV/Hex. ColorPicker: select any combination using one or more of RGB/HSV/Hex.
-	imgui_color_edit_flags.DisplayHSV -- [Display]
-	imgui_color_edit_flags.DisplayHex -- [Display]
-	imgui_color_edit_flags.Uint8 -- [DataType] ColorEdit, ColorPicker, ColorButton: display values formatted as 0..255.
-	imgui_color_edit_flags.Float -- [DataType] ColorEdit, ColorPicker, ColorButton: display values formatted as 0.0f..1.0f floats instead of 0..255 integers. No round-trip of value via integers.
-	imgui_color_edit_flags.PickerHueBar -- [Picker] ColorPicker: bar for Hue, rectangle for Sat/Value.
-	imgui_color_edit_flags.PickerHueWheel -- [Picker] ColorPicker: wheel for Hue, triangle for Sat/Value.
-	imgui_color_edit_flags.InputRGB -- [Input]  ColorEdit, ColorPicker: input and output data in RGB format.
-	imgui_color_edit_flags.InputHSV -- [Input]  ColorEdit, ColorPicker: input and output data in HSV format.
 |"cond"
 	imgui_cond.None--alt:0
 	imgui_cond.Always--alt:1
@@ -340,4 +305,167 @@ imgui_multi_select_flags
 	imgui_multi_select_flags.SelectOnClickRelease--alt:16384
 	imgui_multi_select_flags.NavWrapX--alt:65536
 	
-imgui_viewpoint_flags
+-- imgui_viewpoint_flags
+imgui_table_row_flags
+	imgui_table_row_flags.None--alt:0
+	imgui_table_row_flags.Headers--alt:1
+imgui_table_bg_target
+	imgui_table_bg_target.None--alt:0
+	imgui_table_bg_target.RowBg0--alt:1
+	imgui_table_bg_target.RowBg1--alt:2
+	imgui_table_bg_target.CellBg--alt:3
+imgui_table_column_flags
+	imgui_table_column_flags.None--alt:0
+	imgui_table_column_flags.Disabled--alt:1
+	imgui_table_column_flags.DefaultHide--alt:2
+	imgui_table_column_flags.DefaultSort--alt:4
+	imgui_table_column_flags.WidthStretch--alt:8
+	imgui_table_column_flags.WidthFixed--alt:16
+	imgui_table_column_flags.WidthMask--alt:24
+	imgui_table_column_flags.NoResize--alt:32
+	imgui_table_column_flags.NoReorder--alt:64
+	imgui_table_column_flags.NoHide--alt:128
+	imgui_table_column_flags.NoClip--alt:256
+	imgui_table_column_flags.NoSort--alt:512
+	imgui_table_column_flags.NoSortAscending--alt:1024
+	imgui_table_column_flags.NoSortDescending--alt:2048
+	imgui_table_column_flags.NoHeaderLabel--alt:4096
+	imgui_table_column_flags.NoHeaderWidth--alt:8192
+	imgui_table_column_flags.PreferSortAscending--alt:16384
+	imgui_table_column_flags.PreferSortDescending--alt:32768
+	imgui_table_column_flags.IndentEnable--alt:65536
+	imgui_table_column_flags.IndentDisable--alt:131072
+	imgui_table_column_flags.IndentMask--alt:196608
+	imgui_table_column_flags.AngledHeader--alt:262144
+	imgui_table_column_flags.IsEnabled--alt:16777216
+	imgui_table_column_flags.IsVisible--alt:33554432
+	imgui_table_column_flags.IsSorted--alt:67108864
+	imgui_table_column_flags.IsHovered--alt:134217728
+	imgui_table_column_flags.StatusMask--alt:251658240
+	imgui_table_column_flags.NoDirectResize--alt:1073741824
+imgui_input_flags
+	imgui_input_flags.None--alt:0
+	imgui_input_flags.Repeat--alt:1
+	imgui_input_flags.RouteActive--alt:1024
+	imgui_input_flags.RouteFocused--alt:2048
+	imgui_input_flags.RouteGlobal--alt:4096
+	imgui_input_flags.RouteAlways--alt:8192
+	imgui_input_flags.RouteOverFocused--alt:16384
+	imgui_input_flags.RouteOverActive--alt:32768
+	imgui_input_flags.RouteUnlessBgFocused--alt:65536
+	imgui_input_flags.RouteFromRootWindow--alt:131072
+	imgui_input_flags.Tooltip--alt:262144
+imgui_table_flags
+	imgui_table_flags.None--alt:0
+	imgui_table_flags.Resizable--alt:1
+	imgui_table_flags.Reorderable--alt:2
+	imgui_table_flags.Hideable--alt:4
+	imgui_table_flags.Sortable--alt:8
+	imgui_table_flags.NoSavedSettings--alt:16
+	imgui_table_flags.ContextMenuInBody--alt:32
+	imgui_table_flags.RowBg--alt:64
+	imgui_table_flags.BordersInnerH--alt:128
+	imgui_table_flags.BordersOuterH--alt:256
+	imgui_table_flags.BordersH--alt:384
+	imgui_table_flags.BordersInnerV--alt:512
+	imgui_table_flags.BordersInner--alt:640
+	imgui_table_flags.BordersOuterV--alt:1024
+	imgui_table_flags.BordersOuter--alt:1280
+	imgui_table_flags.BordersV--alt:1536
+	imgui_table_flags.Borders--alt:1920
+	imgui_table_flags.NoBordersInBody--alt:2048
+	imgui_table_flags.NoBordersInBodyUntilResize--alt:4096
+	imgui_table_flags.SizingFixedFit--alt:8192
+	imgui_table_flags.SizingFixedSame--alt:16384
+	imgui_table_flags.SizingStretchProp--alt:24576
+	imgui_table_flags.SizingStretchSame--alt:32768
+	imgui_table_flags.SizingMask--alt:57344
+	imgui_table_flags.NoHostExtendX--alt:65536
+	imgui_table_flags.NoHostExtendY--alt:131072
+	imgui_table_flags.NoKeepColumnsVisible--alt:262144
+	imgui_table_flags.PreciseWidths--alt:524288
+	imgui_table_flags.NoClip--alt:1048576
+	imgui_table_flags.PadOuterX--alt:2097152
+	imgui_table_flags.NoPadOuterX--alt:4194304
+	imgui_table_flags.NoPadInnerX--alt:8388608
+	imgui_table_flags.ScrollX--alt:16777216
+	imgui_table_flags.ScrollY--alt:33554432
+	imgui_table_flags.SortMulti--alt:67108864
+	imgui_table_flags.SortTristate--alt:134217728
+	imgui_table_flags.HighlightHoveredColumn--alt:268435456
+imgui_tab_item_flags
+	imgui_tab_item_flags.None--alt:0
+	imgui_tab_item_flags.UnsavedDocument--alt:1
+	imgui_tab_item_flags.SetSelected--alt:2
+	imgui_tab_item_flags.NoCloseWithMiddleMouseButton--alt:4
+	imgui_tab_item_flags.NoPushId--alt:8
+	imgui_tab_item_flags.NoTooltip--alt:16
+	imgui_tab_item_flags.NoReorder--alt:32
+	imgui_tab_item_flags.Leading--alt:64
+	imgui_tab_item_flags.Trailing--alt:128
+	imgui_tab_item_flags.NoAssumedClosure--alt:256
+imgui_tab_bar_flags
+	imgui_tab_bar_flags.None--alt:0
+	imgui_tab_bar_flags.Reorderable--alt:1
+	imgui_tab_bar_flags.AutoSelectNewTabs--alt:2
+	imgui_tab_bar_flags.TabListPopupButton--alt:4
+	imgui_tab_bar_flags.NoCloseWithMiddleMouseButton--alt:8
+	imgui_tab_bar_flags.NoTabListScrollingButtons--alt:16
+	imgui_tab_bar_flags.NoTooltip--alt:32
+	imgui_tab_bar_flags.DrawSelectedOverline--alt:64
+	imgui_tab_bar_flags.FittingPolicyDefault--alt:128
+	imgui_tab_bar_flags.FittingPolicyDefault--alt:128
+	imgui_tab_bar_flags.FittingPolicyScroll--alt:256
+	imgui_tab_bar_flags.FittingPolicyMask--alt:384
+|"Popup"
+	0: None
+	0: None
+	1: MouseButtonRight
+	1: MouseButtonRight
+	2: MouseButtonMiddle
+	31: MouseButtonMask
+	32: NoReopen
+	128: NoOpenOverExistingPopup
+	256: NoOpenOverItems
+	1024: AnyPopupId
+	2048: AnyPopupLevel
+	3072: AnyPopup
+|"Selection Request Type".
+	imgui_selection_request_type
+	0: None
+	1: SetAll
+	2: SetRange
+|"View port"
+	imgui_viewport_flags.
+	0: None
+	1: IsPlatformWindow
+	2: IsPlatformMonitor
+	4: OwnedByApp
+	8: NoDecoration
+	16: NoTaskBarIcon
+	32: NoFocusOnAppearing
+	64: NoFocusOnClick
+	128: NoInputs
+	256: NoRendererClear
+	512: NoAutoMerge
+	1024: TopMost
+	2048: CanHostOtherWindows
+	4096: IsMinimized
+	8192: IsFocused
+
+imgui_item_flags.None--alt:0
+imgui_item_flags.NoTabStop--alt:1
+imgui_item_flags.NoNav--alt:2
+imgui_item_flags.NoNavDefaultFocus--alt:4
+imgui_item_flags.ButtonRepeat--alt:8
+imgui_item_flags.AutoClosePopups--alt:16
+
+imgui_dock_node_flags
+imgui_dock_node_flags.None--alt:0
+imgui_dock_node_flags.KeepAliveOnly--alt:1
+imgui_dock_node_flags.NoDockingOverCentralNode--alt:4
+imgui_dock_node_flags.PassthruCentralNode--alt:8
+imgui_dock_node_flags.NoDockingSplit--alt:16
+imgui_dock_node_flags.NoResize--alt:32
+imgui_dock_node_flags.AutoHideTabBar--alt:64
+imgui_dock_node_flags.NoUndocking--alt:128
