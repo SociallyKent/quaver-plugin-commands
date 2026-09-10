@@ -1,15 +1,33 @@
 imgui.
+
 imgui.GetStyleColorName
 |"Show"
-	imgui.ShowStyleEditor()
+	imgui.ShowStyleEditor()--(¿@ref?)
+	--[[string?]]
+	imgui.ShowStyleSelector(name)
 |"StyleColors" -- built in styles
-	imgui.StyleColorsDark() 
-	imgui.StyleColorsClassic() 
-	imgui.StyleColorsLight()
+	imgui.StyleColorsClassic()--(¿ImGuiStylePtr?)
+	imgui.StyleColorsDark()--(¿ImGuiStylePtr?)
+	imgui.StyleColorsLight()--(¿ImGuiStylePtr?)
+|""
+	--[[varable, vector4, imgui_color_edit_flags, {x, y}]]
+	imgui.ColorButton(name, value, ¿flags, ¿size)
+	--[[varable, vector3, imgui_color_edit_flags]]
+	imgui.ColorEdit3(name, value, ¿flags)
+	--[[varable, vector4, imgui_color_edit_flags]]
+	imgui.ColorEdit4(name, value, ¿flags)
+	--[[varable, vector3, imgui_color_edit_flags]]
+	imgui.ColorPicker3(name, value, ¿flags)
+	--[[varable, vector4, imgui_color_edit_flags, numeric?]]
+	imgui.ColorPicker4(name, value, ¿flags, ¿ref_col)
+
+	--[[imgui_color_edit_flags]]
+	imgui.SetColorEditOptions(flags)
 |"StyleColor"
-	imgui.PushStyleColor()
-	imgui.PopStyleColor()
-	--imgui.PushStyleColor(imgui_col.[target], [{color}])
+	--[[imgui_col, color]]
+	imgui.PushStyleColor(index, color)
+	--[[numeric]]
+	imgui.PopStyleColor(¿count)
 	'imgui_col.'
 	imgui_col.Text--alt:0
 	imgui_col.TextDisabled--alt:1
@@ -71,104 +89,108 @@ imgui.GetStyleColorName
 	imgui_col.ModalWindowDimBg--alt:57
 	imgui_col.COUNT--alt:58
 |"StyleVar"
-	imgui.PushStyleVar()
-	imgui.PopStyleVar()
-	--imgui.PushStyleVar(imgui_style_var.[action], ([numeric] or {[numeric], [numeric]}))
+	--[[imgui_style_var, numeric|vector2]]
+	imgui.PushStyleVar(index, value)
+	--[[numeric]]
+	imgui.PopStyleVar(¿count)
+
+	--imgui.PushStyleVar(imgui_style_var.[action], numeric|{numeric, numeric})
 	'imgui_style_var.'
 	imgui_style_var.Alpha--alt:0
 	imgui_style_var.DisabledAlpha--alt:1
-	imgui_style_var.WindowPadding--alt:2
+	--[[{numeric >0, numeric >0}]]
+	imgui_style_var.WindowPadding--alt:2 [[vector2]]
+	--[[numeric >0]]
 	imgui_style_var.WindowRounding--alt:3
 	imgui_style_var.WindowBorderSize--alt:4
+	--[[{numeric, numeric}]]
 	imgui_style_var.WindowMinSize--alt:5
 	imgui_style_var.WindowTitleAlign--alt:6
+	--[[numeric > 0]]
 	imgui_style_var.ChildRounding--alt:7
 	imgui_style_var.ChildBorderSize--alt:8
+	--[[numeric > 0]]
 	imgui_style_var.PopupRounding--alt:9
 	imgui_style_var.PopupBorderSize--alt:10
-	imgui_style_var.FramePadding--alt:11
+	--[[{numeric > 0, numeric > 0}]]
+	imgui_style_var.FramePadding--alt:11 [[vector2]]
+	--[[numeric > 0]]
 	imgui_style_var.FrameRounding--alt:12
 	imgui_style_var.FrameBorderSize--alt:13
+	--[[{numeric > 0, numeric > 0}]]
 	imgui_style_var.ItemSpacing--alt:14 [[vector2]]
 	imgui_style_var.ItemInnerSpacing--alt:15
 	imgui_style_var.IndentSpacing--alt:16
-	imgui_style_var.CellPadding--alt:17
+	--[[{numeric > 0, numeric > 0}]]
+	imgui_style_var.CellPadding--alt:17 [[vector2]]
 	imgui_style_var.ScrollbarSize--alt:18
+	--[[numeric > 0]]
 	imgui_style_var.ScrollbarRounding--alt:19
 	imgui_style_var.GrabMinSize--alt:20
+	--[[numeric > 0]]
 	imgui_style_var.GrabRounding--alt:21
+	--[[numeric > 0]]
 	imgui_style_var.TabRounding--alt:22
 	imgui_style_var.TabBorderSize--alt:23
 	imgui_style_var.TabBarBorderSize--alt:24
 	imgui_style_var.TabBarOverlineSize--alt:25
 	imgui_style_var.TableAngledHeadersAngle--alt:26
 	imgui_style_var.TableAngledHeadersTextAlign--alt:27
+	--[[{numeric 0-1, numeric 0-1}]]
 	imgui_style_var.ButtonTextAlign--alt:28
 	imgui_style_var.SelectableTextAlign--alt:29
 	imgui_style_var.SeparatorTextBorderSize--alt:30
 	imgui_style_var.SeparatorTextAlign--alt:31
-	imgui_style_var.SeparatorTextPadding--alt:32
+	--[[{numeric > 0, numeric > 0}]]
+	imgui_style_var.SeparatorTextPadding--alt:32 [[vector2]]
 	imgui_style_var.DockingSeparatorSize--alt:33
 	imgui_style_var.COUNT--alt:34
-	imgui_style_var.Alpha()
-	imgui_style_var.ButtonTextAlign()
-	imgui_style_var.COUNT
-	imgui_style_var.CellPadding()
-	imgui_style_var.ChildBorderSize({})
-	imgui_style_var.ChildRounding({})
-	imgui_style_var.DisabledAlpha()
-	imgui_style_var.FrameBorderSize()
-	imgui_style_var.FramePadding({})
-	imgui_style_var.FrameRounding()
-	imgui_style_var.GrabMinSize()
-	imgui_style_var.GrabRounding({})
-	imgui_style_var.IndentSpacing({})
-	imgui_style_var.ItemInnerSpacing({})
-	imgui_style_var.ItemSpacing({})
-	imgui_style_var.PopupBorderSize({})
-	imgui_style_var.PopupRounding()
-	imgui_style_var.ScrollbarRounding()
-	imgui_style_var.ScrollbarSize()
-	imgui_style_var.SelectableTextAlign({0-1, 0-1})
-	imgui_style_var.SeparatorTextAlign()
-	imgui_style_var.SeparatorTextBorderSize({})
-	imgui_style_var.SeparatorTextPadding()
-	imgui_style_var.TabRounding({})
-	imgui_style_var.WindowBorderSize()
-	imgui_style_var.WindowMinSize({})
-	imgui_style_var.WindowPadding({})
-	imgui_style_var.WindowRounding()
-	imgui_style_var.WindowTitleAlign({})
-	
+|
+	--[[vector4]]
+	imgui.ColorConvertFloat4ToU32(RGBA)--returns: uint
+	--all numeric
+	imgui.ColorConvertHSVtoRGB(h, s, v, r, g, b)
+	--all numeric
+	imgui.ColorConvertRGBtoHSV(r, g, b, h, s, v)
+	--[[uint]]
+	imgui.ColorConvertU32ToFloat4(U32)--returns: RGBA
+	imgui.GetStyle()--returns: ImGuiStylePtr
+	--[[imgui_col]]
+	imgui.GetStyleColorName(index)
+	--[[imgui_col]]
+	imgui.GetStyleColorVec4(index)
+	--[[color|imgui_col]]
+	imgui.GetColorU32(color|index)
 |"color_edit_flags"	-- [[old, replace with new]]
-	imgui_color_edit_flags.NoAlpha --  ColorEdit, ColorPicker, ColorButton: ignore Alpha component (will only read 3 components from the input pointer).
-	imgui_color_edit_flags.NoPicker --  ColorEdit: disable picker when clicking on colored square.
-	imgui_color_edit_flags.NoOptions --  ColorEdit: disable toggling options menu when right-clicking on inputs/small preview.
-	imgui_color_edit_flags.NoSmallPreview --  ColorEdit, ColorPicker: disable colored square preview next to the inputs. (e.g. to show only the inputs)
-	imgui_color_edit_flags.NoInputs --  ColorEdit, ColorPicker: disable inputs sliders/text widgets (e.g. to show only the small preview colored square).
-	imgui_color_edit_flags.NoTooltip --  ColorEdit, ColorPicker, ColorButton: disable tooltip when hovering the preview.
-	imgui_color_edit_flags.NoLabel --  ColorEdit, ColorPicker: disable display of inline text label (the label is still forwarded to the tooltip and picker).
-	imgui_color_edit_flags.NoSidePreview --  ColorPicker: disable bigger color preview on right side of the picker, use small colored square preview instead.
-	imgui_color_edit_flags.NoDragDrop --  ColorEdit: disable drag and drop target. ColorButton: disable drag and drop source.
-	imgui_color_edit_flags.NoBorder --  ColorButton: disable border (which is enforced by default)
-	imgui_color_edit_flags.AlphaBar --  ColorEdit, ColorPicker: show vertical alpha bar/gradient in picker.
-	imgui_color_edit_flags.AlphaPreview --  ColorEdit, ColorPicker, ColorButton: display preview as a transparent color over a checkerboard, instead of opaque.
-	18 --  ColorEdit, ColorPicker, ColorButton: display half opaque / half checkerboard, instead of opaque.
-	imgui_color_edit_flags.HDR --  (WIP) ColorEdit: Currently only disable 0.0f..1.0f limits in RGBA edition (note: you probably want to use imgui_color_edit_flags.Float flag as well).
-	imgui_color_edit_flags.DisplayRGB -- [Display] ColorEdit: override display type among RGB/HSV/Hex. ColorPicker: select any combination using one or more of RGB/HSV/Hex.
-	imgui_color_edit_flags.DisplayHSV -- [Display]
-	imgui_color_edit_flags.DisplayHex -- [Display]
-	imgui_color_edit_flags.Uint8 -- [DataType] ColorEdit, ColorPicker, ColorButton: display values formatted as 0..255.
-	imgui_color_edit_flags.Float -- [DataType] ColorEdit, ColorPicker, ColorButton: display values formatted as 0.0f..1.0f floats instead of 0..255 integers. No round-trip of value via integers.
-	imgui_color_edit_flags.PickerHueBar -- [Picker] ColorPicker: bar for Hue, rectangle for Sat/Value.
-	imgui_color_edit_flags.PickerHueWheel -- [Picker] ColorPicker: wheel for Hue, triangle for Sat/Value.
-	imgui_color_edit_flags.InputRGB -- [Input]  ColorEdit, ColorPicker: input and output data in RGB format.
-	imgui_color_edit_flags.InputHSV -- [Input]  ColorEdit, ColorPicker: input and output data in HSV format.
-
-	ImVec4 ColorConvertU32ToFloat4(ImU32 in)
-	ImU32 ColorConvertFloat4ToU32(const ImVec4& in)
-	void ColorConvertRGBtoHSV(float r, float g, float b, float& out_h, float& out_s, float& out_v)
-	void ColorConvertHSVtoRGB(float h, float s, float v, float& out_r, float& out_g, float& out_b)
+	imgui_color_edit_flags.None--alt:0
+	imgui_color_edit_flags.NoAlpha--alt:2 -- ColorEdit, ColorPicker, ColorButton
+	imgui_color_edit_flags.NoPicker--alt:4 -- ColorEdit
+	imgui_color_edit_flags.NoOptions--alt:8 -- ColorEdit
+	imgui_color_edit_flags.NoSmallPreview--alt:16 -- ColorEdit, ColorPicker
+	imgui_color_edit_flags.NoInputs--alt:32 -- ColorEdit, ColorPicker
+	imgui_color_edit_flags.NoTooltip--alt:64 -- ColorEdit, ColorPicker, ColorButton
+	imgui_color_edit_flags.NoLabel--alt:128 -- ColorEdit, ColorPicker
+	imgui_color_edit_flags.NoSidePreview--alt:256 -- ColorPicker
+	imgui_color_edit_flags.NoDragDrop--alt:512 -- ColorEdit, ColorButton
+	imgui_color_edit_flags.NoBorder--alt:1024 -- ColorButton
+	imgui_color_edit_flags.AlphaBar--alt:65536 -- ColorEdit, ColorPicker
+	imgui_color_edit_flags.AlphaPreview--alt:131072 -- ColorEdit, ColorPicker, ColorButton
+	imgui_color_edit_flags.AlphaPreviewHalf--alt:262144 -- ColorEdit, ColorPicker, ColorButton
+	imgui_color_edit_flags.HDR--alt:524288 -- ColorEdit
+	imgui_color_edit_flags.DisplayRGB--alt:1048576
+	imgui_color_edit_flags.DisplayHSV--alt:2097152
+	imgui_color_edit_flags.DisplayHex--alt:4194304
+	imgui_color_edit_flags.DisplayMask--alt:7340032
+	imgui_color_edit_flags.Uint8--alt:8388608 -- [[0-255]] ColorEdit, ColorPicker, ColorButton
+	imgui_color_edit_flags.Float--alt:16777216 -- [[0-1]] ColorPicker, ColorButton
+	imgui_color_edit_flags.DataTypeMask--alt:25165824
+	imgui_color_edit_flags.PickerHueBar--alt:33554432 -- ColorPicker
+	imgui_color_edit_flags.PickerHueWheel--alt:67108864 -- ColorPicker
+	imgui_color_edit_flags.PickerMask--alt:100663296 -- ColorPicker
+	imgui_color_edit_flags.InputRGB--alt:134217728 -- ColorEdit, ColorPicker: input + output in 0-255
+	imgui_color_edit_flags.DefaultOptions--alt:177209344
+	imgui_color_edit_flags.InputHSV--alt:268435456 -- ColorEdit, ColorPicker: input + output in HSV.
+	imgui_color_edit_flags.InputMask--alt:402653184
 |"imgui.GetWindowDrawList()."/"imgui.GetOverlayDrawList()."
 	'Shape Filled'
 	AddCircleFilled({x, y}, radius, color)
