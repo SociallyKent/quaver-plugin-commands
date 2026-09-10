@@ -111,4 +111,3 @@
       _PopUnusedDrawCmd() : void
       _ResetForNewFrame() : void
       _TryMergeDrawCmds() : void
-      
